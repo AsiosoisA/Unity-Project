@@ -18,10 +18,8 @@ using UnityEngine;
 */
 public class CustomerVisitManager : MonoBehaviour
 {
-    public PlayerDataManager dataManager; // 데이터 매니저  <<<   싱글턴 패턴으로 바꿀 것!
     public Restaurant restaurant; // 식당
     public DefaultCustomerSpawner spawner; // 스포너
-    
 
     private List<Customer> customerQueue = new List<Customer>(); // 손님 방문 순서.
 

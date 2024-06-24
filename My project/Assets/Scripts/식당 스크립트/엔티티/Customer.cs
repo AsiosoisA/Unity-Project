@@ -57,12 +57,28 @@ public abstract class Customer : MonoBehaviour // TODO 원래 abstract 여야 �
 
 
     public Restaurant restaurant;
+    public TalkBulloon talkBulloon; // 말풍선 객체
 
     void Awake()
     {
         //rigid = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        animator = GetComponent<Animator>();        
+        animator = GetComponent<Animator>();
+
+        /*
+            말풍선 위치를 캐릭터의 바로 머리 위로 이동.
+        */
+        float topOfCustomer = transform.position.y + spriteRenderer.bounds.extents.y;
+
+        SpriteRenderer bullonRenderer = talkBulloon.GetComponent<SpriteRenderer>();
+        Transform bullonTransform = talkBulloon.GetComponent<Transform>();
+
+        talkBulloon.transform.position = new Vector3(bullonTransform.position.x, topOfCustomer + bullonRenderer.bounds.size.y / 2 , bullonTransform.position.z);
+
+        /*
+            그리고 나서 일단 주문을 하기 전까지 말풍선은 숨겨놓기.
+        */
+        talkBulloon.gameObject.SetActive(false);
     }
 
     void FixedUpdate(){
@@ -153,6 +169,8 @@ public abstract class Customer : MonoBehaviour // TODO 원래 abstract 여야 �
         myTable.SitDown(this);
         tableTransform = myTable.GetComponent<Transform>();
 
+
+
         isGoingToTable = true; // 앉으면 FixedUpdate 를 이용해서 이동 로직을 수행한다.
     }
 
@@ -162,6 +180,7 @@ public abstract class Customer : MonoBehaviour // TODO 원래 abstract 여야 �
         animator.SetBool("isWaiting", true); // 기다린다.
 
         Debug.Log(" ... ... 하는 말풍선"); // TODO
+        talkBulloon.gameObject.SetActive(true); // 이렇게 보여주는 것 만으로 이미 디폴트가 고민중 애니메이션이라 ㄱㅊ
 
         float waitingSecond = Random.Range(2, 7); // 뭐 시킬지 고민하기
         StartCoroutine(ChooseMenu(waitingSecond));
@@ -182,6 +201,8 @@ public abstract class Customer : MonoBehaviour // TODO 원래 abstract 여야 �
         // SpecialCustomer : 얜 클래스 레벨에서 알아서 정해짐.
 
         isWaiting = true;
+
+        talkBulloon.OrderingStart();
 
         waitMyFoodControl = StartCoroutine(WaitMyFood());
     }
@@ -204,6 +225,8 @@ public abstract class Customer : MonoBehaviour // TODO 원래 abstract 여야 �
 
     public void Fuck(){
         Debug.Log(" !$!@$%!%!^ 말풍선");
+        talkBulloon.FuckStart();
+
         animator.SetBool("isWaiting", false); // 그만 기다린다.
         ExitRestaurant();
     }
@@ -228,6 +251,8 @@ public abstract class Customer : MonoBehaviour // TODO 원래 abstract 여야 �
     }
 
     IEnumerator Eat(){
+        talkBulloon.gameObject.SetActive(false);
+
         Debug.Log("먹는 효과음 출력 등 아무튼 먹는 중...");
 
         animator.SetBool("isWaiting", false); // 그만 기다린다.
@@ -240,12 +265,19 @@ public abstract class Customer : MonoBehaviour // TODO 원래 abstract 여야 �
             여기에 만족도 판정을 넣을 것. 손님이 만족했다면 Satisfied , 불만족이라면 Fuck 을 호출.
         */
 
+        talkBulloon.gameObject.SetActive(true);
         Satisfied();
     }
 
     public void Satisfied(){ // 흠... 말풍선 스프라이트를 손님마다 머리 위에 매달아놓고, Update로 손님 머리 위에 항상 안주하도록 해볼까? << 좋은듯?
         Debug.Log(" 하트 말풍선 ");
+        talkBulloon.SatisfiedStart();     
+        
         Debug.Log(" 돈 지급 ");
+        PlayerDataManager.Instance.GetData().AddMoney(food_I_Want.price);
+
+        // 만약 배가 아직 고픈 상태인데 매우 만족했다면 한 그릇 더 시킬 수도 있다!
+        
         ExitRestaurant();
     }
 

@@ -15,10 +15,22 @@ public class Table : MonoBehaviour
 
     public void SitDown(Customer customer){
         this.customer = customer;
+
+        /*
+            의자의 sorting layer 를 그대로 따른다.
+        */
+        SpriteRenderer tableRenderer = GetComponent<SpriteRenderer>();
+        int orderInLayer = tableRenderer.sortingOrder;
+        customer.gameObject.GetComponent<SpriteRenderer>().sortingOrder = orderInLayer;
     }
     public void GetUp(){
         customer = null;
         myRestaurant.PlusAvailableTableCount();
         isAvailable = true;
+    }
+
+    // 테이블에 음식을 전달하면 그건 그대로 손님에게 전달된다.
+    public void GiveThisFood(Food food){
+        customer.GiveThisFood(food);
     }
 }

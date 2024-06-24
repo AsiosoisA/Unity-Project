@@ -55,6 +55,19 @@ public class PlayerData
     public PlayerDataForJSON Simplificate(){
         return new PlayerDataForJSON(this);
     }
+
+    
+
+
+
+    ////////////////     플레이어 데이터를 업데이트하는 함수   ////////////////////
+    public void AddMoney(int money){
+        this.money += money;
+    }
+    public void SubMoney(int money){
+        this.money -= money;
+    }
+    
 }
 
 [System.Serializable]

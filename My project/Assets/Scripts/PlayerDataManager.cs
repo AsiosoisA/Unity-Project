@@ -30,15 +30,58 @@ public class PlayerDataManager : MonoBehaviour
     */
 
 
+
+
+
+
+    /*
+        이거 아무리~~~~~ 생각해도 싱글톤으로 구현하는게 훨씬 좋을 듯.
+    */
+
+    private static PlayerDataManager instance;
+    public static PlayerDataManager Instance
+    {
+        get
+        {
+            if(instance == null)
+            {
+                var obj = FindObjectOfType<PlayerDataManager>();
+                if(obj != null)
+                {
+                    instance = obj;
+                }
+                else
+                {
+                    instance = new GameObject().AddComponent<PlayerDataManager>();
+                }
+            }
+            return instance;
+        }
+    }
+
+    bool isLoaded = false;
+    private void Awake()
+    {
+        var objs = FindObjectsOfType<PlayerDataManager>();
+        if(objs.Length != 1){
+            Destroy(gameObject);
+            return;
+        }
+        DontDestroyOnLoad(gameObject);
+
+        if(!isLoaded){
+            Begin();
+            isLoaded = true;
+        }
+    }
+
+
+
     string saveDataPath; // 이 경로에 세이브 파일 (Json) 이 생성된다.
 
-    [SerializeField]
-    private PlayerData playerData;
+    [SerializeField] // 디버그할 때 편하려고 추가함.
+    public PlayerData data; // 애라 모르겠다 그냥 public 해야지
     bool isDataAccessable;
-
-    void Start(){
-        Begin();
-    }
 
     public void Begin(){
         isDataAccessable = false;
@@ -50,20 +93,22 @@ public class PlayerDataManager : MonoBehaviour
         */
         saveDataPath = Application.dataPath + "/playerData.json";
 
-
         if(File.Exists(saveDataPath)) { // 물론 세이브데이터가 존재할 때만!
             Debug.Log("데이터를 불러옵니다!");
             Load(); 
         }
+        else{
+            Debug.Log("저장된 데이터가 없음. Default 데이터로 시작!");
+        }
 
         isDataAccessable = true;
-    }   
+    }
 
     public void Save(){
         isDataAccessable = false;
 
-        PlayerDataForJSON data = playerData.Simplificate(); // 꼭 저장해야 하는 데이터만 간단하게 저장하기 위해 필요한 값만 추린다.
-        string jsonData = JsonConvert.SerializeObject(data); // json 파일에 넣을 수 있도록 데이터를 직렬화한다.
+        PlayerDataForJSON playerData = data.Simplificate(); // 꼭 저장해야 하는 데이터만 간단하게 저장하기 위해 필요한 값만 추린다.
+        string jsonData = JsonConvert.SerializeObject(playerData); // json 파일에 넣을 수 있도록 데이터를 직렬화한다.
         
         FileStream stream = new FileStream(saveDataPath, FileMode.Create); // 파일 덮어쓰기 모드로 playerData.json 파일 생성.
         byte[] byteData = Encoding.UTF8.GetBytes(jsonData); // 인코딩.
@@ -82,26 +127,16 @@ public class PlayerDataManager : MonoBehaviour
         stream.Close(); // 파일을 닫는다.
 
         string jsonData = Encoding.UTF8.GetString(byteData); // 그 바이트 데이터를 string 으로 인코딩한다.
-        PlayerDataForJSON data = JsonConvert.DeserializeObject<PlayerDataForJSON>(jsonData); // 그 string 을 객체로 Deserialize 한다.
+        PlayerDataForJSON playerData = JsonConvert.DeserializeObject<PlayerDataForJSON>(jsonData); // 그 string 을 객체로 Deserialize 한다.
 
-        playerData = new PlayerData(data); // 그 데이터를 기반으로 현재 들고 있는 playerData를 초기화한다!
+        data = new PlayerData(playerData); // 그 데이터를 기반으로 현재 들고 있는 playerData를 초기화한다!
 
         isDataAccessable = true;
     }
 
-    public void SyncThisData(PlayerData yourData){
-        StartCoroutine(WaitData(yourData));
-    }
-
-    IEnumerator WaitData(PlayerData yourData){
-        while(!isDataAccessable){
-            yield return null;
-        }
-        yourData = this.playerData;
-        Debug.Log("Sync data success!");
-    }
-
-    public PlayerData getPlayerData(){
-        return this.playerData;
+    public PlayerData GetData(){
+        if(isDataAccessable){
+            return this.data;
+        } else return null;
     }
 }

@@ -35,7 +35,7 @@ public class PlayerDataManager : MonoBehaviour
 
 
     /*
-        이거 아무리~~~~~ 생각해도 싱글톤으로 구현하는게 훨씬 좋을 듯.
+        싱글톤 기능 구현
     */
 
     private static PlayerDataManager instance;
@@ -77,12 +77,24 @@ public class PlayerDataManager : MonoBehaviour
 
 
 
-    string saveDataPath; // 이 경로에 세이브 파일 (Json) 이 생성된다.
+
+
+
+
+
+    //string saveDataPath; // 이 경로에 세이브 파일 (Json) 이 생성된다.
 
     [SerializeField] // 디버그할 때 편하려고 추가함.
     public PlayerData data; // 애라 모르겠다 그냥 public 해야지
     bool isDataAccessable;
 
+
+
+    /*
+        Begin 함수
+
+        임시 함수. 특정 세이브 파일을 단순히 불러오는 역할을 함. 나중으로 가면 삭제할 것.
+    */
     public void Begin(){
         isDataAccessable = false;
 
@@ -91,21 +103,28 @@ public class PlayerDataManager : MonoBehaviour
             세이브파일의 이름을 인자로 받던가 해서 세이브파일 경로를 잘 설정해주어야 한다!
             지금은 일단 그냥 임시값으로 해놓겠다.
         */
-        saveDataPath = Application.dataPath + "/playerData.json";
+        string saveDataPath = Path.Combine(Application.persistentDataPath, "Saves", "save" + 1 + ".json");
 
         if(File.Exists(saveDataPath)) { // 물론 세이브데이터가 존재할 때만!
             Debug.Log("데이터를 불러옵니다!");
-            Load(); 
+            Load(1);
         }
         else{
             Debug.Log("저장된 데이터가 없음. Default 데이터로 시작!");
+            Save(1);
         }
 
         isDataAccessable = true;
     }
 
-    public void Save(){
+    public void Save(int slotNumber){
         isDataAccessable = false;
+
+        string saveDirPath = Path.Combine(Application.persistentDataPath, "Saves");
+        if(!Directory.Exists(saveDirPath)){
+            Directory.CreateDirectory(saveDirPath);
+        }
+        string saveDataPath = Path.Combine(saveDirPath, "save" + slotNumber + ".json");
 
         PlayerDataForJSON playerData = data.Simplificate(); // 꼭 저장해야 하는 데이터만 간단하게 저장하기 위해 필요한 값만 추린다.
         string jsonData = JsonConvert.SerializeObject(playerData); // json 파일에 넣을 수 있도록 데이터를 직렬화한다.
@@ -116,10 +135,16 @@ public class PlayerDataManager : MonoBehaviour
         stream.Close(); // 파일 닫기.
 
         isDataAccessable = true;
-    } 
+    }
 
-    public void Load(){
+    public void Load(int slotNumber){
         isDataAccessable = false;
+        
+        string saveDirPath = Path.Combine(Application.persistentDataPath, "Saves");
+        if(!Directory.Exists(saveDirPath)){
+            Directory.CreateDirectory(saveDirPath);
+        }
+        string saveDataPath = Path.Combine(saveDirPath, "save" + slotNumber + ".json");
         
         FileStream stream = new FileStream(saveDataPath, FileMode.Open); // 파일을 그냥 오픈 모드로 연다.
         byte[] byteData = new byte[stream.Length]; // 걍 바이트 데이터 담을 배열 하나 선언한다.
@@ -139,4 +164,8 @@ public class PlayerDataManager : MonoBehaviour
             return this.data;
         } else return null;
     }
+
+    
+
+    
 }

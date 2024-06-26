@@ -27,7 +27,6 @@ public class PlayerController : MonoBehaviour
     private bool canFlip;
     private bool hasWallJumped;
     private bool isTouchingLedge;
-    private bool canClimbLedge = false;
 
     private Rigidbody2D rb;
     private Animator anim;
@@ -313,6 +312,16 @@ public class PlayerController : MonoBehaviour
                 rb.velocity = new Vector2(rb.velocity.x, -wallSlideSpeed);
             }
         }
+    }
+
+    public void DisableFlip()
+    {
+        canFlip = false;
+    }
+
+    public void EnableFlip()
+    {
+        canFlip = true;
     }
 
     private void Flip()

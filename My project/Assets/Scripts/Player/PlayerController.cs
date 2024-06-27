@@ -56,7 +56,6 @@ public class PlayerController : MonoBehaviour
 
     public LayerMask whatIsGround;
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -66,7 +65,6 @@ public class PlayerController : MonoBehaviour
         wallJumpDirection.Normalize();
     }
 
-    // Update is called once per frame
     void Update()
     {
         CheckInput();
@@ -219,8 +217,8 @@ public class PlayerController : MonoBehaviour
     {
         return facingDirection;
     }
-
-    private void CheckJump()
+    //
+    private void CheckJump() 
     {
         if(jumpTimer > 0)
         {

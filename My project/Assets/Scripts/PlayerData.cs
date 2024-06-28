@@ -16,6 +16,8 @@ public class PlayerData
             1. 변수를 public 으로 하나 선언한다.
             2. 밑에 있는 PlayerDataForJson 클래스에도 똑같이 public 으로 변수 하나를 선언한다. 이 때 {get; set;} 을 옆에 붙인다.
             3, 4. 두 클래스의 생성자를 이리조리 조작한다.
+            
+            5, 6. 추가로 슬롯을 통한 세이브 & 로드에서 미리보기 정보로 제공할 정보가 추가된다면 PlayerDataPreview 클래스에서도 조작해둘 것.
 
         이러면 PlayerDataManager 클래스가 알아서 데이터를 Save 하거나 Load 할 수 있게 된다!
 
@@ -151,6 +153,58 @@ public class PlayerDataForJSON
         timestamp_minute = now.Minute;
         timestamp_second = now.Second;
 
+
+        //TODO 변경해야 하는 곳!
+        //추가할 내용 : this.addedData = data.addedData;
+
+        this.money = data.money;
+        this.restaurantLevel = data.restaurantLevel;
+    }
+}
+
+[Serializable]
+public class PlayerDataPreview
+{
+    public int timestamp_year { get; set; }
+    public int timestamp_month { get; set; }
+    public int timestamp_day { get; set; }
+    public int timestamp_hour { get; set; }
+    public int timestamp_minute { get; set; }
+    public int timestamp_second { get; set; }
+
+
+
+
+
+
+    //TODO 변경해야 하는 곳!
+    //추가할 내용 : public int addedData { get; set; }
+
+    public int money { get; set; }
+    public int restaurantLevel { get; set; }
+
+    public PlayerDataPreview(){
+        // Deserialize 를 위한 기본 생성자. 건들 필요 없음.
+    }
+
+
+
+
+
+
+
+    /*
+        Simplificate 함수에 사용되는 생성자.
+
+        일단 이 생성자도 데이터가 추가되면 변경해줘야 함.
+    */
+    public PlayerDataPreview(PlayerDataForJSON data){
+        timestamp_year = data.timestamp_year;
+        timestamp_month = data.timestamp_month;
+        timestamp_day = data.timestamp_day;
+        timestamp_hour = data.timestamp_hour;
+        timestamp_minute = data.timestamp_minute;
+        timestamp_second = data.timestamp_second;
 
         //TODO 변경해야 하는 곳!
         //추가할 내용 : this.addedData = data.addedData;

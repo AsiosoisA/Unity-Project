@@ -125,12 +125,22 @@ public class PlayerDataManager : MonoBehaviour
             Directory.CreateDirectory(saveDirPath);
         }
         string saveDataPath = Path.Combine(saveDirPath, "save" + slotNumber + ".json");
+        string prevDataPath = Path.Combine(saveDirPath, "prev" + slotNumber + ".json");
 
         PlayerDataForJSON playerData = data.Simplificate(); // 꼭 저장해야 하는 데이터만 간단하게 저장하기 위해 필요한 값만 추린다.
+        PlayerDataPreview preview = new PlayerDataPreview(playerData); // 슬롯에서 미리 보여줄 정보만 추려서 preview 객체로 만든다.
+
         string jsonData = JsonConvert.SerializeObject(playerData); // json 파일에 넣을 수 있도록 데이터를 직렬화한다.
+        string jsonDataForPreview = JsonConvert.SerializeObject(preview);
         
         FileStream stream = new FileStream(saveDataPath, FileMode.Create); // 파일 덮어쓰기 모드로 playerData.json 파일 생성.
         byte[] byteData = Encoding.UTF8.GetBytes(jsonData); // 인코딩.
+        stream.Write(byteData, 0, byteData.Length); // 파일에 쓰기.
+        stream.Close(); // 파일 닫기.
+
+        // preview 파일도 저장한다!
+        stream = new FileStream(prevDataPath, FileMode.Create);
+        byteData = Encoding.UTF8.GetBytes(jsonDataForPreview); // 인코딩.
         stream.Write(byteData, 0, byteData.Length); // 파일에 쓰기.
         stream.Close(); // 파일 닫기.
 
@@ -157,6 +167,30 @@ public class PlayerDataManager : MonoBehaviour
         data = new PlayerData(playerData); // 그 데이터를 기반으로 현재 들고 있는 playerData를 초기화한다!
 
         isDataAccessable = true;
+    }
+
+    /*
+        슬롯 번호에 해당하는 preview 파일만 따로 로드해서 리턴한다.
+    */
+    public PlayerDataPreview LoadPreview(int slotNumber){
+        string saveDirPath = Path.Combine(Application.persistentDataPath, "Saves");
+        if(!Directory.Exists(saveDirPath)){
+            Directory.CreateDirectory(saveDirPath);
+        }
+        string saveDataPath = Path.Combine(saveDirPath, "prev" + slotNumber + ".json");
+        if(!File.Exists(saveDataPath)){
+            return null; // 그런 파일이 없다면 null 을 리턴한다.
+        }
+        
+        FileStream stream = new FileStream(saveDataPath, FileMode.Open); // 파일을 그냥 오픈 모드로 연다.
+        byte[] byteData = new byte[stream.Length]; // 걍 바이트 데이터 담을 배열 하나 선언한다.
+        stream.Read(byteData, 0, byteData.Length); // stream.Read 함수를 통해 파일에서 바이트 데이터를 읽어온다.
+        stream.Close(); // 파일을 닫는다.
+
+        string jsonData = Encoding.UTF8.GetString(byteData); // 그 바이트 데이터를 string 으로 인코딩한다.
+        PlayerDataPreview playerData = JsonConvert.DeserializeObject<PlayerDataPreview>(jsonData); // 그 string 을 객체로 Deserialize 한다.
+
+        return playerData;
     }
 
     public PlayerData GetData(){

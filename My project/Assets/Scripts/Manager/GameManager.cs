@@ -27,7 +27,6 @@ public class GameManager : MonoBehaviour
     {
         CheckRespawn();
     }
-
     public void Respawn()
     {
         respawnTimeStart = Time.time;

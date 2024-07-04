@@ -262,7 +262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnPoint: {fileID: 1767890497}
-  player: {fileID: 1455867241}
+  player: {fileID: 7536752994792160008, guid: 194f9364f5da5594f8e88e96439eff7d, type: 3}
   respawnTime: 5
 --- !u!4 &1139966551
 Transform:
@@ -493,11 +493,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1455867241 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7536752994792160008, guid: 194f9364f5da5594f8e88e96439eff7d, type: 3}
-  m_PrefabInstance: {fileID: 855716896033544523}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1455867248 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6734689007376374364, guid: 194f9364f5da5594f8e88e96439eff7d, type: 3}

@@ -28,7 +28,7 @@ public class Restaurant : MonoBehaviour
         // 로딩이 끝나기 전엔 이 함수를 실행시키지 말 것!!
         this.playerData = PlayerDataManager.Instance.GetData();
 
-        Debug.Log("데이터 로딩 성공... 테이블 정보 초기화!");
+        //Debug.Log("데이터 로딩 성공... 테이블 정보 초기화!");
 
         // 일단 기본적으로 테이블 정보를 초기화한다.
         myTables.AddRange(level_0_tables);
@@ -50,14 +50,14 @@ public class Restaurant : MonoBehaviour
 
     public Table chooseTable(){
         int[] availableTables = new int[availableTableCount];
-        Debug.Log("가용한 테이블 수 : " + availableTableCount);
+        //Debug.Log("가용한 테이블 수 : " + availableTableCount);
 
         int idx = 0;
         int myTableIdx = 0;
 
         foreach(Table table in myTables){
             if(table.isAvailable){
-                Debug.Log("가용 가능하다고 판단된 테이블 번호 : " + table.tableNumber);
+                //Debug.Log("가용 가능하다고 판단된 테이블 번호 : " + table.tableNumber);
                 availableTables[idx] = myTableIdx;
                 idx++;
             }
@@ -65,7 +65,7 @@ public class Restaurant : MonoBehaviour
         }
         // foreach 문으로 가용한 테이블을 알아낸 뒤, 그 테이블의 index 를 availableTables 에 저장했다. idx 에는 그 배열의 크기가 담겨 있음.
 
-        Debug.Log("현재 가용한 테이블 수 : " + idx);
+        //Debug.Log("현재 가용한 테이블 수 : " + idx);
 
         int randIdx = Random.Range(0, idx); // 이 중 테이블 아무거나 하나 고른 뒤
 

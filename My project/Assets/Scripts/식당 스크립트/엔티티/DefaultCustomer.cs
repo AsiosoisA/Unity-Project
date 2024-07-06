@@ -24,6 +24,6 @@ public class DefaultCustomer : Customer
 
         this.food_I_Want = restaurant.menuboard.suggestFood();
  
-        Debug.Log(customerName + " 손님이 먹고 싶은 음식 : " + food_I_Want.foodName); // TODO
+        //Debug.Log(customerName + " 손님이 먹고 싶은 음식 : " + food_I_Want.foodName); // TODO
     }
 }

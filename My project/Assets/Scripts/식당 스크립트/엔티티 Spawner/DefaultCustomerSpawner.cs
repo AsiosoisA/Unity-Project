@@ -80,7 +80,7 @@ public class DefaultCustomerSpawner : MonoBehaviour
             maleNames.AddRange(maleNamesArray);
             femaleNames.AddRange(femaleNamesArray);
 
-            Debug.Log("List 초기화 완료!");
+            //Debug.Log("List 초기화 완료!");
 
         } catch (IOException e) {
             Debug.LogError("Error : 손님의 샘플 이름을 로딩하는 도중 뭔가 문제가 생겼음. : " + e.Message);
@@ -120,7 +120,7 @@ public class DefaultCustomerSpawner : MonoBehaviour
     public DefaultCustomer spawnCustomer(){
         // 인스턴티에이트. 하이라키 창의 Customer Queue 객체 아래에 손님이 생성되도록 함.
 
-        Debug.Log("Spawner 발동!");
+        //Debug.Log("Spawner 발동!");
 
         spawnPoint = gameObject.transform; // 스폰포인트는 정확히 손님생성기가 있는 위치로 한다!
         customer = Instantiate(defCustomerPrefeb, spawnPoint.position, spawnPoint.rotation, storageToPutCustomer.transform).GetComponent<DefaultCustomer>();
@@ -166,11 +166,11 @@ public class DefaultCustomerSpawner : MonoBehaviour
         List<SpriteAtlas> atlasList;
         if(customer.gender == "male"){
             atlasList = maleAtlasList;
-            Debug.Log("아틀라스 : 남성");
+            //Debug.Log("아틀라스 : 남성");
         }
         else{ // customer.gender == "female"
             atlasList = femaleAtlasList;
-            Debug.Log("아틀라스 : 여성");
+            //Debug.Log("아틀라스 : 여성");
         }
 
         // 우선 아틀라스 리스트에서 랜덤으로 아틀라스 하나를 가져온다.

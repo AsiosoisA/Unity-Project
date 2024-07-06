@@ -75,7 +75,7 @@ public class CustomerVisitManager : MonoBehaviour
 
             while(restaurant.GetAvailableTableCount() == 0){
                 if(customerIdx + waiting < customerQueue.Count) waiting++;
-                Debug.Log("웨이팅 수 : " + waiting);
+                //Debug.Log("웨이팅 수 : " + waiting);
 
                 /*
                     이제 기다리는데, 뭘 기다릴 것이냐.
@@ -114,7 +114,7 @@ public class CustomerVisitManager : MonoBehaviour
                     
                     customerQueue[customerIdx++].Begin();
                     waiting--;
-                    Debug.Log("웨이팅 수 : " + waiting);
+                    //Debug.Log("웨이팅 수 : " + waiting);
 
                 }
                 // 이제 주기 정상화.

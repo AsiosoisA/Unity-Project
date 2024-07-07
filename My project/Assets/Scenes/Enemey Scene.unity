@@ -211,7 +211,7 @@ GameObject:
   m_Component:
   - component: {fileID: 855051865}
   m_Layer: 9
-  m_Name: groundCheck
+  m_Name: ledgeCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -430,7 +430,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 6
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 03301e8e8906d2941bd4c0e90755c817, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -482,7 +482,7 @@ SpriteRenderer:
   m_SortingLayerID: 1994106357
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 727250431, guid: 2cfef626a0cfbf34f81a0ef547a06ec1, type: 3}
+  m_Sprite: {fileID: 629635801, guid: d4d9506d3f0de1f4eab22dc58876fa7e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1524,32 +1524,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1902638591}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52d5071e51c653748be818088c5ab588, type: 3}
+  m_Script: {fileID: 11500000, guid: cb862de3c4b0f934ca513ad99346d6fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  groundCheckDistance: 0.5
-  wallCheckDistance: 0.1
-  movementSpeed: 3
-  maxHealth: 30
-  knockbackDuration: 0.1
-  lastTouchDamageTime: 0
-  touchDamageCooldown: 0.2
-  touchDamage: 10
-  touchDamageWidth: 1.8
-  touchDamageHeight: 1.2
-  groundCheck: {fileID: 855051865}
+  entityData: {fileID: 11400000, guid: 25867663ba16d1b43a9ba2f7ad93c197, type: 2}
   wallCheck: {fileID: 1282165801}
-  touchDamageCheck: {fileID: 1789044614}
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 64
-  whatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 2048
-  knockbackSpeed: {x: 10, y: 5}
-  hitParticle: {fileID: 6167745105967694672, guid: de065dc13106ac4419c192d3b2c6c983, type: 3}
-  deathChunkParticle: {fileID: 579662739278474144, guid: 741937cf9f4d53a41bb8052606a25bc4, type: 3}
-  deathBloodParticle: {fileID: 8780359662066361692, guid: 7878a4b36d5a5a9439b5dc5e5da1627e, type: 3}
+  ledgeCheck: {fileID: 855051865}
+  idleStateData: {fileID: 11400000, guid: 8ac80b1bdc3a5a44583a3a6354bdb14f, type: 2}
+  moveStateData: {fileID: 11400000, guid: ec42a0ed435b89247b5abc9a9e6e1ea9, type: 2}
 --- !u!1001 &855716896033544523
 PrefabInstance:
   m_ObjectHideFlags: 0

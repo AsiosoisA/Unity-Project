@@ -62,12 +62,12 @@ public class PlayerKitchenController : MonoBehaviour
 
     private void CheckIfCanJump()
     {
-        if ((isGrounded && rb.velocity.y <= 0) || isWallSliding)
+        if ((isGrounded && rb.velocity.y <= 0))
         {
             amountOfJumpsLeft = amountOfJumps;
         }
 
-        if (amountOfJumpsLeft <= 0
+        if (amountOfJumpsLeft <= 0)
         {
             canJump = false;
         }
@@ -156,12 +156,11 @@ public class PlayerKitchenController : MonoBehaviour
 
     private void Flip()
     {
-        if (!isWallSliding)
-        {
-            facingDirection *= -1;
-            isFacingRight = !isFacingRight;
-            transform.Rotate(0.0f, 180.0f, 0.0f);
-        }
+ 
+        facingDirection *= -1;
+        isFacingRight = !isFacingRight;
+        transform.Rotate(0.0f, 180.0f, 0.0f);
+        
     }
 
     private void OnDrawGizmos()

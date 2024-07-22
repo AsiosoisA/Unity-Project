@@ -13,16 +13,32 @@ public class Table : MonoBehaviour
 
     public Restaurant myRestaurant;
 
-    public void SitDown(Customer customer){
+    public SpriteRenderer TableRenderer {get; private set;}
+
+
+
+
+
+    void Awake(){
+        TableRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    public void SetCustomer(Customer customer){
         this.customer = customer;
+
+        //TODO 고쳐야 하는 로직임.....!!!
+        // 해법 : 레이어를 하나 더 만든다. Customer , Table
+        // 테이블의 레이어가 무조건 Customer 보다 나중에 그려지게 만들어서 앉는 효과를 내야 한다.
 
         /*
             의자의 sorting layer 를 그대로 따른다.
+            ㄴ 즉 이 부분은 삭제되어야 마땅함.
         */
-        SpriteRenderer tableRenderer = GetComponent<SpriteRenderer>();
-        int orderInLayer = tableRenderer.sortingOrder;
+        
+        int orderInLayer = TableRenderer.sortingOrder;
         customer.gameObject.GetComponent<SpriteRenderer>().sortingOrder = orderInLayer;
     }
+
     public void GetUp(){
         customer = null;
         myRestaurant.PlusAvailableTableCount();

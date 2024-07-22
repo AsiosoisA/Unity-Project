@@ -487,6 +487,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23f6ca978f710b4499d02b82be3877a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &358198020 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5070416847130706962, guid: 23395b6c694e4d040bd0dd80ea048f66, type: 3}
+  m_PrefabInstance: {fileID: 2571830188528527132}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &461206510
 GameObject:
   m_ObjectHideFlags: 0
@@ -837,6 +842,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restaurant: {fileID: 358198019}
   spawner: {fileID: 1259477048}
+  waitingCustomersPeroid: 0.2
 --- !u!4 &1081534264
 Transform:
   m_ObjectHideFlags: 0
@@ -851,7 +857,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1259477049}
-  - {fileID: 1525999112}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1121469069
@@ -1121,7 +1126,6 @@ MonoBehaviour:
   eatNames:
   - player-hurt-1
   - player-hurt-2
-  menuboard: {fileID: 1523194536}
 --- !u!4 &1259477049
 Transform:
   m_ObjectHideFlags: 0
@@ -1491,17 +1495,6 @@ MonoBehaviour:
   tester: {fileID: 7626676117495995859}
   restaurant: {fileID: 358198019}
   visitManager: {fileID: 1081534263}
---- !u!114 &1523194536 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4112287042720367704, guid: 23395b6c694e4d040bd0dd80ea048f66, type: 3}
-  m_PrefabInstance: {fileID: 2571830188528527132}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4235701c78d29fc4a93d46a49a41139f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1525999111
 GameObject:
   m_ObjectHideFlags: 0
@@ -1512,7 +1505,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1525999112}
   m_Layer: 0
-  m_Name: Customer Queue
+  m_Name: "\uBC29\uBB38 \uC190\uB2D8 \uD050"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1527,11 +1520,11 @@ Transform:
   m_GameObject: {fileID: 1525999111}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.7012057, y: -0.51940244, z: -0.03451624}
+  m_LocalPosition: {x: -7.967765, y: 0.16290201, z: -0.031450763}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1081534264}
+  m_Father: {fileID: 358198020}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1601408013
 GameObject:
@@ -2580,7 +2573,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 5070416847130706962, guid: 23395b6c694e4d040bd0dd80ea048f66, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1525999112}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23395b6c694e4d040bd0dd80ea048f66, type: 3}
 --- !u!1001 &4129269908783754748

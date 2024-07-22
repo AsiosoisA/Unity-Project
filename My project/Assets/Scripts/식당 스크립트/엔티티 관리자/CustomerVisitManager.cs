@@ -27,7 +27,7 @@ public class CustomerVisitManager : MonoBehaviour
 
     private float peroid = 1.0f; // 식당에 손님을 입장시킬 주기. (peroid) 초 마다 손님을 입장시키고, 꽉 차면 대기시킴.
     // 이거 일단 테스트하려고 값 설정했는데 나중엔 어차피 CalculatePeroid 함수에서 알아서 바뀜.
-    private float waitingCustomersPeroid = 0.2f; // 기다리고 있던 손님들이 한꺼번에 들이닥칠 때의 주기.
+    [SerializeField] private float waitingCustomersPeroid = 0.2f; // 기다리고 있던 손님들이 한꺼번에 들이닥칠 때의 주기.
 
 
     private int customerIdx = 0; // 현재 방문할 손님의 인덱스.

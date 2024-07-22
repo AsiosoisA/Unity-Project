@@ -5,9 +5,13 @@ using UnityEngine;
 public class TalkBulloon : MonoBehaviour
 {
     private Animator animator;
+    public SpriteRenderer bullonRenderer { get; private set; }
+    public Transform bullonTransform {get; private set;}
 
     void Awake(){
-        this.animator = GetComponent<Animator>();
+        bullonRenderer = GetComponent<SpriteRenderer>();
+        bullonTransform = GetComponent<Transform>();
+        animator = GetComponent<Animator>();
     }
 
     // 이건 Default 라 딱히 설정할 필요가 없음.

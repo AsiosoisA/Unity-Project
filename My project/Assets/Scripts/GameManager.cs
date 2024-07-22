@@ -5,8 +5,7 @@ using UnityEngine.PlayerLoop;
 
 public class GameManager : MonoBehaviour
 {
-    private static GameManager instance;
-
+    private static GameManager instance; // 밖에서 참조할 때는 Instance 로 참조함.
     #region 싱글톤 패턴 구현
     public static GameManager Instance
     {
@@ -40,7 +39,6 @@ public class GameManager : MonoBehaviour
         Init();
     }
     #endregion
-
 
     public IdDictionary ID_Dictionary;
 

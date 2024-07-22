@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SaveLoadSlot : MonoBehaviour
@@ -84,8 +85,10 @@ public class SaveLoadSlot : MonoBehaviour
         PlayerDataManager.Instance.Load(slotNumber);
         // 이러면 Instance의 PlayerData 가 초기화됐을거임.
 
-        Debug.Log("로드 성공! PlayerData의 정보 중 소지금 : " + PlayerDataManager.Instance.data.money);
+        Debug.Log("로드 성공! PlayerData의 정보 중 소지금 : " + PlayerDataManager.Instance.Data.money);
         Debug.Log("이제 적절한 씬으로 넘어가면 끝!");
+
+        SceneManager.LoadScene("RestaurantStartScene");
     }
 
     public void SaveDataInSlot(){

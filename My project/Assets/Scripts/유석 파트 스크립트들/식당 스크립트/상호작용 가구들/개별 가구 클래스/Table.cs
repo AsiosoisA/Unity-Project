@@ -1,26 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class Table : MonoBehaviour
+public class Table : RestaurantComponent
 {
+    #region 테이블 정보
     public int tableNumber;
     public bool isAvailable = true; // 손님이 앉으면 false로 바뀜.
-    public Customer customer; // 테이블에 현재 앉아 있는 손님
+    #endregion
 
-    public string tableType; // 일단 나중을 위해 만들어 둠.
-
-    public Restaurant myRestaurant;
-
+    #region 객체들
+    private Customer customer; // 테이블에 현재 앉아 있는 손님
+    private Restaurant myRestaurant;
     public SpriteRenderer TableRenderer {get; private set;}
+    public Transform TableTransform {get; private set;}
+    
+    #endregion
 
-
-
-
-
-    void Awake(){
+    protected override void Awake(){
+        base.Awake();
         TableRenderer = GetComponent<SpriteRenderer>();
+        TableTransform = transform;
+        gameObject.SetActive(false);
+    }
+
+    public void TakeThisTable(Restaurant restaurant){
+        TableTransform.gameObject.SetActive(true);
+        myRestaurant = restaurant;
     }
 
     public void SetCustomer(Customer customer){
@@ -36,13 +44,18 @@ public class Table : MonoBehaviour
         */
         
         int orderInLayer = TableRenderer.sortingOrder;
-        customer.gameObject.GetComponent<SpriteRenderer>().sortingOrder = orderInLayer;
+        customer.spriteRenderer.sortingOrder = orderInLayer - 1; // 의자보다는 먼저 그려져야 함.
     }
 
     public void GetUp(){
         customer = null;
         myRestaurant.PlusAvailableTableCount();
         isAvailable = true;
+    }
+
+    public override void Interact()
+    {
+        GiveThisFood(customer.food_I_Want); // TODO 플레이어가 들고 있는 음식을 주도록 해야 한다!
     }
 
     // 테이블에 음식을 전달하면 그건 그대로 손님에게 전달된다.

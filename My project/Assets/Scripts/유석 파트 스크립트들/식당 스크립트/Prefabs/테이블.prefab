@@ -48,9 +48,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tableNumber: 0
   isAvailable: 1
-  customer: {fileID: 0}
-  tableType: 
-  myRestaurant: {fileID: 6206944435428566986, guid: 23395b6c694e4d040bd0dd80ea048f66, type: 3}
 --- !u!61 &4319114329342721094
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -134,10 +131,10 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1588657849
+  m_SortingLayer: 6
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300004, guid: 261212b977f594d5dbc48631a5c1295c, type: 3}
+  m_Sprite: {fileID: 21300122, guid: 261212b977f594d5dbc48631a5c1295c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

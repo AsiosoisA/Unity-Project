@@ -20,13 +20,12 @@ public class RestaurantFlowController : MonoBehaviour
 
     IEnumerator WaitLoadingAndExec(){
         while(playerData == null){
-            playerData = PlayerDataManager.Instance.GetData();
+            playerData = PlayerDataManager.Instance.Data;
             yield return null; // 대기
         }
 
         Debug.Log("Data loading success!");
 
-        restaurant.Begin();
         //tester.Begin();
 
         visitManager.Begin();

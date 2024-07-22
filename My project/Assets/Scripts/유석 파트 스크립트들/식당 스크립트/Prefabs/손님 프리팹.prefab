@@ -72,8 +72,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1501932583
+  m_SortingLayer: 7
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 72de0c64f2c6a498096698322c976a67, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -122,16 +122,10 @@ MonoBehaviour:
   id: 0
   gender: 
   customerName: 
-  animator: {fileID: 0}
-  patientGage: 100
-  patientTime: 10
-  myTable: {fileID: 0}
-  food_I_Want: {fileID: 0}
   fullness: 0
-  expected_satisfaction: 0
-  actual_satisfaction: 0
-  cost: 0
-  revisiting_prob: 0
   maxSpeed: 5
-  spriteRenderer: {fileID: 0}
-  restaurant: {fileID: 6206944435428566986, guid: 23395b6c694e4d040bd0dd80ea048f66, type: 3}
+  eatingTime: 5
+  patientTime: 10
+  restaurant: {fileID: 0}
+  food_I_Want: {fileID: 0}
+  talkBulloon: {fileID: 0}

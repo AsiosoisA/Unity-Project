@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Restaurant : MonoBehaviour
+public class Restaurant_Old : MonoBehaviour
 {
 
     public PlayerDataManager dataManager;
@@ -26,7 +26,7 @@ public class Restaurant : MonoBehaviour
     public void Begin(){
 
         // 로딩이 끝나기 전엔 이 함수를 실행시키지 말 것!!
-        this.playerData = PlayerDataManager.Instance.GetData();
+        this.playerData = PlayerDataManager.Instance.Data;
 
         //Debug.Log("데이터 로딩 성공... 테이블 정보 초기화!");
 

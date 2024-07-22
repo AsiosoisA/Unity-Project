@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/LoadScene.unity
+    guid: c0b9f1c3b477c2047830704e22823281
+  - enabled: 1
+    path: Assets/Scenes/RestaurantStartScene.unity
+    guid: 1fec821da4b9d3f439b5e07e2d302cc9
   m_configObjects: {}

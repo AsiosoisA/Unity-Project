@@ -22,7 +22,7 @@ public class DefaultCustomer : Customer
             메뉴판에 등록되어 있는 음식 중 하나를 랜덤으로 고른다!
         */
 
-        this.food_I_Want = restaurant.menuboard.suggestFood();
+        this.food_I_Want = restaurant.Menuboard.suggestFood();
  
         //Debug.Log(customerName + " 손님이 먹고 싶은 음식 : " + food_I_Want.foodName); // TODO
     }

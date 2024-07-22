@@ -5,12 +5,9 @@ using UnityEngine;
 public class TalkBulloon : MonoBehaviour
 {
     private Animator animator;
-    public SpriteRenderer bullonRenderer { get; private set; }
-    public Transform bullonTransform {get; private set;}
 
     void Awake(){
-        bullonRenderer = GetComponent<SpriteRenderer>();
-        bullonTransform = GetComponent<Transform>();
+        Debug.Log("말풍선 Awake");
         animator = GetComponent<Animator>();
     }
 

@@ -53,6 +53,8 @@ public abstract class Customer : MonoBehaviour
             //rigid = GetComponent<Rigidbody2D>();
             spriteRenderer = GetComponent<SpriteRenderer>();
             animator = GetComponent<Animator>();
+            restaurant = transform.parent.GetComponentInParent<Restaurant>();
+            if(restaurant == null) Debug.LogError("레스토랑 아직도 널. transform.parent : " + transform.parent.name);
 
             AwakeTalkBullon();
             
@@ -66,7 +68,7 @@ public abstract class Customer : MonoBehaviour
 
         private void MovePositionOfTalkBullonToHead(){
             float topOfCustomer = transform.position.y + spriteRenderer.bounds.extents.y;
-            talkBulloon.bullonTransform.position = new Vector3(talkBulloon.bullonTransform.position.x, topOfCustomer + talkBulloon.bullonRenderer.bounds.size.y / 2 , talkBulloon.bullonTransform.position.z);
+            talkBulloon.transform.position = new Vector3(talkBulloon.transform.position.x, topOfCustomer + talkBulloon.GetComponent<SpriteRenderer>().bounds.size.y / 2 , talkBulloon.transform.position.z);
         }
 
         public abstract void InitCustomer(); // DefaultCustomer 의 경우 딱히 구현하지 않음.
@@ -221,7 +223,7 @@ public abstract class Customer : MonoBehaviour
         talkBulloon.SatisfiedStart();     
         
         //Debug.Log(" 돈 지급 ");
-        PlayerDataManager.Instance.GetData().AddMoney(food_I_Want.price);
+        PlayerDataManager.Instance.Data.AddMoney(food_I_Want.price);
 
         if(false){ // 만약 배가 아직 고픈 상태인데 매우 만족했다면 한 그릇 더 시킬 수도 있다! TODO 기능 추가하게 되면 여기에 추가할 것.
 

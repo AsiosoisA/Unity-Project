@@ -8,7 +8,9 @@ using System.Data.Common;
 
 public class PlayerDataManager : MonoBehaviour
 {
-    
+    // 특 급 주 의 사 항
+    // 이 스크립트를 컴포넌트로 갖는 객체는 그냥 만들지 마세요! 싱글톤 패턴 유지한답시고 기존 PlayerDataManager 가 파괴되면 매우 곤란해집니다!
+    // 대신 LoadScene 에서 데이터를 불러온 뒤에 원하는 씬이 열리게 하세요!
 
     /*
         Save 함수를 실행하면 playerData.json 이라는 파일이 뚝딱 생기고, 현재 담고 있는 playerData 의 정보가 저장된다.
@@ -30,10 +32,7 @@ public class PlayerDataManager : MonoBehaviour
     */
 
 
-
-
-
-
+    #region 싱글톤 패턴 구현
     /*
         싱글톤 기능 구현
     */
@@ -59,7 +58,6 @@ public class PlayerDataManager : MonoBehaviour
         }
     }
 
-    bool isLoaded = false;
     private void Awake()
     {
         var objs = FindObjectsOfType<PlayerDataManager>();
@@ -68,27 +66,29 @@ public class PlayerDataManager : MonoBehaviour
             return;
         }
         DontDestroyOnLoad(gameObject);
-
-        if(!isLoaded){
-            Begin();
-            isLoaded = true;
-        }
     }
 
-
-
-
-
-
-
+    #endregion
 
     //string saveDataPath; // 이 경로에 세이브 파일 (Json) 이 생성된다.
 
-    [SerializeField] // 디버그할 때 편하려고 추가함.
-    public PlayerData data; // 애라 모르겠다 그냥 public 해야지
-    bool isDataAccessable;
-
-
+    private PlayerData data;
+    public PlayerData Data 
+    {
+        get
+        {
+            if(data != null) return data;
+            else{
+                Debug.LogError("Warning!!!! 데이터 매니저를 불러오기 전에 데이터 매니저의 데이터를 사용하려고 했습니다!");
+                return null;
+            }
+        }
+        set
+        {
+            if(value != null) data = value;
+            else Debug.LogError("Warning!!!! 올바르지 않은 데이터를 저장하고 있습니다!");
+        }
+    }
 
     /*
         Begin 함수
@@ -96,8 +96,6 @@ public class PlayerDataManager : MonoBehaviour
         임시 함수. 특정 세이브 파일을 단순히 불러오는 역할을 함. 나중으로 가면 삭제할 것.
     */
     public void Begin(){
-        isDataAccessable = false;
-
         /*
             !!!TODO!!!
             세이브파일의 이름을 인자로 받던가 해서 세이브파일 경로를 잘 설정해주어야 한다!
@@ -113,13 +111,9 @@ public class PlayerDataManager : MonoBehaviour
             Debug.Log("저장된 데이터가 없음. Default 데이터로 시작!");
             Save(1);
         }
-
-        isDataAccessable = true;
     }
 
     public void Save(int slotNumber){
-        isDataAccessable = false;
-
         string saveDirPath = Path.Combine(Application.persistentDataPath, "Saves");
         if(!Directory.Exists(saveDirPath)){
             Directory.CreateDirectory(saveDirPath);
@@ -127,7 +121,7 @@ public class PlayerDataManager : MonoBehaviour
         string saveDataPath = Path.Combine(saveDirPath, "save" + slotNumber + ".json");
         string prevDataPath = Path.Combine(saveDirPath, "prev" + slotNumber + ".json");
 
-        PlayerDataForJSON playerData = data.Simplificate(); // 꼭 저장해야 하는 데이터만 간단하게 저장하기 위해 필요한 값만 추린다.
+        PlayerDataForJSON playerData = Data.Simplificate(); // 꼭 저장해야 하는 데이터만 간단하게 저장하기 위해 필요한 값만 추린다.
         PlayerDataPreview preview = new PlayerDataPreview(playerData); // 슬롯에서 미리 보여줄 정보만 추려서 preview 객체로 만든다.
 
         string jsonData = JsonConvert.SerializeObject(playerData); // json 파일에 넣을 수 있도록 데이터를 직렬화한다.
@@ -143,13 +137,9 @@ public class PlayerDataManager : MonoBehaviour
         byteData = Encoding.UTF8.GetBytes(jsonDataForPreview); // 인코딩.
         stream.Write(byteData, 0, byteData.Length); // 파일에 쓰기.
         stream.Close(); // 파일 닫기.
-
-        isDataAccessable = true;
     }
 
-    public void Load(int slotNumber){
-        isDataAccessable = false;
-        
+    public void Load(int slotNumber){       
         string saveDirPath = Path.Combine(Application.persistentDataPath, "Saves");
         if(!Directory.Exists(saveDirPath)){
             Directory.CreateDirectory(saveDirPath);
@@ -164,9 +154,7 @@ public class PlayerDataManager : MonoBehaviour
         string jsonData = Encoding.UTF8.GetString(byteData); // 그 바이트 데이터를 string 으로 인코딩한다.
         PlayerDataForJSON playerData = JsonConvert.DeserializeObject<PlayerDataForJSON>(jsonData); // 그 string 을 객체로 Deserialize 한다.
 
-        data = new PlayerData(playerData); // 그 데이터를 기반으로 현재 들고 있는 playerData를 초기화한다!
-
-        isDataAccessable = true;
+        Data = new PlayerData(playerData); // 그 데이터를 기반으로 현재 들고 있는 playerData를 초기화한다!
     }
 
     /*
@@ -192,14 +180,4 @@ public class PlayerDataManager : MonoBehaviour
 
         return playerData;
     }
-
-    public PlayerData GetData(){
-        if(isDataAccessable){
-            return this.data;
-        } else return null;
-    }
-
-    
-
-    
 }

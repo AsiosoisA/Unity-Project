@@ -17,4 +17,13 @@ public abstract class StructureComponent : MonoBehaviour, IInteractable
     protected virtual void Awake(){
 
     }
+
+    void Update() => LogicUpdate();
+
+    void FixedUpdate() => PhysicsUpdate();
+
+    protected virtual void LogicUpdate(){}
+    protected virtual void PhysicsUpdate(){}
+
+
 }

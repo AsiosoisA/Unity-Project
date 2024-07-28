@@ -15,19 +15,16 @@ public class Table : RestaurantComponent
     private Customer customer; // 테이블에 현재 앉아 있는 손님
     private Restaurant myRestaurant;
     public SpriteRenderer TableRenderer {get; private set;}
-    public Transform TableTransform {get; private set;}
     
     #endregion
 
     protected override void Awake(){
         base.Awake();
         TableRenderer = GetComponent<SpriteRenderer>();
-        TableTransform = transform;
-        gameObject.SetActive(false);
     }
 
     public void TakeThisTable(Restaurant restaurant){
-        TableTransform.gameObject.SetActive(true);
+        base.TakeThis();
         myRestaurant = restaurant;
     }
 

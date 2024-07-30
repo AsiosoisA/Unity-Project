@@ -16,7 +16,12 @@ public class D_Entity : ScriptableObject
     public float minAgroDinstance = 3f;
     public float maxAgroDinstance = 4f;
 
+    public float stunResistance = 3f;
+    public float stunRecoveryTime = 2f;
+
     public float closeRangeActionDistance = 1f;
+
+    public GameObject hitParticle;
 
     public LayerMask whatIsGround;
     public LayerMask whatIsPlayer;

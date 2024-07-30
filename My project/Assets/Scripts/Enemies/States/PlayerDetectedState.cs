@@ -9,6 +9,7 @@ public class PlayerDetectedState : State
     protected bool isPlayerInMaxAgroRange;
     protected bool performLongRangeAction;
     protected bool performCloseRangeAction;
+    protected bool isDetectingLedge;
 
     public PlayerDetectedState(Entity entity, FiniteStateMachine stateMachine, string animBoolName, D_PlayerDetected stateData) : base(entity, stateMachine, animBoolName)
     {
@@ -21,7 +22,7 @@ public class PlayerDetectedState : State
 
         isPlayerInMinAgroRange = entity.CheckPlayerInMinAgroRange();
         isPlayerInMinAgroRange = entity.CheckPlayerInMaxAgroRange();
-
+        isDetectingLedge = entity.CheckLedge();
         performCloseRangeAction = entity.CheckPlayerInCloseRangeAction();
     }
 

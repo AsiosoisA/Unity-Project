@@ -27,7 +27,7 @@ public class BasicEnemyController : MonoBehaviour
         touchDamageHeight;
     [SerializeField]
     private Transform
-        groundCheck,
+        groundCheck, 
         wallCheck,
         touchDamageCheck;
     [SerializeField]

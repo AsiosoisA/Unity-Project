@@ -14,7 +14,6 @@ public class PlayerGroundedState : PlayerState
     private bool grabInput;
     private bool isGrounded;
     private bool isTouchingWall;
-
     #endregion
 
     #region Unity Callback Functions
@@ -26,9 +25,9 @@ public class PlayerGroundedState : PlayerState
     {
         base.DoChecks();
 
-        isGrounded = player.CheckIfGrounded();
-        isTouchingWall = player.CheckIfTouchingWall();
-        isTouchingCeiling = player.CheckForCeiling();
+        isGrounded = core.CollisionSenses.Ground;
+        isTouchingWall = core.CollisionSenses.WallFront;
+        isTouchingCeiling = core.CollisionSenses.Ceiling;
     }
 
     public override void Enter()
@@ -52,16 +51,24 @@ public class PlayerGroundedState : PlayerState
         JumpInput = player.InputHandler.JumpInput;
         grabInput = player.InputHandler.GrabInput;
 
-        if (JumpInput && player.JumpState.CanJump())
+        if (player.InputHandler.Attackinputs[(int)CombatInputs.primary] && !isTouchingCeiling)
+        {
+            stateMachine.ChangeState(player.PrimaryAttackState);
+        }
+        else if (player.InputHandler.Attackinputs[(int)CombatInputs.secondary] && !isTouchingCeiling)
+        {
+            stateMachine.ChangeState(player.PrimaryAttackState);
+        }
+        else if (JumpInput && player.JumpState.CanJump())           // 점프 할 수 있을 때 JumpInput -> Jump
         {
             stateMachine.ChangeState(player.JumpState);
         }
-        else if (!isGrounded)
+        else if (!isGrounded)                                       // 바닥에 닿아 있지 않음 -> InAir   
         {
             player.InAirState.StartCoyoteTime();
             stateMachine.ChangeState(player.InAirState);
         }
-        else if (isTouchingWall && grabInput)
+        else if (isTouchingWall && grabInput)                       // 벽에 닿아있고 grabInput -> WallGrab
         {
             stateMachine.ChangeState(player.WallGrabState);
         }

@@ -34,10 +34,11 @@ public class PlayerTouchingWallState : PlayerState
     {
         base.DoChecks();
 
-        isGrounded = player.CheckIfGrounded();
-        isTouchingWall = player.CheckIfTouchingWall();
-        isTouchingLedge = player.CheckIfTouchingLedge();
-
+        isGrounded = core.CollisionSenses.Ground;
+        isTouchingWall = core.CollisionSenses.WallFront;
+        isTouchingLedge = core.CollisionSenses.Ledge;
+        
+        // LedgeClimb 조건
         if (isTouchingWall && !isTouchingLedge)
         {
             player.LedgeClimbState.SetDetectedPosition(player.transform.position);
@@ -63,20 +64,20 @@ public class PlayerTouchingWallState : PlayerState
         grabInput = player.InputHandler.GrabInput;
         jumpInput = player.InputHandler.JumpInput;
 
-        if (jumpInput)
+        if (jumpInput)      // Touching Wall 이면서 Jump -> Wall Jump
         {
             player.WallJumpState.DetermineWallJumpDirection(isTouchingWall);
             stateMachine.ChangeState(player.WallJumpState);
         }
-        else if (isGrounded && !grabInput)
+        else if (isGrounded && !grabInput)          // 바닥에 닿고 not grab -> Idle
         {
             stateMachine.ChangeState(player.IdleState);
         }
-        else if (!isTouchingWall || (xInput != player.FacingDirection && !grabInput))
+        else if (!isTouchingWall || (xInput != core.Movement.FacingDirection && !grabInput))           // 더이상 벽에 닿지 않고 있거나 not grab && 벽 반대편 키 입력 -> InAir
         {
             stateMachine.ChangeState(player.InAirState);
         }
-        else if (isTouchingWall && !isTouchingLedge)
+        else if (isTouchingWall && !isTouchingLedge)                            
         {
             stateMachine.ChangeState(player.LedgeClimbState);
         }

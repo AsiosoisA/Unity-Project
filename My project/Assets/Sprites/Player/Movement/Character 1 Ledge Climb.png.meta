@@ -1,9 +1,30 @@
 fileFormatVersion: 2
-guid: 14adf29b7373006468d0baa718bfa71e
+guid: a2b813fdc1de4474796e2808b544f8f9
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -3628720756820899698
+    second: Character 1 Ledge Climb_0
+  - first:
+      213: -1161963453228865433
+    second: Character 1 Ledge Climb_1
+  - first:
+      213: -6690693090405489421
+    second: Character 1 Ledge Climb_2
+  - first:
+      213: 4340307602009781571
+    second: Character 1 Ledge Climb_3
+  - first:
+      213: -131500372201574662
+    second: Character 1 Ledge Climb_4
+  - first:
+      213: -1687613396883202733
+    second: Character 1 Ledge Climb_5
+  - first:
+      213: -647306330058747984
+    second: Character 1 Ledge Climb_6
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 11
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -20,12 +41,11 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
-    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
-  ignoreMipmapLimit: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -64,8 +84,6 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
-  swizzle: 50462976
-  cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -77,20 +95,6 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -98,25 +102,11 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Server
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -137,8 +127,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2406822ab9fd5d044866334f19f5b1cf
-      internalID: 1881082404
+      spriteID: e888a9c82b134adc0800000000000000
+      internalID: -3628720756820899698
       vertices: []
       indices: 
       edges: []
@@ -158,8 +148,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c1e4f323e232bb64dbce44796e5f8d76
-      internalID: -472770595
+      spriteID: 768ae484560efdfe0800000000000000
+      internalID: -1161963453228865433
       vertices: []
       indices: 
       edges: []
@@ -179,8 +169,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8b85651c4c88b184fae2584983c939e6
-      internalID: 1945094111
+      spriteID: 3f468354512e523a0800000000000000
+      internalID: -6690693090405489421
       vertices: []
       indices: 
       edges: []
@@ -200,8 +190,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1370c2cad0e23af45a12c07d0fd728f7
-      internalID: 1531985377
+      spriteID: 34578b1a4cedb3c30800000000000000
+      internalID: 4340307602009781571
       vertices: []
       indices: 
       edges: []
@@ -221,8 +211,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8f1c54d0eb6fb7146950ceaeb40ce391
-      internalID: 1389069907
+      spriteID: afee713bb11dc2ef0800000000000000
+      internalID: -131500372201574662
       vertices: []
       indices: 
       edges: []
@@ -242,8 +232,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6285e216c1f4298428746d2a4f38bdd1
-      internalID: 509207260
+      spriteID: 35d16909e846498e0800000000000000
+      internalID: -1687613396883202733
       vertices: []
       indices: 
       edges: []
@@ -263,8 +253,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d4dbb5d6b04ff7e438378c227077ae94
-      internalID: -468466526
+      spriteID: 0bf8cf7825e4407f0800000000000000
+      internalID: -647306330058747984
       vertices: []
       indices: 
       edges: []
@@ -280,15 +270,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Character 1 Ledge Climb_0: 1881082404
-      Character 1 Ledge Climb_1: -472770595
-      Character 1 Ledge Climb_2: 1945094111
-      Character 1 Ledge Climb_3: 1531985377
-      Character 1 Ledge Climb_4: 1389069907
-      Character 1 Ledge Climb_5: 509207260
-      Character 1 Ledge Climb_6: -468466526
-  mipmapLimitGroupName: 
+      Character 1 Ledge Climb_3: 4340307602009781571
+      Character 1 Ledge Climb_5: -1687613396883202733
+      Character 1 Ledge Climb_0: -3628720756820899698
+      Character 1 Ledge Climb_6: -647306330058747984
+      Character 1 Ledge Climb_2: -6690693090405489421
+      Character 1 Ledge Climb_1: -1161963453228865433
+      Character 1 Ledge Climb_4: -131500372201574662
+  spritePackingTag: 
   pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

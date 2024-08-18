@@ -7,7 +7,7 @@ AnimationClip:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Land
-  serializedVersion: 7
+  serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
   m_UseHighQualityCurve: 1
@@ -18,19 +18,20 @@ AnimationClip:
   m_ScaleCurves: []
   m_FloatCurves: []
   m_PPtrCurves:
-  - serializedVersion: 2
-    curve:
+  - curve:
     - time: 0
-      value: {fileID: 1004572533, guid: e2934d8e2c57b9742be49df70eeea8ad, type: 3}
+      value: {fileID: 3256180386483506618, guid: 0a54b12d964217349929807f3ea6fb60,
+        type: 3}
     - time: 0.125
-      value: {fileID: 391924730, guid: e2934d8e2c57b9742be49df70eeea8ad, type: 3}
+      value: {fileID: 4957652053949925724, guid: 0a54b12d964217349929807f3ea6fb60,
+        type: 3}
     - time: 0.25
-      value: {fileID: -27983346, guid: e2934d8e2c57b9742be49df70eeea8ad, type: 3}
+      value: {fileID: -6041442908715943636, guid: 0a54b12d964217349929807f3ea6fb60,
+        type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
-    flags: 2
   m_SampleRate: 8
   m_WrapMode: 0
   m_Bounds:
@@ -45,12 +46,10 @@ AnimationClip:
       typeID: 212
       customType: 23
       isPPtrCurve: 1
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 1004572533, guid: e2934d8e2c57b9742be49df70eeea8ad, type: 3}
-    - {fileID: 391924730, guid: e2934d8e2c57b9742be49df70eeea8ad, type: 3}
-    - {fileID: -27983346, guid: e2934d8e2c57b9742be49df70eeea8ad, type: 3}
+    - {fileID: 3256180386483506618, guid: 0a54b12d964217349929807f3ea6fb60, type: 3}
+    - {fileID: 4957652053949925724, guid: 0a54b12d964217349929807f3ea6fb60, type: 3}
+    - {fileID: -6041442908715943636, guid: 0a54b12d964217349929807f3ea6fb60, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -77,7 +76,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.375
-    functionName: AnimationFinishTrigger
+    functionName: AnimtionFinishTrigger
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

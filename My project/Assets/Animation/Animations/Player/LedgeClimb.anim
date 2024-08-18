@@ -7,7 +7,7 @@ AnimationClip:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: LedgeClimb
-  serializedVersion: 7
+  serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
   m_UseHighQualityCurve: 1
@@ -18,19 +18,20 @@ AnimationClip:
   m_ScaleCurves: []
   m_FloatCurves: []
   m_PPtrCurves:
-  - serializedVersion: 2
-    curve:
+  - curve:
     - time: 0
-      value: {fileID: 1945094111, guid: 14adf29b7373006468d0baa718bfa71e, type: 3}
+      value: {fileID: -6690693090405489421, guid: a2b813fdc1de4474796e2808b544f8f9,
+        type: 3}
     - time: 0.1
-      value: {fileID: 1531985377, guid: 14adf29b7373006468d0baa718bfa71e, type: 3}
+      value: {fileID: 4340307602009781571, guid: a2b813fdc1de4474796e2808b544f8f9,
+        type: 3}
     - time: 0.2
-      value: {fileID: 1389069907, guid: 14adf29b7373006468d0baa718bfa71e, type: 3}
+      value: {fileID: -131500372201574662, guid: a2b813fdc1de4474796e2808b544f8f9,
+        type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
-    flags: 2
   m_SampleRate: 10
   m_WrapMode: 0
   m_Bounds:
@@ -45,12 +46,10 @@ AnimationClip:
       typeID: 212
       customType: 23
       isPPtrCurve: 1
-      isIntCurve: 0
-      isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 1945094111, guid: 14adf29b7373006468d0baa718bfa71e, type: 3}
-    - {fileID: 1531985377, guid: 14adf29b7373006468d0baa718bfa71e, type: 3}
-    - {fileID: 1389069907, guid: 14adf29b7373006468d0baa718bfa71e, type: 3}
+    - {fileID: -6690693090405489421, guid: a2b813fdc1de4474796e2808b544f8f9, type: 3}
+    - {fileID: 4340307602009781571, guid: a2b813fdc1de4474796e2808b544f8f9, type: 3}
+    - {fileID: -131500372201574662, guid: a2b813fdc1de4474796e2808b544f8f9, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -61,7 +60,7 @@ AnimationClip:
     m_Level: 0
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
-    m_LoopTime: 1
+    m_LoopTime: 0
     m_LoopBlend: 0
     m_LoopBlendOrientation: 0
     m_LoopBlendPositionY: 0
@@ -77,7 +76,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.3
-    functionName: AnimationFinishTrigger
+    functionName: AnimtionFinishTrigger
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

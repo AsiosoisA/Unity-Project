@@ -6,9 +6,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputHandler : MonoBehaviour
 {
+    #region Componenets
     private PlayerInput playerInput;
     private Camera cam;
+    #endregion
 
+    #region Input Properties
     public Vector2 RawMovementInput { get; private set; }
     public Vector2 RawDashDirectionInput { get; private set; }
     public Vector2Int DashDirectionInput { get; private set; }
@@ -19,15 +22,20 @@ public class PlayerInputHandler : MonoBehaviour
     public bool GrabInput { get; private set; }
     public bool DashInput { get; private set; }
     public bool DashInputStop { get; private set; }
-
     public bool[] AttackInputs { get; private set; }
+    public bool InteractionInput { get; private set; }
+    #endregion
 
+    #region Input Control Variables
     [SerializeField]
-    private float inputHoldTime = 0.2f;
+    private float inputHoldTime = 5f;
 
     private float jumpInputStartTime;
     private float dashInputStartTime;
+    private float InteractionInputStartTime;
+    #endregion
 
+    #region Unity Callback Functions
     private void Start()
     {
         playerInput = GetComponent<PlayerInput>();
@@ -43,7 +51,9 @@ public class PlayerInputHandler : MonoBehaviour
         CheckJumpInputHoldTime();
         CheckDashInputHoldTime();
     }
+    #endregion
 
+    #region Input Handle Function
     public void OnPrimaryAttackInput(InputAction.CallbackContext context)
     {
         if (context.started)
@@ -133,10 +143,27 @@ public class PlayerInputHandler : MonoBehaviour
         DashDirectionInput = Vector2Int.RoundToInt(RawDashDirectionInput.normalized);
     }
 
+    public void OnInterActionInput(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            InteractionInput = true;
+        }
+
+        if (context.canceled)
+        {
+            InteractionInput = false;
+        }
+    }
+
     public void UseJumpInput() => JumpInput = false;
 
     public void UseDashInput() => DashInput = false;
 
+    public void UseInteractionInput() => InteractionInput = false;
+    #endregion
+
+    #region Check Functions
     private void CheckJumpInputHoldTime()
     {
         if(Time.time >= jumpInputStartTime + inputHoldTime)
@@ -152,6 +179,8 @@ public class PlayerInputHandler : MonoBehaviour
             DashInput = false;
         }
     }
+
+    #endregion
 }
 
 public enum CombatInputs

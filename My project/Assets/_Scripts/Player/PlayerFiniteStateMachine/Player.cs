@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -23,6 +24,7 @@ public class Player : MonoBehaviour
     public PlayerCrouchMoveState CrouchMoveState { get; private set; }
     public PlayerAttackState PrimaryAttackState { get; private set; }
     public PlayerAttackState SecondaryAttackState { get; private set; }
+    public PlayerLootState LootState { get; private set; }
 
     [SerializeField]
     private PlayerData playerData;
@@ -64,6 +66,7 @@ public class Player : MonoBehaviour
         CrouchMoveState = new PlayerCrouchMoveState(this, StateMachine, playerData, "crouchMove");
         PrimaryAttackState = new PlayerAttackState(this, StateMachine, playerData, "attack");
         SecondaryAttackState = new PlayerAttackState(this, StateMachine, playerData, "attack");
+        LootState = new PlayerLootState(this, StateMachine, playerData, "loot");
     }
 
     private void Start()
@@ -106,6 +109,12 @@ public class Player : MonoBehaviour
 
     private void AnimtionFinishTrigger() => StateMachine.CurrentState.AnimationFinishTrigger();
 
-   
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (StateMachine.CurrentState is ICollisionHandler)
+        {
+            (StateMachine.CurrentState as ICollisionHandler).OnCollisionEnter2D(collision);
+        }
+    }
     #endregion
 }

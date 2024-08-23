@@ -13,7 +13,7 @@ public class PlayerInAirState : PlayerState {
 	//Input
 	private int xInput;
 	private bool jumpInput;
-	private bool jumpInputStop;
+    private bool jumpInputStop;
 	private bool grabInput;
 	private bool dashInput;
 
@@ -58,7 +58,7 @@ public class PlayerInAirState : PlayerState {
 
 	public override void Enter() {
 		base.Enter();
-	}
+    }
 
 	public override void Exit() {
 		base.Exit();
@@ -77,10 +77,11 @@ public class PlayerInAirState : PlayerState {
 
 		xInput = player.InputHandler.NormInputX;
 		jumpInput = player.InputHandler.JumpInput;
-		jumpInputStop = player.InputHandler.JumpInputStop;
+        jumpInputStop = player.InputHandler.JumpInputStop;
 		grabInput = player.InputHandler.GrabInput;
 		dashInput = player.InputHandler.DashInput;
 
+		Debug.Log(jumpInputStop);
 		CheckJumpMultiplier();
 
 		if (player.InputHandler.AttackInputs[(int)CombatInputs.primary]) {
@@ -116,7 +117,15 @@ public class PlayerInAirState : PlayerState {
 
 	private void CheckJumpMultiplier() {
 		if (isJumping) {
-			if (jumpInputStop) {
+
+			if (!jumpInputStop)
+			{
+				if(Movement.CurrentVelocity.y <= 0f)
+				{
+                    Movement?.SetVelocityY(Movement.CurrentVelocity.y * playerData.slowFallMultiplier);
+                }
+			}
+			else if (jumpInputStop) {
 				Movement?.SetVelocityY(Movement.CurrentVelocity.y * playerData.variableJumpHeightMultiplier);
 				isJumping = false;
 			} else if (Movement.CurrentVelocity.y <= 0f) {

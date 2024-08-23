@@ -4,24 +4,11 @@ using UnityEngine;
 
 public class PlayerGroundedState : PlayerState
 {
+    #region Input / Collision Variables
     protected int xInput;
     protected int yInput;
 
     protected bool isTouchingCeiling;
-
-    protected Movement Movement
-    {
-        get => movement ?? core.GetCoreComponent(ref movement);
-    }
-
-    private Movement movement;
-
-    private CollisionSenses CollisionSenses
-    {
-        get => collisionSenses ?? core.GetCoreComponent(ref collisionSenses);
-    }
-
-    private CollisionSenses collisionSenses;
 
     private bool jumpInput;
     private bool grabInput;
@@ -29,7 +16,25 @@ public class PlayerGroundedState : PlayerState
     private bool isTouchingWall;
     private bool isTouchingLedge;
     private bool dashInput;
+    private bool interActionInput;
+    private bool isLootableObject;
+    #endregion
 
+    #region Core Componenets
+    protected Movement Movement
+    {
+        get => movement ?? core.GetCoreComponent(ref movement);
+    }
+    private Movement movement;
+
+    private CollisionSenses CollisionSenses
+    {
+        get => collisionSenses ?? core.GetCoreComponent(ref collisionSenses);
+    }
+    private CollisionSenses collisionSenses;
+    #endregion
+
+    #region Unity Callback Functions
     public PlayerGroundedState(Player player, PlayerStateMachine stateMachine, PlayerData playerData,
         string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
@@ -52,6 +57,8 @@ public class PlayerGroundedState : PlayerState
     {
         base.Enter();
 
+        isLootableObject = false;
+
         player.JumpState.ResetAmountOfJumpsLeft();
         player.DashState.ResetCanDash();
     }
@@ -70,8 +77,15 @@ public class PlayerGroundedState : PlayerState
         jumpInput = player.InputHandler.JumpInput;
         grabInput = player.InputHandler.GrabInput;
         dashInput = player.InputHandler.DashInput;
+        interActionInput = player.InputHandler.InteractionInput;
+        isLootableObject = CollisionSenses.DeadBody;
 
-        if (player.InputHandler.AttackInputs[(int)CombatInputs.primary] && !isTouchingCeiling)
+        if(isLootableObject && interActionInput)
+        {
+            stateMachine.ChangeState(player.LootState);
+            //player.InputHandler.InteractionInput... Hold를 인식할 방법이 없나..?
+        }
+        else if (player.InputHandler.AttackInputs[(int)CombatInputs.primary] && !isTouchingCeiling)
         {
             stateMachine.ChangeState(player.PrimaryAttackState);
         }
@@ -102,4 +116,5 @@ public class PlayerGroundedState : PlayerState
     {
         base.PhysicsUpdate();
     }
+    #endregion
 }

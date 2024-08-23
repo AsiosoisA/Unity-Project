@@ -8,6 +8,9 @@ public class PlayerData : ScriptableObject
     [Header("Move State")]
     public float movementVelocity = 10f;
 
+    [Header("Grounded State")]
+    public float deadBodyRadius = 1.0f;
+
     [Header("Jump State")]
     public float jumpVelocity = 15f;
     public int amountOfJumps = 1;
@@ -20,6 +23,7 @@ public class PlayerData : ScriptableObject
     [Header("In Air State")]
     public float coyoteTime = 0.2f;
     public float variableJumpHeightMultiplier = 0.5f;
+    public float slowFallMultiplier = 0.9f;
 
     [Header("Wall Slide State")]
     public float wallSlideVelocity = 3f;

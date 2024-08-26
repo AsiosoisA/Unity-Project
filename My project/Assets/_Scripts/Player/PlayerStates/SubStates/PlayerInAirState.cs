@@ -14,6 +14,7 @@ public class PlayerInAirState : PlayerState {
 	private int xInput;
 	private bool jumpInput;
     private bool jumpInputStop;
+	private bool isSlowFalling;
 	private bool grabInput;
 	private bool dashInput;
 
@@ -81,7 +82,6 @@ public class PlayerInAirState : PlayerState {
 		grabInput = player.InputHandler.GrabInput;
 		dashInput = player.InputHandler.DashInput;
 
-		Debug.Log(jumpInputStop);
 		CheckJumpMultiplier();
 
 		if (player.InputHandler.AttackInputs[(int)CombatInputs.primary]) {
@@ -107,8 +107,9 @@ public class PlayerInAirState : PlayerState {
 			stateMachine.ChangeState(player.DashState);
 		} else {
 			Movement?.CheckIfShouldFlip(xInput);
-			Movement?.SetVelocityX(playerData.movementVelocity * xInput);
-
+            Movement?.SetVelocityX(playerData.movementVelocity * xInput);
+            
+			
 			player.Anim.SetFloat("yVelocity", Movement.CurrentVelocity.y);
 			player.Anim.SetFloat("xVelocity", Mathf.Abs(Movement.CurrentVelocity.x));
 		}
@@ -120,16 +121,23 @@ public class PlayerInAirState : PlayerState {
 
 			if (!jumpInputStop)
 			{
+				// TODO 바람속성
+
 				if(Movement.CurrentVelocity.y <= 0f)
 				{
-                    Movement?.SetVelocityY(Movement.CurrentVelocity.y * playerData.slowFallMultiplier);
+					isSlowFalling = true;
+                    float newVelocityY = movement.CurrentVelocity.y * playerData.slowFallMultiplierY;
+
+					Movement?.SetVelocityY(newVelocityY);
                 }
 			}
 			else if (jumpInputStop) {
+				isSlowFalling = false;
 				Movement?.SetVelocityY(Movement.CurrentVelocity.y * playerData.variableJumpHeightMultiplier);
 				isJumping = false;
 			} else if (Movement.CurrentVelocity.y <= 0f) {
-				isJumping = false;
+                isSlowFalling = false;
+                isJumping = false;
 			}
 
 		}

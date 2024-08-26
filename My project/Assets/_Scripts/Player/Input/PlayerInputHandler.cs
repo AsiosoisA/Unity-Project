@@ -24,6 +24,12 @@ public class PlayerInputHandler : MonoBehaviour
     public bool DashInputStop { get; private set; }
     public bool[] AttackInputs { get; private set; }
     public bool InteractionInput { get; private set; }
+    public bool SubActionInput { get; private set; }
+    public bool SubActionInputStop { get; private set; }
+    public bool Skill1Input { get; private set; }
+    public bool canSkill1 {  get; private set; }
+    public bool Skill2Input { get; private set; }
+    public bool canSkill2 { get; private set; }
     #endregion
 
     #region Input Control Variables
@@ -33,6 +39,12 @@ public class PlayerInputHandler : MonoBehaviour
     private float jumpInputStartTime;
     private float dashInputStartTime;
     private float InteractionInputStartTime;
+    private float subActionInputStartTime;
+    private float skill1InputStartTime;
+    private float skill1Cooldown = 2f;
+    private float skill2InputStartTime;
+    private float skill2Cooldown = 2f;
+
     #endregion
 
     #region Unity Callback Functions
@@ -42,7 +54,8 @@ public class PlayerInputHandler : MonoBehaviour
 
         int count = Enum.GetValues(typeof(CombatInputs)).Length;
         AttackInputs = new bool[count];
-
+        SubActionInputStop = false;
+        canSkill1 = true;
         cam = Camera.main;
     }
 
@@ -50,6 +63,8 @@ public class PlayerInputHandler : MonoBehaviour
     {
         CheckJumpInputHoldTime();
         CheckDashInputHoldTime();
+        CheckSkill1CoolDown();
+        CheckSkill2CoolDown();
     }
     #endregion
 
@@ -155,12 +170,61 @@ public class PlayerInputHandler : MonoBehaviour
             InteractionInput = false;
         }
     }
+    
+    public void OnSubActionInput(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            SubActionInput = true;
+            SubActionInputStop = false;
+            subActionInputStartTime = Time.time;
+        }
+
+        if (context.canceled)
+        {
+            SubActionInputStop = true;
+        }
+    }
+
+    public void OnSkill1Input(InputAction.CallbackContext context)
+    {
+        if (context.started && canSkill1)
+        {
+            canSkill1 = false;
+            Skill1Input = true;
+            skill1InputStartTime = Time.time;
+        }
+
+        if (context.canceled)
+        {
+            Skill1Input = false;
+        }
+    }
+
+    public void OnSkill2Input(InputAction.CallbackContext context)
+    {
+        if (context.started && canSkill2)
+        {
+            canSkill2 = false;
+            Skill2Input = true;
+            skill2InputStartTime = Time.time;
+        }
+
+        if (context.canceled)
+        {
+            Skill2Input = false;
+        }
+    }
 
     public void UseJumpInput() => JumpInput = false;
 
     public void UseDashInput() => DashInput = false;
 
     public void UseInteractionInput() => InteractionInput = false;
+
+    public void UseSkill1Input() => Skill1Input = false;
+
+    public void UseSkill2Input() => Skill2Input = false;
     #endregion
 
     #region Check Functions
@@ -180,6 +244,21 @@ public class PlayerInputHandler : MonoBehaviour
         }
     }
 
+    private void CheckSkill1CoolDown()
+    {
+        if(!canSkill1 && Time.time >= skill1InputStartTime + skill1Cooldown)
+        {
+            canSkill1 = true;
+        }
+    }
+
+    private void CheckSkill2CoolDown()
+    {
+        if (!canSkill2 && Time.time >= skill2InputStartTime + skill2Cooldown)
+        {
+            canSkill2 = true;
+        }
+    }
     #endregion
 }
 

@@ -12,7 +12,8 @@ public class PlayerMoveState : PlayerGroundedState {
 
 	public override void Enter() {
 		base.Enter();
-	}
+        
+    }
 
 	public override void Exit() {
 		base.Exit();
@@ -23,8 +24,12 @@ public class PlayerMoveState : PlayerGroundedState {
 
 		Movement?.CheckIfShouldFlip(xInput);
 
-		Movement?.SetVelocityX(playerData.movementVelocity * xInput);
-
+        Debug.Log(isWindDashing);
+        if (!isWindDashing)
+		{
+            Movement?.SetVelocityX(playerData.movementVelocity * xInput);
+        }
+		
 		if (!isExitingState) {
 			if (xInput == 0) {
 				stateMachine.ChangeState(player.IdleState);

@@ -12,20 +12,20 @@ public class PlayerGroundedState : PlayerState
 
     private bool jumpInput;
     private bool grabInput;
+    private bool subActionInput;
+    private bool subActionInputStop;
     private bool isGrounded;
     private bool isTouchingWall;
     private bool isTouchingLedge;
     private bool dashInput;
     private bool interActionInput;
     private bool isLootableObject;
+    private bool skill1Input;
+    private bool skill2Input;
     #endregion
 
     #region Core Componenets
-    protected Movement Movement
-    {
-        get => movement ?? core.GetCoreComponent(ref movement);
-    }
-    private Movement movement;
+   
 
     private CollisionSenses CollisionSenses
     {
@@ -77,10 +77,14 @@ public class PlayerGroundedState : PlayerState
         jumpInput = player.InputHandler.JumpInput;
         grabInput = player.InputHandler.GrabInput;
         dashInput = player.InputHandler.DashInput;
+        skill1Input = player.InputHandler.Skill1Input;
+        skill2Input = player.InputHandler.Skill2Input;
         interActionInput = player.InputHandler.InteractionInput;
+        subActionInput = player.InputHandler.SubActionInput;
+        subActionInputStop = player.InputHandler.SubActionInputStop;
         isLootableObject = CollisionSenses.DeadBody;
 
-        if(isLootableObject && interActionInput)
+        if (isLootableObject && interActionInput)
         {
             stateMachine.ChangeState(player.LootState);
             //player.InputHandler.InteractionInput... Hold를 인식할 방법이 없나..?
@@ -92,6 +96,15 @@ public class PlayerGroundedState : PlayerState
         else if (player.InputHandler.AttackInputs[(int)CombatInputs.secondary] && !isTouchingCeiling)
         {
             stateMachine.ChangeState(player.SecondaryAttackState);
+        }
+        else if (skill1Input)
+        {
+            player.InputHandler.UseSkill1Input();
+            stateMachine.ChangeState(player.WindKnockbackSkillState);
+        }
+        else if (!subActionInputStop && jumpInput && player.JumpState.CanJump() && !isTouchingCeiling)
+        {
+            stateMachine.ChangeState(player.SuperJumpState);
         }
         else if (jumpInput && player.JumpState.CanJump() && !isTouchingCeiling)
         {

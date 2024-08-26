@@ -23,7 +23,8 @@ public class PlayerData : ScriptableObject
     [Header("In Air State")]
     public float coyoteTime = 0.2f;
     public float variableJumpHeightMultiplier = 0.5f;
-    public float slowFallMultiplier = 0.9f;
+    public float slowFallMultiplierX = 0.9f;
+    public float slowFallMultiplierY = 0.9f;
 
     [Header("Wall Slide State")]
     public float wallSlideVelocity = 3f;
@@ -49,4 +50,10 @@ public class PlayerData : ScriptableObject
     public float crouchMovementVelocity = 5f;
     public float crouchColliderHeight = 0.8f;
     public float standColliderHeight = 1.6f;
+
+    [Header("Skill States")]
+    public float knockbackRadius = 2f;
+    public float knockbackForce = 5f;
+    public float upwardForce = 2f;
+    public LayerMask enemyLayer;
 }

@@ -11,7 +11,7 @@ public class PlayerAbilityState : PlayerState {
 	private Movement movement;
 	private CollisionSenses collisionSenses;
 
-	private bool isGrounded;
+    private bool isGrounded;
 
 	public PlayerAbilityState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName) {
 	}

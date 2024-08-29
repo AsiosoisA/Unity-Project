@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
+  - ParticleContainer
   layers:
   - Default
   - TransparentFX
@@ -13,11 +15,11 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Ground
+  - Damageable
+  - Dead
+  - Player
+  - Weapon
   - 
   - 
   - 
@@ -40,4 +42,22 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 2840594545
+    locked: 0
+  - name: Decoration
+    uniqueID: 2090695731
+    locked: 0
+  - name: Platforms
+    uniqueID: 1667960627
+    locked: 0
+  - name: Enemy
+    uniqueID: 3615571261
+    locked: 0
+  - name: Player
+    uniqueID: 756119877
+    locked: 0
+  - name: Foreground Decoration
+    uniqueID: 1796422411
     locked: 0

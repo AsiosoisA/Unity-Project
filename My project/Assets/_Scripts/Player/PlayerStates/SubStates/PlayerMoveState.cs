@@ -24,7 +24,6 @@ public class PlayerMoveState : PlayerGroundedState {
 
 		Movement?.CheckIfShouldFlip(xInput);
 
-        Debug.Log(isWindDashing);
         if (!isWindDashing)
 		{
             Movement?.SetVelocityX(playerData.movementVelocity * xInput);

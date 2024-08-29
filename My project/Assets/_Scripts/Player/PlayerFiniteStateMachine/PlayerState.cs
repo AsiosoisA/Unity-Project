@@ -36,6 +36,7 @@ public class PlayerState
     private float dashSpeedMultiplier = 2f; // 플레이어의 속도를 두 배로 빠르게
     private float animationSpeedMultiplier = 2f;
     private float originalAnimationSpeed = 1f;  // 원래 애니메이션 속도
+    private float originalGravityScale;
     #endregion
 
     #region Unity Callback Functions
@@ -50,13 +51,13 @@ public class PlayerState
 
     public virtual void Enter()
     {
-        Debug.Log(stateMachine.CurrentState.ToString());
         DoChecks();
         player.Anim.SetBool(animBoolName, true);
         startTime = Time.time;
         //Debug.Log(animBoolName);
         isAnimationFinished = false;
         isExitingState = false;
+        originalGravityScale = player.RB.gravityScale;
 
         cameraHandler = GameObject.Find("Camera Handler").GetComponent<CameraHandler>();
     }
@@ -64,6 +65,7 @@ public class PlayerState
     public virtual void Exit()
     {
         player.Anim.SetBool(animBoolName, false);
+        player.RB.gravityScale = originalGravityScale;
         isExitingState = true;
     }
 
@@ -79,6 +81,9 @@ public class PlayerState
             isWindDashing = true;
             Time.timeScale = dashTimeScale; // 환경의 시간 느리게
             Time.fixedDeltaTime = 0.02f * Time.timeScale; // fixedDeltaTime 조정
+            player.RB.gravityScale = originalGravityScale / dashTimeScale;
+
+            Movement?.SetVelocity(Movement.CurrentVelocity.magnitude * dashSpeedMultiplier, Movement.CurrentVelocity.normalized);
 
             // 플레이어 애니메이터의 업데이트 모드를 Unscaled Time으로 변경
             player.Anim.updateMode = AnimatorUpdateMode.UnscaledTime;
@@ -112,9 +117,10 @@ public class PlayerState
 
         // 애니메이터의 업데이트 모드를 Normal로 복구
         player.Anim.updateMode = AnimatorUpdateMode.Normal;
+        player.RB.gravityScale = originalGravityScale;
 
         // 대쉬가 끝나면 플레이어의 속도를 원래대로 복구
-        Movement?.SetVelocityX(Movement.CurrentVelocity.x / dashSpeedMultiplier);
+        Movement?.SetVelocity(Movement.CurrentVelocity.magnitude / dashSpeedMultiplier, Movement.CurrentVelocity.normalized);
         isWindDashing = false;
     }
     #endregion

@@ -50,6 +50,11 @@ public class Enemy1 : Entity
        
     }
 
+    public override void Update()
+    {
+        base.Update();
+    }
+
     private void Start()
     {
         stateMachine.Initialize(moveState);        

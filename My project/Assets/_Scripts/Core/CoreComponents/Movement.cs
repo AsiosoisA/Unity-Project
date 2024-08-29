@@ -81,6 +81,7 @@ public class Movement : CoreComponent
 
     public void Flip()
     {
+        Debug.Log("Flip");
         FacingDirection *= -1;
         RB.transform.Rotate(0.0f, 180.0f, 0.0f);
     }

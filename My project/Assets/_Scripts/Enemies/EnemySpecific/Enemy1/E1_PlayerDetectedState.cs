@@ -30,7 +30,6 @@ public class E1_PlayerDetectedState : PlayerDetectedState {
 			Movement?.Flip();
 			stateMachine.ChangeState(enemy.moveState);
 		}
-
 	}
 
 	public override void PhysicsUpdate() {

@@ -2,47 +2,72 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveState : State {
-	private Movement Movement { get => movement ?? core.GetCoreComponent(ref movement); }
-	private CollisionSenses CollisionSenses { get => collisionSenses ?? core.GetCoreComponent(ref collisionSenses); }
+public class MoveState : State
+{
+    private Movement Movement { get => movement ?? core.GetCoreComponent(ref movement); }
+    private Animator anim; 
 
-	private Movement movement;
-	private CollisionSenses collisionSenses;
+    private CollisionSenses CollisionSenses { get => collisionSenses ?? core.GetCoreComponent(ref collisionSenses); }
 
-	protected D_MoveState stateData;
+    private Movement movement;
+    private CollisionSenses collisionSenses;
 
-	protected bool isDetectingWall;
-	protected bool isDetectingLedge;
-	protected bool isPlayerInMinAgroRange;
+    protected D_MoveState stateData;
 
-	public MoveState(Entity etity, FiniteStateMachine stateMachine, string animBoolName, D_MoveState stateData) : base(etity, stateMachine, animBoolName) {
-		this.stateData = stateData;
-	}
+    protected bool isDetectingWall;
+    protected bool isDetectingLedge;
+    protected bool isPlayerInMinAgroRange;
 
-	public override void DoChecks() {
-		base.DoChecks();
+    private float speedMultiplier = 1f;  // 기본 속도 배수
 
-		isDetectingLedge = CollisionSenses.LedgeVertical;
-		isDetectingWall = CollisionSenses.WallFront;
-		isPlayerInMinAgroRange = entity.CheckPlayerInMinAgroRange();
-	}
+    public MoveState(Entity etity, FiniteStateMachine stateMachine, string animBoolName, D_MoveState stateData) : base(etity, stateMachine, animBoolName)
+    {
+        this.stateData = stateData;
+    }
 
-	public override void Enter() {
-		base.Enter();
-		Movement?.SetVelocityX(stateData.movementSpeed * Movement.FacingDirection);
+    public void SetMovementSpeedMultiplier(float multiplier)
+    {
+        speedMultiplier = multiplier;
+    }
 
-	}
+    public override void DoChecks()
+    {
+        base.DoChecks();
 
-	public override void Exit() {
-		base.Exit();
-	}
+        isDetectingLedge = CollisionSenses.LedgeVertical;
+        isDetectingWall = CollisionSenses.WallFront;
+        isPlayerInMinAgroRange = entity.CheckPlayerInMinAgroRange();
+    }
 
-	public override void LogicUpdate() {
-		base.LogicUpdate();
-		Movement?.SetVelocityX(stateData.movementSpeed * Movement.FacingDirection);
-	}
+    public override void Enter()
+    {
+        base.Enter();
+        if(anim != null)
+        {
+            anim.speed = speedMultiplier;
+        }
+        Movement?.SetVelocityX(stateData.movementSpeed * speedMultiplier * Movement.FacingDirection);
+    }
 
-	public override void PhysicsUpdate() {
-		base.PhysicsUpdate();
-	}
+    public override void Exit()
+    {
+        base.Exit();
+        if(anim != null)
+        {
+            anim.speed = 1f;
+        }
+        speedMultiplier = 1f;  // 상태를 떠날 때 속도 배수를 초기화
+    }
+
+    public override void LogicUpdate()
+    {
+        base.LogicUpdate();
+        Movement?.SetVelocityX(stateData.movementSpeed * speedMultiplier * Movement.FacingDirection);
+    }
+
+    public override void PhysicsUpdate()
+    {
+        base.PhysicsUpdate();
+    }
 }
+

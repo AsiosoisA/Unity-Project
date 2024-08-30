@@ -10,15 +10,6 @@ using UnityEngine.Rendering;
 
 public class Player : MonoBehaviour
 {
-    //테스트용
-    public void OnTest(InputAction.CallbackContext context)
-    {
-        if (context.started)
-        {
-            WeaponGenerator w = transform.GetChild(2).GetComponent<WeaponGenerator>();
-            //w.OnTest();
-        }
-    }
 
     #region State Variables
     public PlayerStateMachine StateMachine { get; private set; }

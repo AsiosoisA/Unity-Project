@@ -83,7 +83,7 @@ public class DialogueSystem : MonoBehaviour
     }
 
     private void Init(){
-        dataManager = GameManager.Instance.dialogueDataManager;
+        dataManager = EventGameManager.Instance.dialogueDataManager;
         if(dataManager == null) Debug.LogError("DialogueSystem : Error! 데이터 매니저를 불러올 수 없음.");
         //Debug.Log("dataManager 불러오기 성공");
     }

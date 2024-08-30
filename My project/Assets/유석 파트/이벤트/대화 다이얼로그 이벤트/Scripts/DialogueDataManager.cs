@@ -13,7 +13,7 @@ public class DialogueDataManager : MonoBehaviour
 
     void Start(){
         dialogueData = new Dictionary<DialogueKey, string[]>();
-        ID_Dictionary = GameManager.Instance.ID_Dictionary;
+        ID_Dictionary = EventGameManager.Instance.ID_Dictionary;
 
         if(ID_Dictionary == null) ID_Dictionary = new IdDictionary(); // 거의 그럴 일 없긴 할텐데 아직 초기화 안 됐으면 걍 새로 만들자.
 

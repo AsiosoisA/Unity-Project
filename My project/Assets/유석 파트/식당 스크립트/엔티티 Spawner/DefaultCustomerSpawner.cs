@@ -109,7 +109,8 @@ public class DefaultCustomerSpawner : MonoBehaviour
         List<DefaultCustomer> result = new List<DefaultCustomer>();
 
         for(int i = 0; i < count; i++){
-            result.Add(spawnCustomer());
+            DefaultCustomer item = spawnCustomer();
+            result.Add(item);
         }
 
         return result; 
@@ -202,6 +203,11 @@ public class DefaultCustomerSpawner : MonoBehaviour
         customer.patientTime = customerMaxWaitTime;
 
         //Debug.Log("성공적으로 손님 하나를 만들었습니다!");
+
+
+
+
+        customer.gameObject.SetActive(false);
 
         return customer;
     }

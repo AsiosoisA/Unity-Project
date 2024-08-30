@@ -99,6 +99,9 @@ public class Customer : MonoBehaviour
 
     #region 라이프사이클 메소드 
     public void Begin(){
+        gameObject.SetActive(true);
+
+
         talkBulloon.isIdle = true;
 
         EnterEvent(); // 식당에 들어왔을 때 수행할 이벤트가 있다면 이벤트를 시작한다.

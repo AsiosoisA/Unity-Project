@@ -1,0 +1,54 @@
+{
+    "name": "mouse",
+    "maps": [
+        {
+            "name": "CanvasInput",
+            "id": "f9d644ef-ee57-465c-9634-2d74c3593989",
+            "actions": [
+                {
+                    "name": "rightMouse",
+                    "type": "Button",
+                    "id": "699ecbca-359e-403a-9689-4536800d9ee1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Inventory",
+                    "type": "Button",
+                    "id": "37234c50-1022-4146-8aba-6551caffd6fd",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "5355c085-9cb3-4e26-a192-132af5014a4c",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "rightMouse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "abf9f993-7f4e-49dd-99b6-491c86b03296",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Inventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e84973b320c81474dba4c753b97de2cc, type: 3}
+  m_Name: FlameStaffData 1
+  m_EditorClassIdentifier: 
+  itemName: FlameStaff
+  icon: {fileID: 21300000, guid: 1d712446798ab934f8a10e2390e9726f, type: 3}
+  itemType: 0
+  weight: 10
+  count: 0
+  weaponData: {fileID: 11400000, guid: ead0d162b57ecb941b8a8e91c75a1c83, type: 2}

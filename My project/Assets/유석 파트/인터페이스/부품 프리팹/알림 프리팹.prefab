@@ -333,6 +333,8 @@ MonoBehaviour:
   alertContent: {fileID: 6122860948582381856}
   positiveButton: {fileID: 2637477734410213004}
   negativeButton: {fileID: 4690877995175402668}
+  positiveButtonText: {fileID: 9091700869612050488}
+  negativeButtonText: {fileID: 1994911484852015640}
 --- !u!1 &5949449531904664656
 GameObject:
   m_ObjectHideFlags: 0

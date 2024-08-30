@@ -33,12 +33,18 @@ public class CustomerVisitManager : MonoBehaviour
     private int customerIdx = 0; // 현재 방문할 손님의 인덱스.
     private int waiting = 0; // 기다리고 있는 손님 수.
 
+
+
+    private int finishedCustomerCount;
+
     public void Begin(){
         // 손님 리스트를 일단 만든다
         MakeCustomerQueue();
 
         // 손님을 들여보낼 주기를 계산한다. 하루 시간이 결정되면 그에 비례하여 입장시키는 시간도 적절히 설정할 것!
         CalculatePeroid();
+
+        finishedCustomerCount = 0;
         
         // 손님들을 코루틴으로 일정 시간마다 입장시킨다
         StartCoroutine(EnterCustomer(peroid));
@@ -127,6 +133,24 @@ public class CustomerVisitManager : MonoBehaviour
             if(customerIdx == customerQueue.Count) break; // 손님을 다 받았다면 while 문은 빠져나온다.
 
             yield return new WaitForSeconds(peroid); // 다음 손님을 받을 때까지 기다리기.
+        }
+    }
+
+    public void OnCustomerExit()
+    {
+        finishedCustomerCount++;
+
+        if(customerQueue.Count == finishedCustomerCount)
+        {
+            restaurant.isOpened = false;
+
+            AlertManager.Instance.MakeSimpleAlert
+            (
+                "식당 운영 종료!",
+                "오늘의 수익금 : " + restaurant.todaySales + "골드",
+                null,
+                "확인"
+            );
         }
     }
 }

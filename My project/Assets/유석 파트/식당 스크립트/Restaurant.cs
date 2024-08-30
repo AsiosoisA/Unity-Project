@@ -41,6 +41,7 @@ public class Restaurant : Infrastructure
     #region 비상호작용 컴포넌트들
     public Menuboard Menuboard { get; private set; }
     public RecipeBook recipeBook;
+    public CustomerVisitManager visitManager;
     #endregion
     
     #region 상호작용 가능한 가구들
@@ -52,6 +53,9 @@ public class Restaurant : Infrastructure
 
     #region 로직 데이터들
     private int availableTableCount;
+    public bool isOpened;
+
+    public int todaySales;
     #endregion
 
     #region 유니티 메소드들
@@ -71,6 +75,9 @@ public class Restaurant : Infrastructure
         InitTable();
 
         CheckIsAllInited();
+
+        todaySales = 0;
+        isOpened = false;
     }
     #region Awake 서브로직
     private void InitDefaultComponents()
@@ -152,6 +159,13 @@ public class Restaurant : Infrastructure
     }
     public void PlusAvailableTableCount(){
         this.availableTableCount++;
+    }
+    #endregion
+
+    #region 콜백 함수들
+    public void OnCustomerExit()
+    {
+        visitManager.OnCustomerExit();
     }
     #endregion
 }

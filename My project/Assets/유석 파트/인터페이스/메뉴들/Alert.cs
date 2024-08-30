@@ -13,6 +13,9 @@ public class Alert : MonoBehaviour
     public Button positiveButton;
     public Button negativeButton;
 
+    public Text positiveButtonText;
+    public Text negativeButtonText;
+
     private UnityAction posListener;
     private UnityAction negListener;
 
@@ -52,6 +55,15 @@ public class Alert : MonoBehaviour
         if(negListener != null) negListener.Invoke();
 
         End();
+    }
+
+    public void SetPositiveButtonText(string text)
+    {
+        positiveButtonText.text = text;
+    }
+    public void SetNegativeButtonText(string text)
+    {
+        negativeButtonText.text = text;
     }
 
     private void End(){

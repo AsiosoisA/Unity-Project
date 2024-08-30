@@ -32,26 +32,47 @@ public class AlertManager : MonoBehaviour
     }
     // ===========================================================================================================================================
 
-    
+    public Transform target;
 
-
+    private const bool IsCustom = true;
 
     public GameObject alertPrefab;
+    public GameObject simpleAlertPrefab;
 
     public void MakeAlert(string title, string content, UnityAction posListener, UnityAction negListener){
-        Alert newAlert = Instantiate(alertPrefab, transform).GetComponent<Alert>();
+        Alert newAlert = Instantiate(alertPrefab, target.transform).GetComponent<Alert>();
         newAlert.SetTitle(title);
         newAlert.SetContent(content);
         newAlert.AddPosBtnListener(posListener);
         newAlert.AddNegBtnListener(negListener);
 
-        newAlert.Begin(false);
+        newAlert.Begin(!IsCustom);
+    }
+        public void MakeAlert(string title, string content, UnityAction posListener, string posBtnText, UnityAction negListener, string negBtnText){
+        Alert newAlert = Instantiate(alertPrefab, target.transform).GetComponent<Alert>();
+        newAlert.SetTitle(title);
+        newAlert.SetContent(content);
+        newAlert.AddPosBtnListener(posListener);
+        newAlert.SetPositiveButtonText(posBtnText);
+        newAlert.AddNegBtnListener(negListener);
+        newAlert.SetNegativeButtonText(negBtnText);
+
+        newAlert.Begin(!IsCustom);
     }
 
     public void MakeAlert(Alert customAlert, UnityAction posListener, UnityAction negListener){
         customAlert.AddPosBtnListener(posListener);
         customAlert.AddNegBtnListener(negListener);
 
-        customAlert.Begin(true);
+        customAlert.Begin(IsCustom);
+    }
+    public void MakeSimpleAlert(string title, string content, UnityAction posListener, string posBtnText){
+        Alert newAlert = Instantiate(simpleAlertPrefab, target.transform).GetComponent<Alert>();
+        newAlert.SetTitle(title);
+        newAlert.SetContent(content);
+        newAlert.AddPosBtnListener(posListener);
+        newAlert.SetPositiveButtonText(posBtnText);
+
+        newAlert.Begin(!IsCustom);
     }
 }

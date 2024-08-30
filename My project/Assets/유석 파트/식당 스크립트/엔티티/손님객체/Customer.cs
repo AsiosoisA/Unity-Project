@@ -258,7 +258,9 @@ public class Customer : MonoBehaviour
         talkBulloon.isSatisfying = true;
         
         //Debug.Log(" 돈 지급 ");
-        PlayerDataManager.Instance.Data.AddMoney(food_I_Want.price);
+        //PlayerDataManager.Instance.Data.AddMoney(food_I_Want.price);
+
+        restaurant.todaySales += 10; // 일단 이렇게만 하자!
 
         if(false){ // 만약 배가 아직 고픈 상태인데 매우 만족했다면 한 그릇 더 시킬 수도 있다! TODO 기능 추가하게 되면 여기에 추가할 것.
 
@@ -308,6 +310,8 @@ public class Customer : MonoBehaviour
     {
         ExitEvent();
         
+        restaurant.OnCustomerExit();
+
         CustomerObjectPool.Instance.Release(this.gameObject);
     }
 

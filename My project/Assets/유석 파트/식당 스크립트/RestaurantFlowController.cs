@@ -10,6 +10,14 @@ public class RestaurantFlowController : MonoBehaviour
     public Restaurant restaurant;
     public CustomerVisitManager visitManager; // 손님 방문 관리자
 
+
+
+    public GameObject restaurantStartButton;
+
+
+
+
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -33,8 +41,13 @@ public class RestaurantFlowController : MonoBehaviour
         if(playerData != null) Debug.Log("Data loading success!");
         else Debug.LogError("데이터 불러오는데 실패했습니다!");
         //tester.Begin();
+    }
 
+    public void RestaurantOpen()
+    {
+        restaurant.isOpened = true;
         visitManager.Begin();
+        restaurantStartButton.SetActive(false);
     }
 
     // Update is called once per frame

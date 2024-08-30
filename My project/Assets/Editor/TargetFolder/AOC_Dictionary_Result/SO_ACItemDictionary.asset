@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e195307476bf3c43aada5afb834b5f1, type: 3}
+  m_Name: SO_ACItemDictionary
+  m_EditorClassIdentifier: 
+  dictionaryKeys:
+  - base\male\Normal
+  - base\male\Warrior
+  - bottom\male\Normal
+  - bottom\male\Warrior
+  - hairstyle\male\Normal
+  - hairstyle\male\Warrior
+  - outfit\male\Normal
+  - outfit\male\Warrior
+  - top\male\Normal
+  - top\male\Warrior
+  dictionaryItems:
+  - items:
+    - {fileID: 11400000, guid: 1d5ea0c5991f2d246bb489d5fc0f28e4, type: 2}
+  - items:
+    - {fileID: 11400000, guid: 737654057780aa8449ec35c515f21eac, type: 2}
+  - items:
+    - {fileID: 11400000, guid: faba7201468b72446b61468e49226723, type: 2}
+    - {fileID: 11400000, guid: faeaee347f2525b4fb35dc2dfbc1f651, type: 2}
+    - {fileID: 11400000, guid: 9ac6df5e317acad469716c832c216cce, type: 2}
+  - items:
+    - {fileID: 11400000, guid: beade3624a37ee34d942bf4c153bf8a4, type: 2}
+  - items:
+    - {fileID: 11400000, guid: 133724653068c7346ad57be6a93bb57c, type: 2}
+    - {fileID: 11400000, guid: 4387c95667d799e4c8053e5b5107ce2c, type: 2}
+    - {fileID: 11400000, guid: 0aea0411f8806b543b26dbf0b84f4c6f, type: 2}
+    - {fileID: 11400000, guid: c7a54d2e361a18c4598fd00ed2c4f529, type: 2}
+    - {fileID: 11400000, guid: 6b522fea68fe1314b89583bfbbf60289, type: 2}
+    - {fileID: 11400000, guid: 64b2401788277ad4ea3693e42167721c, type: 2}
+  - items:
+    - {fileID: 11400000, guid: 1a70111b20a171a4f85b4afee5e4d86b, type: 2}
+    - {fileID: 11400000, guid: b5366b3e85e09cb439047c5c3fd58390, type: 2}
+    - {fileID: 11400000, guid: 67fdb195e503448469ade608af6e51c0, type: 2}
+  - items:
+    - {fileID: 11400000, guid: 3d0a725770f720e4583be6bc58785878, type: 2}
+    - {fileID: 11400000, guid: 65c6e7bf3bb75f34298744d62f3e3ee6, type: 2}
+    - {fileID: 11400000, guid: b0891c316b3da16408936429376987fe, type: 2}
+    - {fileID: 11400000, guid: 97096999573dba74f895f3e3781472a1, type: 2}
+  - items:
+    - {fileID: 11400000, guid: 83dac7d9af55aa5448db27c9d7ab5780, type: 2}
+    - {fileID: 11400000, guid: ec9ca84a38fd6204b80d611444e07cd9, type: 2}
+  - items:
+    - {fileID: 11400000, guid: f8d3e87d8d4acd14f9de799058348a0b, type: 2}
+    - {fileID: 11400000, guid: c1a253ea63d1fb349bd509d82a333669, type: 2}
+  - items:
+    - {fileID: 11400000, guid: f75b9672a30850a4b90e2cf0315d6927, type: 2}

@@ -47,24 +47,21 @@ TagManager:
   - name: Decoration
     uniqueID: 634244283
     locked: 0
+  - name: InteractableDecoration
+    uniqueID: 731419093
+    locked: 0
   - name: Platforms
     uniqueID: 2142409519
+    locked: 0
+  - name: CustomersAndTables
+    uniqueID: 1820463761
     locked: 0
   - name: Player
     uniqueID: 132802853
     locked: 0
-  - name: Customer - BackTable
-    uniqueID: 2864947711
+  - name: InteractableDecorationFrontOfPlayer
+    uniqueID: 1222498911
     locked: 0
-  - name: Table - Back
-    uniqueID: 1822716221
-    locked: 0
-  - name: Table
-    uniqueID: 2706309447
-    locked: 0
-  - name: Customer - FrontTable
-    uniqueID: 1501932583
-    locked: 0
-  - name: Table - Front
-    uniqueID: 2339429081
+  - name: Event
+    uniqueID: 548551533
     locked: 0

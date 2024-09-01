@@ -1,27 +1,24 @@
-﻿using System.Collections;
+﻿using Bardent.CoreSystem;
+using System.Collections;
 using System.Collections.Generic;
-using Bardent.CoreSystem;
 using UnityEngine;
 
 public class PlayerInAirState : PlayerState
-{
-    protected Movement Movement
-    {
-        get => movement ?? core.GetCoreComponent(ref movement);
-    }
-
-    private CollisionSenses CollisionSenses
-    {
-        get => collisionSenses ?? core.GetCoreComponent(ref collisionSenses);
+{ 
+    protected Movement Movement { get => movement ?? core.GetCoreComponent(ref movement); }
+    private CollisionSenses CollisionSenses { 
+        get => collisionSenses ?? core.GetCoreComponent(ref collisionSenses); 
     }
 
     private Movement movement;
     private CollisionSenses collisionSenses;
 
+
     //Input
     private int xInput;
     private bool jumpInput;
     private bool jumpInputStop;
+    private bool isSlowFalling;
     private bool grabInput;
     private bool dashInput;
 
@@ -39,8 +36,7 @@ public class PlayerInAirState : PlayerState
 
     private float startWallJumpCoyoteTime;
 
-    public PlayerInAirState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName)
-        : base(player, stateMachine, playerData, animBoolName)
+    public PlayerInAirState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
     }
 
@@ -64,8 +60,7 @@ public class PlayerInAirState : PlayerState
             player.LedgeClimbState.SetDetectedPosition(player.transform.position);
         }
 
-        if (!wallJumpCoyoteTime && !isTouchingWall && !isTouchingWallBack &&
-            (oldIsTouchingWall || oldIsTouchingWallBack))
+        if (!wallJumpCoyoteTime && !isTouchingWall && !isTouchingWallBack && (oldIsTouchingWall || oldIsTouchingWallBack))
         {
             StartWallJumpCoyoteTime();
         }
@@ -89,8 +84,6 @@ public class PlayerInAirState : PlayerState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-        //디버깅 용
-        Debug.Log("test : " + player.InputHandler.AttackInputs[(int)CombatInputs.primary].ToString());
 
         CheckCoyoteTime();
         CheckWallJumpCoyoteTime();
@@ -103,14 +96,11 @@ public class PlayerInAirState : PlayerState
 
         CheckJumpMultiplier();
 
-        if (player.InputHandler.AttackInputs[(int)CombatInputs.primary] && player.PrimaryAttackState.CanTransitionToAttackState())
+        if (player.InputHandler.AttackInputs[(int)CombatInputs.primary])
         {
-            //여기서 공중 공격 움직임에 대한 분기를 만들어야 함
-            stateMachine.ChangeState(player.PrimaryAttackState);
-            player.StateMachine.previousState = player.InAirState;
             stateMachine.ChangeState(player.PrimaryAttackState);
         }
-        else if (player.InputHandler.AttackInputs[(int)CombatInputs.secondary] && player.SecondaryAttackState.CanTransitionToAttackState())
+        else if (player.InputHandler.AttackInputs[(int)CombatInputs.secondary])
         {
             stateMachine.ChangeState(player.SecondaryAttackState);
         }
@@ -150,24 +140,42 @@ public class PlayerInAirState : PlayerState
             Movement?.CheckIfShouldFlip(xInput);
             Movement?.SetVelocityX(playerData.movementVelocity * xInput);
 
+
             player.Anim.SetFloat("yVelocity", Movement.CurrentVelocity.y);
             player.Anim.SetFloat("xVelocity", Mathf.Abs(Movement.CurrentVelocity.x));
         }
+
     }
 
     private void CheckJumpMultiplier()
     {
         if (isJumping)
         {
-            if (jumpInputStop)
+
+            if (!jumpInputStop)
             {
+                // TODO 바람속성
+
+                if (Movement.CurrentVelocity.y <= 0f)
+                {
+                    isSlowFalling = true;
+                    float newVelocityY = movement.CurrentVelocity.y * playerData.slowFallMultiplierY;
+
+                    Movement?.SetVelocityY(newVelocityY);
+                }
+            }
+            else if (jumpInputStop)
+            {
+                isSlowFalling = false;
                 Movement?.SetVelocityY(Movement.CurrentVelocity.y * playerData.variableJumpHeightMultiplier);
                 isJumping = false;
             }
             else if (Movement.CurrentVelocity.y <= 0f)
             {
+                isSlowFalling = false;
                 isJumping = false;
             }
+
         }
     }
 

@@ -7,7 +7,7 @@ AnimationClip:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Land
-  serializedVersion: 6
+  serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
   m_UseHighQualityCurve: 1
@@ -18,15 +18,19 @@ AnimationClip:
   m_ScaleCurves: []
   m_FloatCurves: []
   m_PPtrCurves:
-  - curve:
+  - serializedVersion: 2
+    curve:
     - time: 0
-      value: {fileID: 21300000, guid: d8578a83700f93e48a0ea72729f59d4b, type: 3}
+      value: {fileID: 21300000, guid: 578264eca2809a44b8e98162be417501, type: 3}
     - time: 0.125
-      value: {fileID: 21300000, guid: d8578a83700f93e48a0ea72729f59d4b, type: 3}
+      value: {fileID: 21300000, guid: 278e21d3dcd34c64e975aae7c922a167, type: 3}
+    - time: 0.25
+      value: {fileID: 21300000, guid: 27ce0d3e101bb4444ab4fc58ca86f4a2, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
     script: {fileID: 0}
+    flags: 2
   m_SampleRate: 8
   m_WrapMode: 0
   m_Bounds:
@@ -41,15 +45,18 @@ AnimationClip:
       typeID: 212
       customType: 23
       isPPtrCurve: 1
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 21300000, guid: d8578a83700f93e48a0ea72729f59d4b, type: 3}
-    - {fileID: 21300000, guid: d8578a83700f93e48a0ea72729f59d4b, type: 3}
+    - {fileID: 21300000, guid: 578264eca2809a44b8e98162be417501, type: 3}
+    - {fileID: 21300000, guid: 278e21d3dcd34c64e975aae7c922a167, type: 3}
+    - {fileID: 21300000, guid: 27ce0d3e101bb4444ab4fc58ca86f4a2, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.25
+    m_StopTime: 0.375
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

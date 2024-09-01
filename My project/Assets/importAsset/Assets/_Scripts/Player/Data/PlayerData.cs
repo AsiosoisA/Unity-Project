@@ -2,11 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName ="newPlayerData", menuName ="Data/Player Data/Base Data")]
+[CreateAssetMenu(fileName = "newPlayerData", menuName = "Data/Player Data/Base Data")]
 public class PlayerData : ScriptableObject
 {
     [Header("Move State")]
     public float movementVelocity = 10f;
+
+    [Header("Grounded State")]
+    public float deadBodyRadius = 1.0f;
 
     [Header("Jump State")]
     public float jumpVelocity = 15f;
@@ -20,6 +23,8 @@ public class PlayerData : ScriptableObject
     [Header("In Air State")]
     public float coyoteTime = 0.2f;
     public float variableJumpHeightMultiplier = 0.5f;
+    public float slowFallMultiplierX = 0.9f;
+    public float slowFallMultiplierY = 0.9f;
 
     [Header("Wall Slide State")]
     public float wallSlideVelocity = 3f;
@@ -45,7 +50,10 @@ public class PlayerData : ScriptableObject
     public float crouchMovementVelocity = 5f;
     public float crouchColliderHeight = 0.8f;
     public float standColliderHeight = 1.6f;
-    
-    [Header("Stun State")] 
-    public float stunTime = 2f;
+
+    [Header("Skill States")]
+    public float knockbackRadius = 2f;
+    public float knockbackForce = 5f;
+    public float upwardForce = 2f;
+    public LayerMask enemyLayer;
 }

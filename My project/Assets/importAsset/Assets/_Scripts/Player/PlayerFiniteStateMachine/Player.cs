@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using Bardent.CoreSystem;
-using Bardent.FSM;
 using Bardent.Weapons;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -27,10 +26,12 @@ public class Player : MonoBehaviour
     public PlayerDashState DashState { get; private set; }
     public PlayerCrouchIdleState CrouchIdleState { get; private set; }
     public PlayerCrouchMoveState CrouchMoveState { get; private set; }
+    public PlayerSuperJumpState SuperJumpState { get; private set; }
+    public PlayerLootState LootState { get; private set; }
     public PlayerAttackState PrimaryAttackState { get; private set; }
     public PlayerAttackState SecondaryAttackState { get; private set; }
+    public PlayerWindKnockbackSkillState WindKnockbackSkillState { get; private set; }
 
-    public PlayerStunState PlayerStunState { get; private set; }
 
     [SerializeField]
     private PlayerData playerData;
@@ -87,9 +88,11 @@ public class Player : MonoBehaviour
         DashState = new PlayerDashState(this, StateMachine, playerData, "inAir");
         CrouchIdleState = new PlayerCrouchIdleState(this, StateMachine, playerData, "crouchIdle");
         CrouchMoveState = new PlayerCrouchMoveState(this, StateMachine, playerData, "crouchMove");
+        SuperJumpState = new PlayerSuperJumpState(this, StateMachine, playerData, "idle");
+        LootState = new PlayerLootState(this, StateMachine, playerData, "idle");
         PrimaryAttackState = new PlayerAttackState(this, StateMachine, playerData, "attack", primaryWeapon, CombatInputs.primary);
         SecondaryAttackState = new PlayerAttackState(this, StateMachine, playerData, "attack", secondaryWeapon, CombatInputs.secondary);
-        PlayerStunState = new PlayerStunState(this, StateMachine, playerData, "stun");
+        WindKnockbackSkillState = new PlayerWindKnockbackSkillState(this, StateMachine, playerData, "idle");
     }
 
     private void Start()
@@ -103,15 +106,18 @@ public class Player : MonoBehaviour
         DashDirectionIndicator = transform.Find("DashDirectionIndicator");
         MovementCollider = GetComponent<BoxCollider2D>();
 
+        /*
         Stats.Poise.OnCurrentValueZero += HandlePoiseCurrentValueZero;
-        
+        */
         StateMachine.Initialize(IdleState);
     }
 
+    /*
     private void HandlePoiseCurrentValueZero()
     {
         StateMachine.ChangeState(PlayerStunState);
     }
+    */
 
     private void Update()
     {
@@ -124,10 +130,12 @@ public class Player : MonoBehaviour
         StateMachine.CurrentState.PhysicsUpdate();
     }
 
+    /*
     private void OnDestroy()
     {
         Stats.Poise.OnCurrentValueZero -= HandlePoiseCurrentValueZero;
-    }
+    }\
+    */
 
     #endregion
 

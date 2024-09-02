@@ -35,7 +35,6 @@ public class PlayerSuperJumpState : PlayerAbilityState
         base.Enter();
         amountOfJumpsLeft = 0;
         isAbilityDone = false;
-        Debug.Log("SJ State Entered");
         Movement?.SetVelocityZero();
         superJumpStartTime = Time.time;
         superJumpMultiplier = 1f;

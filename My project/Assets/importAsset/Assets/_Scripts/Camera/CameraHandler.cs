@@ -9,7 +9,7 @@ public class CameraHandler : MonoBehaviour
     public CinemachineVirtualCamera playerCamera;
     public Player player;
 
-    private float initialCameraSize;
+    private float initialFieldOfView;
     private float maxZoomIn;
     private float zoomInSpeed = 2f;
     private float zoomOutSpeed = 10f;
@@ -17,10 +17,10 @@ public class CameraHandler : MonoBehaviour
 
     private Vector3 initialCameraPosition;
     private float shakeMagnitude = 0.2f;
-    private float shakeFrequency = 20f; // �ʴ� ���� Ƚ��
+    private float shakeFrequency = 20f;
     private float shakeElapsed = 0f;
     private bool isShaking = false;
-    private Transform originalFollowTarget; // ���� Follow ����� �����մϴ�
+    private Transform originalFollowTarget;
     #endregion
 
     #region Unity Callback Functions
@@ -31,12 +31,13 @@ public class CameraHandler : MonoBehaviour
             playerCamera = GameObject.Find("Player Camera").GetComponent<CinemachineVirtualCamera>();
         }
         player = GameObject.Find("Player").GetComponent<Player>();
-        initialCameraSize = playerCamera.m_Lens.OrthographicSize;
-        maxZoomIn = initialCameraSize * maxZoomInFactor;
+        initialFieldOfView = playerCamera.m_Lens.FieldOfView;
+        maxZoomIn = initialFieldOfView * maxZoomInFactor;
         initialCameraPosition = playerCamera.transform.position;
 
         originalFollowTarget = playerCamera.Follow;
     }
+
     private void Update()
     {
         if (isShaking)
@@ -49,14 +50,14 @@ public class CameraHandler : MonoBehaviour
     #region Camera Functions
     public bool CheckIfInitZoom()
     {
-        return initialCameraSize == playerCamera.m_Lens.OrthographicSize;
+        return initialFieldOfView == playerCamera.m_Lens.FieldOfView;
     }
 
     public void ApplyCameraZoom(float chargeTime, float maxHoldTime, float holdThreshold)
     {
         float zoomFactor = Mathf.Clamp01(chargeTime / maxHoldTime);
-        float newCameraSize = Mathf.Lerp(initialCameraSize, maxZoomIn, zoomFactor);
-        playerCamera.m_Lens.OrthographicSize = Mathf.Lerp(playerCamera.m_Lens.OrthographicSize, newCameraSize, Time.deltaTime * zoomInSpeed);
+        float newFieldOfView = Mathf.Lerp(initialFieldOfView, maxZoomIn, zoomFactor);
+        playerCamera.m_Lens.FieldOfView = Mathf.Lerp(playerCamera.m_Lens.FieldOfView, newFieldOfView, Time.deltaTime * zoomInSpeed);
 
         if (chargeTime > holdThreshold)
         {
@@ -71,13 +72,12 @@ public class CameraHandler : MonoBehaviour
 
     public void ResetCameraZoom()
     {
-        playerCamera.m_Lens.OrthographicSize = Mathf.Lerp(playerCamera.m_Lens.OrthographicSize, initialCameraSize, Time.deltaTime * zoomOutSpeed);
+        playerCamera.m_Lens.FieldOfView = Mathf.Lerp(playerCamera.m_Lens.FieldOfView, initialFieldOfView, Time.deltaTime * zoomOutSpeed);
 
-        if (Mathf.Abs(playerCamera.m_Lens.OrthographicSize - initialCameraSize) < 0.01f)
+        if (Mathf.Abs(playerCamera.m_Lens.FieldOfView - initialFieldOfView) < 0.01f)
         {
-            playerCamera.m_Lens.OrthographicSize = initialCameraSize;
-            isShaking = false; // ��鸲 ����
-
+            playerCamera.m_Lens.FieldOfView = initialFieldOfView;
+            isShaking = false;
         }
     }
 

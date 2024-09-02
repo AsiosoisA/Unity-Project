@@ -49,7 +49,7 @@ public class PlayerInputHandler : MonoBehaviour
 
         int count = Enum.GetValues(typeof(CombatInputs)).Length;
         AttackInputs = new bool[count];
-        SubActionInputStop = false;
+        SubActionInputStop = true;
         canSkill1 = true;
         cam = Camera.main;
     }

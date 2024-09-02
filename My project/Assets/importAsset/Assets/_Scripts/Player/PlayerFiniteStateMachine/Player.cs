@@ -88,7 +88,7 @@ public class Player : MonoBehaviour
         DashState = new PlayerDashState(this, StateMachine, playerData, "inAir");
         CrouchIdleState = new PlayerCrouchIdleState(this, StateMachine, playerData, "crouchIdle");
         CrouchMoveState = new PlayerCrouchMoveState(this, StateMachine, playerData, "crouchMove");
-        SuperJumpState = new PlayerSuperJumpState(this, StateMachine, playerData, "idle");
+        SuperJumpState = new PlayerSuperJumpState(this, StateMachine, playerData, "superJump");
         LootState = new PlayerLootState(this, StateMachine, playerData, "idle");
         PrimaryAttackState = new PlayerAttackState(this, StateMachine, playerData, "attack", primaryWeapon, CombatInputs.primary);
         SecondaryAttackState = new PlayerAttackState(this, StateMachine, playerData, "attack", secondaryWeapon, CombatInputs.secondary);
@@ -105,6 +105,7 @@ public class Player : MonoBehaviour
         RB = GetComponent<Rigidbody2D>();
         DashDirectionIndicator = transform.Find("DashDirectionIndicator");
         MovementCollider = GetComponent<BoxCollider2D>();
+        
 
         /*
         Stats.Poise.OnCurrentValueZero += HandlePoiseCurrentValueZero;

@@ -44,3 +44,27 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 3396819945
+    locked: 0
+  - name: Decoration
+    uniqueID: 2617601351
+    locked: 0
+  - name: InteractableDecoration
+    uniqueID: 3246121813
+    locked: 0
+  - name: Platforms
+    uniqueID: 112454721
+    locked: 0
+  - name: CustomersAndTables
+    uniqueID: 434583727
+    locked: 0
+  - name: Player
+    uniqueID: 1584254733
+    locked: 0
+  - name: InteractableDecorationFrontOfPlayer
+    uniqueID: 1067775255
+    locked: 0
+  - name: Event
+    uniqueID: 3074797407
+    locked: 0

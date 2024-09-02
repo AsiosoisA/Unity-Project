@@ -72,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1820463761
+  m_SortingLayerID: 434583727
   m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 986441463, guid: 02371f86144ffb94ca8c8e8a22f8cd8b, type: 3}
@@ -191,7 +191,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1820463761
+  m_SortingLayerID: 434583727
   m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 26997843, guid: bdab08481d3012e47b6aaccb2e994c2c, type: 3}
@@ -309,7 +309,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1820463761
+  m_SortingLayerID: 434583727
   m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -1693460843, guid: caf3e2f882950864e9ea2a8ae7de2d41, type: 3}
@@ -409,6 +409,7 @@ MonoBehaviour:
   customerBottom: {fileID: 0}
   customerOutfit: {fileID: 0}
   customerComponents: []
+  talkBulloon: {fileID: 0}
   isGoingToTable: 0
   isLookingSide: 0
   isLookingFront: 0
@@ -492,7 +493,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1820463761
+  m_SortingLayerID: 434583727
   m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -1693460843, guid: caf3e2f882950864e9ea2a8ae7de2d41, type: 3}
@@ -611,7 +612,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1820463761
+  m_SortingLayerID: 434583727
   m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -6583888648623610610, guid: 16c57394aecd3954886a67c71dcffbda, type: 3}
@@ -730,7 +731,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1820463761
+  m_SortingLayerID: 434583727
   m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: -480483451, guid: 1a2911f9e2e3c3f4e98bfc8bf7ec7c53, type: 3}

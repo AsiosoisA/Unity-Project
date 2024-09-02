@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c87181e9b451b8c498f5e9288ea1448c, type: 3}
+  m_Name: "\uB3C4\uB9C8 - \uCD08\uBC25\uBE5A\uAE30 - 1\uB808\uBCA8"
+  m_EditorClassIdentifier: 
+  minigameData: {fileID: 11400000, guid: dff31957834dd3640bbbeba7c5a14e92, type: 2}
+  minigameType: 0
+  spriteFrames:
+  - {fileID: 977334403, guid: 752806c4c52bfd8438e50923b97edba7, type: 3}
+  - {fileID: 2122702247, guid: 752806c4c52bfd8438e50923b97edba7, type: 3}
+  - {fileID: 577182363, guid: 752806c4c52bfd8438e50923b97edba7, type: 3}
+  - {fileID: -884169022, guid: 752806c4c52bfd8438e50923b97edba7, type: 3}
+  - {fileID: 228816099, guid: 752806c4c52bfd8438e50923b97edba7, type: 3}
+  - {fileID: -281610355, guid: 752806c4c52bfd8438e50923b97edba7, type: 3}
+  - {fileID: -1614236599, guid: 752806c4c52bfd8438e50923b97edba7, type: 3}
+  - {fileID: -776854882, guid: 752806c4c52bfd8438e50923b97edba7, type: 3}
+  - {fileID: 1996282571, guid: 752806c4c52bfd8438e50923b97edba7, type: 3}
+  isNotUseEverySprites: 0
+  ingredientIndexes: 000000000100000002000000030000000400000005000000060000000700000008000000

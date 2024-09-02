@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55c05beeea9b89a40a9218399595f7e8, type: 3}
+  m_Name: "\uC5EC\uC6B0\uBAAC \uC2A4\uC2DC"
+  m_EditorClassIdentifier: 
+  result: {fileID: 4807517885124966966, guid: 1e4157d0126be964aaec9716cac41d63, type: 3}
+  ingredients:
+  - {fileID: 294510543712083559, guid: bc7f97979f598d1458a50741ae258983, type: 3}
+  - {fileID: 4638119694123021983, guid: 2f2249cd9a842c94faea31f0c8e739bc, type: 3}
+  whereToCook: cuttingBoard
+  howToCook: 2
+  makingSprites:
+  - {fileID: -1317733483, guid: ff576732ae65616488792410c32558fa, type: 3}
+  - {fileID: 82538960, guid: ff576732ae65616488792410c32558fa, type: 3}
+  - {fileID: 589318805, guid: ff576732ae65616488792410c32558fa, type: 3}
+  - {fileID: 1122343956, guid: ff576732ae65616488792410c32558fa, type: 3}
+  - {fileID: 984164096, guid: ff576732ae65616488792410c32558fa, type: 3}
+  - {fileID: -1766919633, guid: ff576732ae65616488792410c32558fa, type: 3}
+  - {fileID: 200210231, guid: ff576732ae65616488792410c32558fa, type: 3}
+  - {fileID: -472711211, guid: ff576732ae65616488792410c32558fa, type: 3}
+  - {fileID: -984838534, guid: ff576732ae65616488792410c32558fa, type: 3}

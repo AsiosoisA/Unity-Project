@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class CuttingBoard : CookableRestaurantComponent
@@ -17,13 +18,17 @@ public class CuttingBoard : CookableRestaurantComponent
 
     public GameObject ingredientPrepped;
 
-    public SO_SequencialKeyMinigame sliceMinigameData;
-    public SO_SequencialKeyMinigame chopMinigameData;
-    public SO_SequencialKeyMinigame makeSushiMinigameData;
+    //public SO_SequencialKeyMinigame sliceMinigameData;
+    //[SerializeField] private List<Sprite> sliceFrames = new List<Sprite>();
+    public SO_MinigameAndAnimationData sliceMinigame_Level1;
+    public SO_MinigameAndAnimationData sliceMinigame_Level2;
 
-    [SerializeField] private List<Sprite> sliceFrames = new List<Sprite>();
-    [SerializeField] private List<Sprite> chopFrames = new List<Sprite>();
-    [SerializeField] private List<Sprite> makeSushiFrames = new List<Sprite>();
+    //public SO_SequencialKeyMinigame chopMinigameData;
+    public SO_MinigameAndAnimationData makeSushiMinigame_Level1;
+
+
+    public SO_MinigameAndAnimationData dataForMinigame {get; private set;}
+
 
     private SO_MinigameData minigameToReturn;
     private List<Sprite> frameToAnimate;
@@ -63,35 +68,48 @@ public class CuttingBoard : CookableRestaurantComponent
 
         if(howToCook == (int)HowToCook.Slice)
         {
-            frameToAnimate = sliceFrames;
-            minigameToReturn = sliceMinigameData;
+            if(restaurant.player.debug_playerSliceLevel == 1) dataForMinigame = sliceMinigame_Level1;
+            else if(restaurant.player.debug_playerSliceLevel >= 2) dataForMinigame = sliceMinigame_Level2;
         } 
         else if(howToCook == (int)HowToCook.Chop)
         {
-            frameToAnimate = chopFrames;
-            minigameToReturn = chopMinigameData;
+
         }
         else if(howToCook == (int)HowToCook.MakeSushi)
         {
-            frameToAnimate = makeSushiFrames;
-            minigameToReturn = makeSushiMinigameData;
+            dataForMinigame = makeSushiMinigame_Level1;
         }
         else
         {
             Debug.LogError("올바르지 않은 접근입니다!");
             return null;
         }
-        
-        frameToAnimate_ingredient = recipeToCheckInteractable[currentItemIndex].makingSprites;
 
-        if(frameToAnimate.Count != frameToAnimate_ingredient.Count)
-        {
-            Debug.LogError("조리 스프라이트와 재료 스프라이트간 개수가 안 맞습니다! " + frameToAnimate.Count + " vs " + frameToAnimate_ingredient);
-        }
+        frameToAnimate = dataForMinigame.spriteFrames;
+        minigameToReturn = dataForMinigame.minigameData;
+        
+        frameToAnimate_ingredient = MakePartialIngredientSpriteList();
 
         ShowInitialSprite();
 
         return minigameToReturn;
+    }
+
+    private List<Sprite> MakePartialIngredientSpriteList()
+    {
+        List<Sprite> result = new List<Sprite>();
+        int curDataIndex = 0;
+
+        for(int i = 0 ; i < recipeToCheckInteractable[currentItemIndex].makingSprites.Count; i++)
+        {
+            if(dataForMinigame.ingredientIndexes[curDataIndex] == i)
+            {
+                result.Add(recipeToCheckInteractable[currentItemIndex].makingSprites[i]);
+                curDataIndex++;
+            }
+        }
+
+        return result;
     }
 
     public override void OnKeyInputSuccessed()

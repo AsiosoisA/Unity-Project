@@ -9,6 +9,15 @@ public class SamplePlayer : MonoBehaviour
 
     public new BoxCollider2D collider;
 
+
+
+
+
+    public int debug_playerSliceLevel;
+    public void SliceLevelUp() => debug_playerSliceLevel++;
+
+
+
     void Awake()
     {
         InitRestaurantInventory();

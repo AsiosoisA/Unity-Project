@@ -38,7 +38,7 @@ public class InterfaceMenu : MonoBehaviour
     }
 
     protected void ToggleInputCheck(){
-        if(isCheckInput && Input.GetKeyDown(toggleKey) && !isActive){
+        if(isCheckInput && Input.GetKeyDown(toggleKey) && !isActive && !manager.isPushOrPoping){
             Debug.Log("뭔데..");
             // 키가 눌리면
 

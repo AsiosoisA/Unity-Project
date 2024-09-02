@@ -137,7 +137,7 @@ public class IngredientBoxInterface : InterfaceMenu
 
 
         SetPosX(item.rectTransform, GetPosX(item.rectTransform) + (index % 5) * 100);
-        SetPosY(item.rectTransform, GetPosY(item.rectTransform) - (index / 5) * (-100));
+        SetPosY(item.rectTransform, GetPosY(item.rectTransform) + (index / 5) * (-100));
     }
 
     protected virtual void UpdateRecipeList()

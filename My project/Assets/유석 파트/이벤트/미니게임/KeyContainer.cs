@@ -49,9 +49,6 @@ public class KeyContainer : MonoBehaviour
 
     public void PlaceItems(List<KeyInstance> instances)
     {
-
-        if(transform.childCount != 12) Debug.LogError("아이템을 배치하기도 전에 이미 아이템들이 있습니다!!!" + transform.childCount);
-
         distanceBetweenItems = GetDistanceBetweenItems(instances[0]);
 
         for(int i = 0 ;  i < instances.Count; i++)

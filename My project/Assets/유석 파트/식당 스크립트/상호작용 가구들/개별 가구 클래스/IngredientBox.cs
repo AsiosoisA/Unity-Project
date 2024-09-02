@@ -9,9 +9,10 @@ public class IngredientBox : RestaurantComponent, IInteractable
     public SamplePlayer player {get; private set;}
     public RecipeBook book;
     public RestaurantInventory boxInventory {get; set;}
-    public bool isRestaurantOpened = true;
 
-    public IngredientBoxInterface myInterface;
+    
+    public IngredientBoxInterface getIngredientInterface;
+    public DeliveryToBoxInterface putIngredientInterface;
 
     protected override void Awake()
     {
@@ -25,17 +26,19 @@ public class IngredientBox : RestaurantComponent, IInteractable
         player = interactRequester.GetComponent<SamplePlayer>();
 
         // 납품하기
-        if(!isRestaurantOpened)
+        if(!restaurant.isOpened)
         {
             // 여기에서 RPG 파트 인벤토리와 상호작용해서 RPG 파트의 인벤토리 아이템을 옮겨와야 함.
-
-
+            
+            // 설계 : 일단 식당 인벤토리를 출력. 식재료 납품 버튼을 누르면 납품되는거까지만 만들자!
+            
+            putIngredientInterface.ActiveInterface(this);
         }
         // 식재료 꺼내기
-        else if(isRestaurantOpened)
+        else
         {
             Debug.Log("인터페이스 활성화!");
-            myInterface.ActiveInterface(this);
+            getIngredientInterface.ActiveInterface(this);
         }
     }
 

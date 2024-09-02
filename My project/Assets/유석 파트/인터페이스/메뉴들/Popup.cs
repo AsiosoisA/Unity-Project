@@ -7,6 +7,13 @@ using UnityEngine.UI;
 
 public class Popup : MonoBehaviour
 {
+
+    [SerializeField] private float fadeDuration = 0.3f;
+    [SerializeField] private float displayDutation = 1.1f;
+
+
+
+
     public Text popupContent;
     private CanvasGroup canvasGroup;
     bool isCustom;
@@ -24,7 +31,6 @@ public class Popup : MonoBehaviour
         StartCoroutine(PadeInAndOut());
     }
 
-    private float fadeDuration = 0.5f;
     IEnumerator PadeInAndOut(){
         canvasGroup.alpha = 0f;
         gameObject.SetActive(true);
@@ -34,7 +40,7 @@ public class Popup : MonoBehaviour
             yield return null;
         }
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(displayDutation);
 
         while(canvasGroup.alpha > 0f){
             canvasGroup.alpha -= Time.deltaTime / fadeDuration;

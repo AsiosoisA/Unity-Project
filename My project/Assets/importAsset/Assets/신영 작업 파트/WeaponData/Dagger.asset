@@ -113,7 +113,7 @@ MonoBehaviour:
             serializedVersion: 2
             x: 0.11
             y: -0.9
-            width: 1.94
+            width: 1
             height: 1.41
         - name: Attack 2
           Debug: 0
@@ -121,7 +121,7 @@ MonoBehaviour:
             serializedVersion: 2
             x: 0.11
             y: -0.9
-            width: 1.94
+            width: 1
             height: 1.41
         - name: Attack 3
           Debug: 0
@@ -129,24 +129,24 @@ MonoBehaviour:
             serializedVersion: 2
             x: 0
             y: -0.99
-            width: 1.61
-            height: 2.51
+            width: 1
+            height: 1.41
         - name: Attack 4
           Debug: 0
           <HitBox>k__BackingField:
             serializedVersion: 2
             x: 0
-            y: -0.99
-            width: 1.61
-            height: 2.51
+            y: -0.5
+            width: 1
+            height: 1
         - name: Attack 5
           Debug: 0
           <HitBox>k__BackingField:
             serializedVersion: 2
             x: 0
             y: -0.99
-            width: 1.61
-            height: 2.51
+            width: 1.2
+            height: 1.6
         <DetectableLayers>k__BackingField:
           serializedVersion: 2
           m_Bits: 512

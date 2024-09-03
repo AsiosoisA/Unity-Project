@@ -24,9 +24,9 @@ namespace Bardent
             transform.SetParent(null);
 
             if (player.transform.eulerAngles.y >= 150)
-                rd.velocity = new Vector2(10f, 0);
-            else
                 rd.velocity = new Vector2(-10f, 0);
+            else
+                rd.velocity = new Vector2(10f, 0);
 
         }
         void FixedUpdate()

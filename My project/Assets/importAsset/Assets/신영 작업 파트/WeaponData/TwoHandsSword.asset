@@ -12,12 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37a5a6cd738645369231540dd8f9631f, type: 3}
   m_Name: TwoHandsSword
   m_EditorClassIdentifier: 
-  <Icon>k__BackingField: {fileID: 21300000, guid: 8dea8a9824663594cb673d4c44be3339,
-    type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 8dea8a9824663594cb673d4c44be3339, type: 3}
   <Name>k__BackingField: Bardent's Sword
   <Description>k__BackingField: It looks sick af
-  <AnimatorController>k__BackingField: {fileID: 9100000, guid: 39b81d66617117946a8a288af480f174,
-    type: 2}
+  <AnimatorController>k__BackingField: {fileID: 9100000, guid: 39b81d66617117946a8a288af480f174, type: 2}
   <NumberOfAttacks>k__BackingField: 5
   <ComponentData>k__BackingField:
   - rid: 5662276240811753472
@@ -131,16 +129,16 @@ MonoBehaviour:
             serializedVersion: 2
             x: 0
             y: -0.99
-            width: 1.61
-            height: 2.51
+            width: 1.94
+            height: 1.41
         - name: Attack 4
           Debug: 0
           <HitBox>k__BackingField:
             serializedVersion: 2
-            x: 0
+            x: -1.4
             y: -0.99
-            width: 1.61
-            height: 2.51
+            width: 2.5
+            height: 1
         - name: Attack 5
           Debug: 0
           <HitBox>k__BackingField:
@@ -148,7 +146,7 @@ MonoBehaviour:
             x: 0
             y: -0.99
             width: 1.61
-            height: 2.51
+            height: 2
         <DetectableLayers>k__BackingField:
           serializedVersion: 2
           m_Bits: 512

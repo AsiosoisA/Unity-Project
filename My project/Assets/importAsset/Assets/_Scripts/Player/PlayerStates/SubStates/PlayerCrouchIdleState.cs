@@ -26,6 +26,12 @@ public class PlayerCrouchIdleState : PlayerGroundedState
     {
         base.LogicUpdate();
 
+        if (player.InputHandler.AttackInputs[(int)CombatInputs.primary] && player.PrimaryAttackState.CanTransitionToAttackState())
+        {
+            player.StateMachine.previousState = player.CrouchIdleState;
+            stateMachine.ChangeState(player.PrimaryAttackState);
+        }
+
         if (!isExitingState)
         {
             if (xInput != 0)

@@ -465,6 +465,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0956dab9e1775404cb7a3dfe33d471cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultweapon: {fileID: 11400000, guid: ed17f1617c83fc04aae02129c9be4e01, type: 2}
   inventorySize: 16
   slotPrefab: {fileID: 2405900116960668559, guid: 4ee4d8fcd4c6bf84e8f12d35aeff2cb9, type: 3}
   slotParent: {fileID: 26196596}
@@ -47824,6 +47825,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 5347446869373260371, guid: 09ad0fb67dd07c849958ce1a5b26b0ca, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5571504009190527188, guid: 09ad0fb67dd07c849958ce1a5b26b0ca, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 0
@@ -48050,6 +48055,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 225787432}
     m_Modifications:
+    - target: {fileID: 186629261625860987, guid: 09ad0fb67dd07c849958ce1a5b26b0ca, type: 3}
+      propertyPath: m_LocalScale.x
+      value: -1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 186629261625860987, guid: 09ad0fb67dd07c849958ce1a5b26b0ca, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 273212503044209485, guid: 09ad0fb67dd07c849958ce1a5b26b0ca, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -48128,7 +48141,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: d37888f2fea16544187309f4eeaf9260, type: 2}
     - target: {fileID: 4858863138560692205, guid: 09ad0fb67dd07c849958ce1a5b26b0ca, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.5
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: 4858863138560692205, guid: 09ad0fb67dd07c849958ce1a5b26b0ca, type: 3}
       propertyPath: m_LocalScale.y
@@ -48136,7 +48149,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4858863138560692205, guid: 09ad0fb67dd07c849958ce1a5b26b0ca, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.552
+      value: 0.541
       objectReference: {fileID: 0}
     - target: {fileID: 5037866840169384086, guid: 09ad0fb67dd07c849958ce1a5b26b0ca, type: 3}
       propertyPath: numberOfAttacks

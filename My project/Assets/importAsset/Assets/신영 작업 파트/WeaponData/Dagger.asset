@@ -12,12 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37a5a6cd738645369231540dd8f9631f, type: 3}
   m_Name: Dagger
   m_EditorClassIdentifier: 
-  <Icon>k__BackingField: {fileID: 21300000, guid: 83900ada1c0356f409752e54ce366437,
-    type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 83900ada1c0356f409752e54ce366437, type: 3}
   <Name>k__BackingField: Bardent's Sword
   <Description>k__BackingField: It looks sick af
-  <AnimatorController>k__BackingField: {fileID: 9100000, guid: e43e64333b81e974f85ec45130315cdc,
-    type: 2}
+  <AnimatorController>k__BackingField: {fileID: 9100000, guid: e43e64333b81e974f85ec45130315cdc, type: 2}
   <NumberOfAttacks>k__BackingField: 5
   <ComponentData>k__BackingField:
   - rid: 5662276240811753472
@@ -99,10 +97,10 @@ MonoBehaviour:
           <Velocity>k__BackingField: 5
         - name: Attack 4
           <Direction>k__BackingField: {x: 5, y: 0}
-          <Velocity>k__BackingField: 10
+          <Velocity>k__BackingField: 4
         - name: Attack 5
-          <Direction>k__BackingField: {x: 0, y: 5}
-          <Velocity>k__BackingField: 10
+          <Direction>k__BackingField: {x: 0, y: 1}
+          <Velocity>k__BackingField: 1
     - rid: 4372345045472247809
       type: {class: ActionHitBoxData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
       data:
@@ -190,10 +188,10 @@ MonoBehaviour:
           - <Phase>k__BackingField: 2
             <Sprites>k__BackingField:
             - {fileID: 0}
+            - {fileID: 0}
             - {fileID: 21300000, guid: a377362770717474f9421e699b0b882b, type: 3}
             - {fileID: 21300000, guid: 3c309a28ec189c844b07c94a6c557d1d, type: 3}
             - {fileID: 21300000, guid: 7be5db116ca21d142abb3d1b8dce3990, type: 3}
-            - {fileID: 0}
         - name: Attack 5
           <PhaseSprites>k__BackingField:
           - <Phase>k__BackingField: 2

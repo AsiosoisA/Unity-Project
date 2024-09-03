@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    public WeaponDataSO defaultweapon;
     public int inventorySize = 20; // 인벤토리 슬롯의 개수
     public GameObject slotPrefab;  // 슬롯 UI 프리팹
     public Transform slotParent;   // 슬롯들이 배치될 부모 객체 (Grid Layout Group이 있는 오브젝트)
@@ -29,6 +30,9 @@ public class Inventory : MonoBehaviour
         cvs = transform.GetComponentInParent<CanvasController>();
         cvg = GetComponent<CanvasGroup>();
         weaponGenerator = GameObject.Find("Player").transform.GetChild(2).GetComponent<WeaponGenerator>();
+
+        // 디폴트 무기를 한 손검으로 
+        weaponGenerator.OnTest(defaultweapon);
     }
 
     private void Update()

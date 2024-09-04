@@ -32,6 +32,8 @@ public class Player : MonoBehaviour
     public PlayerAttackState SecondaryAttackState { get; private set; }
     public PlayerWindKnockbackSkillState WindKnockbackSkillState { get; private set; }
 
+    public Inventory inventory;
+
 
     [SerializeField]
     private PlayerData playerData;
@@ -93,6 +95,7 @@ public class Player : MonoBehaviour
         PrimaryAttackState = new PlayerAttackState(this, StateMachine, playerData, "attack", primaryWeapon, CombatInputs.primary);
         SecondaryAttackState = new PlayerAttackState(this, StateMachine, playerData, "attack", secondaryWeapon, CombatInputs.secondary);
         WindKnockbackSkillState = new PlayerWindKnockbackSkillState(this, StateMachine, playerData, "idle");
+        inventory = GameObject.Find("Inventory").GetComponent<Inventory>(); //일단 이렇게 설정해놨긴 했는데 추후에 자원 덜 소모하는 쪽으로 업데이트 해놓겠습니다..
     }
 
     private void Start()

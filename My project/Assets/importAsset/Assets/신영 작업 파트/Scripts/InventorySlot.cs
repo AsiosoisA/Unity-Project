@@ -26,12 +26,12 @@ public class InventorySlot : MonoBehaviour
         else
             countUI.text = null;
     }
-    public void AddItem(Item newItem, int count)
+    public void AddItem(Item newItem)
     {
         item = newItem;
         icon.sprite = item.icon;
         icon.enabled = true;
-        this.count = count;
+        this.count = newItem.count;
     }
 
     public void ClearSlot()

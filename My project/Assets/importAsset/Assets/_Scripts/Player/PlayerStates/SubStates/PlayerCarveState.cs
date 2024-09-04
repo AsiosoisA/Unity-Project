@@ -92,7 +92,7 @@ public class PlayerCarveState : PlayerGroundedState
 
         foreach (Collider2D collider in colliders)
         {
-            if (collider.CompareTag("Enemy") && collider.gameObject.layer == 10)
+            if (collider.CompareTag("Enemy") && collider.gameObject.layer == 8) //임시로 8로 바꿈
             {
                 float distance = Vector2.Distance(playerPosition, collider.transform.position);
                 if (distance < closestDistance)
@@ -108,6 +108,7 @@ public class PlayerCarveState : PlayerGroundedState
 
     private void Carve()
     {
+        player.inventory.AddItem(carvingObject.GetComponent<Enemy1>().CavingItem);
         /*
         GetClosestDeadEnemy를 통해서 Layer가 Dead인 Enemy의 정보를 얻고 충분한 시간동안 interactionInput을 
         눌렀을 경우 Carve()를 실행하고 Idle로 탈출하도록 만들었습니다.

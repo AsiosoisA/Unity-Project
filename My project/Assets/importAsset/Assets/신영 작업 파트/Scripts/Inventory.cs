@@ -52,7 +52,7 @@ public class Inventory : MonoBehaviour
             InventorySlot inventorySlot = slot.GetComponent<InventorySlot>();
             if (inventorySlot.IsEmpty())
             {
-                inventorySlot.AddItem(item, 1);
+                inventorySlot.AddItem(item);
                 break;
             }
         }

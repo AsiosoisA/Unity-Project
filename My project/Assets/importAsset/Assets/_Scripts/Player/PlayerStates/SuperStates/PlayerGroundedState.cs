@@ -23,6 +23,7 @@ public class PlayerGroundedState : PlayerState
     private bool isLootableObject;
     private bool skill1Input;
     private bool skill2Input;
+    private bool isCarvingRequested = false;
     #endregion
 
     #region Core Componenets
@@ -85,12 +86,17 @@ public class PlayerGroundedState : PlayerState
         subActionInputStop = player.InputHandler.SubActionInputStop;
         isLootableObject = CollisionSenses.DeadBody;
 
-        if (isLootableObject && interActionInput)
+        if (player.InputHandler.InteractionInput && !isCarvingRequested)
         {
-            stateMachine.ChangeState(player.LootState);
-            //player.InputHandler.InteractionInput... Hold를 인식할 방법이 없나..?
+            isCarvingRequested = true; // 입력 처리 중으로 설정
+            stateMachine.ChangeState(player.CarveState); // CarveState로 상태 전환
         }
-        else if (player.InputHandler.AttackInputs[(int)CombatInputs.primary] && !isTouchingCeiling)
+        // InteractionInput이 없을 때 플래그를 초기화하여 다시 상태 전환이 가능하도록 함
+        if (!player.InputHandler.InteractionInput)
+        {
+            isCarvingRequested = false;
+        }
+        if (player.InputHandler.AttackInputs[(int)CombatInputs.primary] && !isTouchingCeiling)
         {
             stateMachine.ChangeState(player.PrimaryAttackState);
         }

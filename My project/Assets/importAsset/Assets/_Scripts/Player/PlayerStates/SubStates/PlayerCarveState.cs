@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerLootState : PlayerGroundedState
+public class PlayerCarveState : PlayerGroundedState
 {
     #region Core Components
     private CollisionSenses CollisionSenses
@@ -14,11 +14,12 @@ public class PlayerLootState : PlayerGroundedState
     #endregion
 
     #region Variables
-    private GameObject lootingObject;
+    private GameObject carvingObject;
     private float holdStartTime;
     private bool interactionInput;
     private bool isHolding = false;
-    private bool isLooted = false;
+    private bool holdEnough = false;
+    private bool isCarved = false;
     private float holdingTime = 2f;
 
     [SerializeField]
@@ -26,7 +27,7 @@ public class PlayerLootState : PlayerGroundedState
     #endregion
 
     #region Unity Callback Functions
-    public PlayerLootState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
+    public PlayerCarveState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
     }
 
@@ -35,9 +36,11 @@ public class PlayerLootState : PlayerGroundedState
         base.Enter();
         Movement?.SetVelocityX(0f);
 
-        lootingObject = GetClosestDeadEnemy(player.transform.position, playerData.deadBodyRadius);
+        carvingObject = GetClosestDeadEnemy(player.transform.position, playerData.deadBodyRadius);
 
         holdStartTime = 0f;
+        isHolding = false;   // 초기화
+        isCarved = false;    // 초기화
     }
 
     public override void LogicUpdate()
@@ -46,37 +49,37 @@ public class PlayerLootState : PlayerGroundedState
 
         interactionInput = player.InputHandler.InteractionInput;
 
+        // 눌렀을 경우
         if (interactionInput)
         {
+            // 처음 누르는 경우
             if (!isHolding)
             {
-                // Ű�� ó�� ������ holdStartTime�� �����ϰ�, isHolding�� true�� ����
                 holdStartTime = Time.time;
                 isHolding = true;
             }
-            else if (!isLooted)
+
+            // 일정 시간 이상 누르고 있을 경우 holdEnough 상태를 true로 설정
+            if (!holdEnough && Time.time >= holdStartTime + holdingTime)
             {
-                // Ű�� ������ �ִ� ���� ����� �ð��� holdingTime�� ������ �׼��� ����
-                if (Time.time >= holdStartTime + holdingTime)
-                {
-                    Loot();
-                    isHolding = false; // �׼� ���� �� �ٽ� �ʱ�ȭ
-                    stateMachine.ChangeState(player.IdleState);
-                    isLooted = true;
-                }
-            }
-        }
-        else
-        {
-            // Ű�� ������ ���¸� �ʱ�ȭ�ϰ� GroundedState�� ��ȯ
-            if (isHolding && Time.time < holdStartTime + holdingTime)
-            {
+                Carve();
+                holdEnough = true;
                 stateMachine.ChangeState(player.IdleState);
             }
-
-            isHolding = false;
+        }
+        // 키를 뗐을 경우
+        else
+        {
+            if (isHolding && holdEnough)
+            {
+               
+                isCarved = true;
+            }
+            stateMachine.ChangeState(player.IdleState);
+            return; // 상태 전환 후 추가 로직이 실행되지 않도록 return
         }
     }
+
     #endregion
 
     #region Other Functions
@@ -100,15 +103,18 @@ public class PlayerLootState : PlayerGroundedState
             }
         }
 
-        return closestEnemy; // ���� ����� "Enemy" �±׿� "Dead" ���̾ ���� ������Ʈ ��ȯ
+        return closestEnemy;
     }
 
-    private void Loot()
+    private void Carve()
     {
-        // �̴ϰ��� �Ŵ���? 
+        /*
+        GetClosestDeadEnemy를 통해서 Layer가 Dead인 Enemy의 정보를 얻고 충분한 시간동안 interactionInput을 
+        눌렀을 경우 Carve()를 실행하고 Idle로 탈출하도록 만들었습니다.
 
-
-        Debug.Log(lootingObject.name);
+        신영님 편하신 대로 Enemy 정보에 따라 인벤토리에 아이템 추가하는 로직 작성하시면 될거 같아요!
+        */
+        Debug.Log("Carve");
     }
     #endregion
 }

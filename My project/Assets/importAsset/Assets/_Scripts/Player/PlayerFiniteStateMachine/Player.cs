@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
     public PlayerCrouchIdleState CrouchIdleState { get; private set; }
     public PlayerCrouchMoveState CrouchMoveState { get; private set; }
     public PlayerSuperJumpState SuperJumpState { get; private set; }
-    public PlayerLootState LootState { get; private set; }
+    public PlayerCarveState CarveState { get; private set; }
     public PlayerAttackState PrimaryAttackState { get; private set; }
     public PlayerAttackState SecondaryAttackState { get; private set; }
     public PlayerWindKnockbackSkillState WindKnockbackSkillState { get; private set; }
@@ -89,7 +89,7 @@ public class Player : MonoBehaviour
         CrouchIdleState = new PlayerCrouchIdleState(this, StateMachine, playerData, "crouchIdle");
         CrouchMoveState = new PlayerCrouchMoveState(this, StateMachine, playerData, "crouchMove");
         SuperJumpState = new PlayerSuperJumpState(this, StateMachine, playerData, "superJump");
-        LootState = new PlayerLootState(this, StateMachine, playerData, "idle");
+        CarveState = new PlayerCarveState(this, StateMachine, playerData, "carve");
         PrimaryAttackState = new PlayerAttackState(this, StateMachine, playerData, "attack", primaryWeapon, CombatInputs.primary);
         SecondaryAttackState = new PlayerAttackState(this, StateMachine, playerData, "attack", secondaryWeapon, CombatInputs.secondary);
         WindKnockbackSkillState = new PlayerWindKnockbackSkillState(this, StateMachine, playerData, "idle");

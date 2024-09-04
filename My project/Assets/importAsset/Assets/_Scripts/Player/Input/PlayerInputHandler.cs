@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerInputHandler : MonoBehaviour
 {
-    public event Action<bool> OnInteractInputChanged; 
+    public event Action<bool> OnInteractInputChanged;
 
     private PlayerInput playerInput;
     private Camera cam;
@@ -36,8 +36,6 @@ public class PlayerInputHandler : MonoBehaviour
 
     private float jumpInputStartTime;
     private float dashInputStartTime;
-    private float InteractionInputStartTime;
-    private float subActionInputStartTime;
     private float skill1InputStartTime;
     private float skill1Cooldown = 2f;
     private float skill2InputStartTime;
@@ -62,6 +60,7 @@ public class PlayerInputHandler : MonoBehaviour
         CheckSkill2CoolDown();
     }
 
+    /*
     public void OnInteractInput(InputAction.CallbackContext context)
     {
         if (context.started)
@@ -75,7 +74,7 @@ public class PlayerInputHandler : MonoBehaviour
             OnInteractInputChanged?.Invoke(false);
         }
     }
-
+    */
     public void OnPrimaryAttackInput(InputAction.CallbackContext context)
     {
         if (context.started)
@@ -107,8 +106,8 @@ public class PlayerInputHandler : MonoBehaviour
         RawMovementInput = context.ReadValue<Vector2>();
 
         NormInputX = Mathf.RoundToInt(RawMovementInput.x);
-        NormInputY = Mathf.RoundToInt(RawMovementInput.y);       
-        
+        NormInputY = Mathf.RoundToInt(RawMovementInput.y);
+
     }
 
     public void OnJumpInput(InputAction.CallbackContext context)
@@ -157,7 +156,7 @@ public class PlayerInputHandler : MonoBehaviour
     {
         RawDashDirectionInput = context.ReadValue<Vector2>();
 
-        if(playerInput.currentControlScheme == "Keyboard")
+        if (playerInput.currentControlScheme == "Keyboard")
         {
             //일단 주석처리 해놓음 
             //RawDashDirectionInput = cam.ScreenToWorldPoint((Vector3)RawDashDirectionInput) - transform.position;
@@ -185,7 +184,6 @@ public class PlayerInputHandler : MonoBehaviour
         {
             SubActionInput = true;
             SubActionInputStop = false;
-            subActionInputStartTime = Time.time;
         }
 
         if (context.canceled)
@@ -241,7 +239,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void CheckJumpInputHoldTime()
     {
-        if(Time.time >= jumpInputStartTime + inputHoldTime)
+        if (Time.time >= jumpInputStartTime + inputHoldTime)
         {
             JumpInput = false;
         }
@@ -249,11 +247,12 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void CheckDashInputHoldTime()
     {
-        if(Time.time >= dashInputStartTime + inputHoldTime)
+        if (Time.time >= dashInputStartTime + inputHoldTime)
         {
             DashInput = false;
         }
     }
+
     private void CheckSkill1CoolDown()
     {
         if (!canSkill1 && Time.time >= skill1InputStartTime + skill1Cooldown)
@@ -269,6 +268,8 @@ public class PlayerInputHandler : MonoBehaviour
             canSkill2 = true;
         }
     }
+
+
 }
 
 public enum CombatInputs

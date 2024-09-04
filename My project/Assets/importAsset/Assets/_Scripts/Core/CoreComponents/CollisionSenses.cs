@@ -93,7 +93,6 @@ public class CollisionSenses : CoreComponent
     public bool DeadBody
     {
         get => Physics2D.OverlapCircle(WallCheck.position, wallCheckDistance, WhatIsLootable);
-
     }
     #endregion
 }

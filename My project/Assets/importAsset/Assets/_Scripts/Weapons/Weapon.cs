@@ -149,7 +149,7 @@ namespace Bardent.Weapons
         private void Update()
         {
             attackCounterResetTimeNotifier.Tick();
-            //Debug.Log(player.StateMachine.CurrentState.animBoolName);
+            Debug.Log("state : " + player.StateMachine.previousState);
         }
 
         private void ResetAttackCounter()

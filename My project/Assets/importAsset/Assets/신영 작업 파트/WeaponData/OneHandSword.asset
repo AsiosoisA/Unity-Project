@@ -12,12 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37a5a6cd738645369231540dd8f9631f, type: 3}
   m_Name: OneHandSword
   m_EditorClassIdentifier: 
-  <Icon>k__BackingField: {fileID: 21300000, guid: 01c429e63c5f00c4aba54dd760dd8621,
-    type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 01c429e63c5f00c4aba54dd760dd8621, type: 3}
   <Name>k__BackingField: Bardent's Sword
   <Description>k__BackingField: It looks sick af
-  <AnimatorController>k__BackingField: {fileID: 9100000, guid: 8ee8c5209d6b6fe43ac449de4785711d,
-    type: 2}
+  <AnimatorController>k__BackingField: {fileID: 9100000, guid: 8ee8c5209d6b6fe43ac449de4785711d, type: 2}
   <NumberOfAttacks>k__BackingField: 5
   <ComponentData>k__BackingField:
   - rid: 5662276240811753472
@@ -101,7 +99,7 @@ MonoBehaviour:
           <Direction>k__BackingField: {x: 2, y: 0}
           <Velocity>k__BackingField: 10
         - name: Attack 5
-          <Direction>k__BackingField: {x: 2, y: 3}
+          <Direction>k__BackingField: {x: 2, y: 0}
           <Velocity>k__BackingField: 10
     - rid: 4372345045472247809
       type: {class: ActionHitBoxData, ns: Bardent.Weapons.Components, asm: Assembly-CSharp}
@@ -192,14 +190,14 @@ MonoBehaviour:
             - {fileID: 21300000, guid: 735413379fd98344d805fa443c8da083, type: 3}
             - {fileID: 21300000, guid: 41738797c4660d04fac07c89dfdb82cd, type: 3}
             - {fileID: 21300000, guid: 3284bad00615dec418b2943bc612aac6, type: 3}
+            - {fileID: 21300000, guid: 3284bad00615dec418b2943bc612aac6, type: 3}
             - {fileID: 21300000, guid: b7fef2b4d9cd71d428a50b33c01c9442, type: 3}
-            - {fileID: 0}
         - name: Attack 5
           <PhaseSprites>k__BackingField:
           - <Phase>k__BackingField: 2
             <Sprites>k__BackingField:
-            - {fileID: 0}
             - {fileID: 21300000, guid: c9ee4e49ec0ad174ab5e45f57a89c4cf, type: 3}
             - {fileID: 21300000, guid: 64bb24ed3e1b6aa4c95a2e05a8bb72a7, type: 3}
             - {fileID: 21300000, guid: 7eae11c2f37deda42ba2151caf5eeb44, type: 3}
+            - {fileID: 0}
             - {fileID: 0}

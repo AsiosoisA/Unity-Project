@@ -96,11 +96,14 @@ public class PlayerInAirState : PlayerState
 
         CheckJumpMultiplier();
 
-        if (player.InputHandler.AttackInputs[(int)CombatInputs.primary])
+        if (player.InputHandler.AttackInputs[(int)CombatInputs.primary] && player.PrimaryAttackState.CanTransitionToAttackState())
         {
+            //여기서 공중 공격 움직임에 대한 분기를 만들어야 함
+            stateMachine.ChangeState(player.PrimaryAttackState);
+            player.StateMachine.previousState = player.InAirState;
             stateMachine.ChangeState(player.PrimaryAttackState);
         }
-        else if (player.InputHandler.AttackInputs[(int)CombatInputs.secondary])
+        else if (player.InputHandler.AttackInputs[(int)CombatInputs.secondary] && player.SecondaryAttackState.CanTransitionToAttackState())
         {
             stateMachine.ChangeState(player.SecondaryAttackState);
         }

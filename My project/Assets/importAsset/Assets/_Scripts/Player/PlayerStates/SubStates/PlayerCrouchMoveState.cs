@@ -24,6 +24,12 @@ public class PlayerCrouchMoveState : PlayerGroundedState
     {
         base.LogicUpdate();
 
+        if (player.InputHandler.AttackInputs[(int)CombatInputs.primary] && player.PrimaryAttackState.CanTransitionToAttackState())
+        {
+            player.StateMachine.previousState = player.CrouchIdleState;
+            stateMachine.ChangeState(player.PrimaryAttackState);
+        }
+
         if (!isExitingState)
         {
             Movement?.SetVelocityX(playerData.crouchMovementVelocity * Movement.FacingDirection);

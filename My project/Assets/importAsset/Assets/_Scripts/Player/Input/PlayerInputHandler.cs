@@ -88,6 +88,7 @@ public class PlayerInputHandler : MonoBehaviour
         }
     }
 
+    /*
     public void OnSecondaryAttackInput(InputAction.CallbackContext context)
     {
         if (context.started)
@@ -100,6 +101,8 @@ public class PlayerInputHandler : MonoBehaviour
             AttackInputs[(int)CombatInputs.secondary] = false;
         }
     }
+    무기 안 써서 주석 처리 했습니다(우클릭 시 배정 안된 무기에 대한 오류 발생 예방
+    */
 
     public void OnMoveInput(InputAction.CallbackContext context)
     {

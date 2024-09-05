@@ -73,8 +73,11 @@ public class HoldKeyMinigame : KeyMinigame
     public override void OnKeyUped()
     {
         base.OnKeyUped();
-        
-        if(minigameData.isGuageDecreaseWithoutPush)
+        if(minigameData.isMinigameOverWhenNotPush)
+        {
+            OnMinigameFailed();
+        }
+        else if(minigameData.isGuageDecreaseWithoutPush)
         {
             if(minigameData.isImmediatelyDecrease) keyContainer.guageBar.DecreaseImmediately();
             else keyContainer.guageBar.DecreaseGuage(minigameData.decreaseSpeed);
@@ -96,5 +99,18 @@ public class HoldKeyMinigame : KeyMinigame
         manager.keyContainer.guageBar.Release();
 
         manager.OnMinigameFinished();
+    }
+
+    public override void OnMinigameFailed()
+    {
+        base.OnMinigameFailed();
+
+        manager.pool.Release(keyInstance.gameObject);
+
+        manager.keyContainer.RestorePosition();
+
+        manager.keyContainer.guageBar.Release();
+
+        manager.OnMinigameFailed();
     }
 }

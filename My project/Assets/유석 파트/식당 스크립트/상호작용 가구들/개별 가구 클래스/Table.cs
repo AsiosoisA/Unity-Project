@@ -42,18 +42,16 @@ public class Table : RestaurantComponent, IInteractableStructure
         isAvailable = true;
     }
 
-    public void Interact(GameObject interactRequester)
+    public void Interact(PlayerInteractState state, Player requester)
     {
         if(customer == null) return;
 
-        SamplePlayer player = interactRequester.GetComponent<SamplePlayer>();
-
         string foodKey = customer.food_I_Want.foodStuffName;
 
-        if(player.restaurantInventory.foodsICarrying.ContainsKey(foodKey))
+        if(requester.restaurantInventory.foodsICarrying.ContainsKey(foodKey))
         {
             GiveThisFood(customer.food_I_Want); // TODO 플레이어가 들고 있는 음식을 주도록 해야 한다!
-            player.restaurantInventory.SubFoodFromPlayer(foodKey, 1);
+            requester.restaurantInventory.SubFoodFromPlayer(foodKey, 1);
         }
     }
 

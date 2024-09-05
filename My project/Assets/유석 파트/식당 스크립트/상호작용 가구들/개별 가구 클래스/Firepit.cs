@@ -65,6 +65,15 @@ public class Firepit : CookableRestaurantComponent
         base.OnMyMinigameFinished(minigameName);
     }
 
+    public override void OnMyMinigameFailed(string minigameName)
+    {
+        //base.OnMyMinigameFailed(minigameName);
+        // 이 코드는 다음 아이템으로 건너뛰는 것. 즉 이 녀석의 로직과 맞지 않다!
+        // 걍 종료해버리는게 목표.
+
+        OnEntireMinigameFinished();
+    }
+
     public override void OnEntireMinigameFinished()
     {
         isIdle = true;

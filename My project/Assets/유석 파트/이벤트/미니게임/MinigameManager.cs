@@ -6,9 +6,10 @@ using System;
 
 public class MinigameManager : MonoBehaviour
 {
-
     /*
         이 클래스는 중계 역할만 할 것. 미니게임 객체들이 적절하게 시작될 수 있도록, 끝난다면 리워드도 잘 줄 수 있도록 해야 한다!
+    
+        + 나중엔 싱글톤패턴으로 구현할 것.
     */
 
     public KeyInstanceObjectPool pool {get; private set;}
@@ -60,6 +61,11 @@ public class MinigameManager : MonoBehaviour
     public void OnMinigameFinished()
     {
         requester.OnMyMinigameFinished(minigameToTrackData.minigameName);
+    }
+
+    public void OnMinigameFailed()
+    {
+        requester.OnMyMinigameFailed(minigameToTrackData.minigameName);
     }
 
     public void OnKeyInputSuccessed()

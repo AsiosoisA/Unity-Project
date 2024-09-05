@@ -36,6 +36,15 @@ public class Player : MonoBehaviour
     public Inventory inventory;
 
 
+    #region 유석 추가부분
+    public RestaurantInventory restaurantInventory {get; set;}
+    public MinigameManager minigameManager;
+    public SO_MinigameData carveMinigameData; // 정말정말정말 이러면 안 되는건데 일단 시연을 위해 때려박음.
+    public int SwordMastery{get; private set;} // 나중에 동일 역할을 하는 변수 추가될시 묻지도 따지지도 말고 가차없이 삭제할 것.
+    public void SliceLevelUp() => SwordMastery++; // 마찬가지로 삭제할 것.
+    #endregion
+
+
     [SerializeField]
     private PlayerData playerData;
     #endregion
@@ -107,6 +116,18 @@ public class Player : MonoBehaviour
             inventory = GameObject.Find("Inventory").GetComponent<Inventory>(); //일단 이렇게 설정해놨긴 했는데 추후에 자원 덜 소모하는 쪽으로 업데이트 해놓겠습니다..
 
         playerInput = GetComponent<PlayerInput>();
+
+
+
+
+
+
+
+
+
+        #region 유석 추가
+        restaurantInventory = GetComponentInChildren<RestaurantInventory>();
+        #endregion
     }
 
     private void Start()

@@ -1,54 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Scripting.APIUpdating;
 
-public class SamplePlayer : MonoBehaviour
+public class PlayerInteractState : PlayerState
 {
-    public RestaurantInventory restaurantInventory;
+    private PlayerIdleState idleState;
 
-    public new BoxCollider2D collider;
-
-
-
-
-
-    public int debug_playerSliceLevel;
-    public void SliceLevelUp() => debug_playerSliceLevel++;
-
-
-
-    void Awake()
+    public PlayerInteractState(Player player, PlayerStateMachine stateMachine, PlayerData playerData, string animBoolName) : base(player, stateMachine, playerData, animBoolName)
     {
-        InitRestaurantInventory();
     }
 
-    void InitRestaurantInventory()
+    public override void Enter()
     {
-        this.restaurantInventory = GetComponentInChildren<RestaurantInventory>();
+        base.Enter();
+        Debug.Log("Entering Interact State");
+        Movement?.SetVelocityX(0f);
+
+        Interact();
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Exit()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log("상호작용!");
-            Interact();
-        }
-
-        if(Input.GetKey(KeyCode.A))
-        {
-            transform.position += new Vector3(-1 * 5f * Time.deltaTime, 0f, 0f);
-        }
-        else if(Input.GetKey(KeyCode.D))
-        {
-            transform.position += new Vector3(1 * 5f * Time.deltaTime, 0f, 0f);
-        }
+        base.Exit();
+        Debug.Log("Exiting Interact State");
     }
 
-#region 상호작용 코드
-    void Interact()
+    public override void LogicUpdate()
+    {
+        base.LogicUpdate();
+
+    }
+
+    public override void PhysicsUpdate()
+    {
+        base.PhysicsUpdate();
+    }
+
+    #region InteractState method
+    public virtual void Interact()
     {
         /*
             이 메소드가 발동되면 플레이어는 충돌한 Collider 를 감지한다.
@@ -57,7 +46,7 @@ public class SamplePlayer : MonoBehaviour
             마지막으로 그 녀석에 대해 Interact 함수를 호출한다!
         */
         
-        Collider2D[] overlaps = Physics2D.OverlapBoxAll(collider.bounds.center , collider.bounds.size, 0f);
+        Collider2D[] overlaps = Physics2D.OverlapBoxAll(player.MovementCollider.bounds.center , player.MovementCollider.bounds.size, 0f);
 
         List<IInteractableStructure> interactables = new List<IInteractableStructure>();
 
@@ -69,9 +58,7 @@ public class SamplePlayer : MonoBehaviour
             IInteractableStructure interactableObject = obj.gameObject.GetComponent<IInteractableStructure>();
             if(interactableObject != null)
             {
-                Debug.Log("상호작용 가능한 녀석을 하나 만났다! : " + obj.gameObject.name);
-
-                Bounds intersection = GetIntersection(collider.bounds, obj.bounds);
+                Bounds intersection = GetIntersection(player.MovementCollider.bounds, obj.bounds);
 
                 if(intersection.size != Vector3.zero)
                 {
@@ -89,19 +76,12 @@ public class SamplePlayer : MonoBehaviour
         }
 
         // 상호작용해야 하는 녀석을 발견했음.
-        if(objShouldInteract != null) 
+        if(objShouldInteract != null)
         {
-            objShouldInteract.Interact(this.gameObject);
+            objShouldInteract.Interact(this, player);
         }
 
         else Debug.Log("상호작용 가능한 물체가 없습니다.");
-    }
-
-    public void OnInteractFinished() // 그냥 IdleState 로 넘어가는 로직.
-    {
-        Debug.Log("플레이어가 상호작용을 성공적으로 마쳤습니다!");
-
-        // 이제 여기서 State 전환하면 됨. 해야 할 일은 상호작용 가능한 객체에서 player 의 맴버를 싹 바꿔버리고 끝낼거임.
     }
 
     private Bounds GetIntersection(Bounds bounds1 , Bounds bounds2) // 상호작용할 객체를 선택할 때 면적을 계산하기 위한 함수.
@@ -119,13 +99,12 @@ public class SamplePlayer : MonoBehaviour
         // 겹치는 영역이 없다면 크기가 0인 빈 바운드를 반환
         return new Bounds(Vector3.zero, Vector3.zero);
     }
+    #endregion
 
-    private void OnDrawGizmos() {
-        Gizmos.color = Color.green;
-
-        Gizmos.DrawWireCube(collider.bounds.center, collider.bounds.size);
+    #region Callback
+    public void OnInteractFinished()
+    {
+        stateMachine.ChangeState(idleState);
     }
-#endregion
-
-
+    #endregion
 }

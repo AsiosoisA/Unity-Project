@@ -68,8 +68,8 @@ public class CuttingBoard : CookableRestaurantComponent
 
         if(howToCook == (int)HowToCook.Slice)
         {
-            if(restaurant.player.debug_playerSliceLevel == 1) dataForMinigame = sliceMinigame_Level1;
-            else if(restaurant.player.debug_playerSliceLevel >= 2) dataForMinigame = sliceMinigame_Level2;
+            if(restaurant.player.SwordMastery == 1) dataForMinigame = sliceMinigame_Level1;
+            else if(restaurant.player.SwordMastery >= 2) dataForMinigame = sliceMinigame_Level2;
         } 
         else if(howToCook == (int)HowToCook.Chop)
         {

@@ -8,8 +8,7 @@ using UnityEditor.PackageManager.UI;
 
 public class Restaurant : Infrastructure
 {
-
-    public SamplePlayer player;
+    [SerializeField] public Player player;
 
     private static Restaurant instance;
     public static Restaurant Instance

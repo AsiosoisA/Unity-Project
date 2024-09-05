@@ -5,23 +5,28 @@ using UnityEngine;
 
 public class CookableRestaurantComponent : MinigamableRestaurantComponent, IInteractableStructure, IMinigamable
 {
-    private SamplePlayer player;
+    private GameObject requesterGameObject;
+    private RestaurantInventory reqRestInventory;
+    private PlayerInteractState requestState;
+
     public MinigameManager minigameManager;
     private SO_MinigameData minigameToDo;
 
 
     public float xOffset;
     public float yOffset;
-
+ 
 
     protected List<SO_Recipe> recipeToCheckInteractable;
     protected int currentItemIndex;
 
-    public void Interact(GameObject interactRequester)
+    public void Interact(PlayerInteractState state, Player requester)
     {
-        if(player == null) player = interactRequester.GetComponent<SamplePlayer>(); // 이 부분 바뀌어야 함!!! 샘플 플레이어로 해놨음. 즉 지금은 임시 코드 . TODO
+        this.reqRestInventory = requester.restaurantInventory;
+        this.requesterGameObject = requester.gameObject;
+        this.requestState = state;
 
-        if(player.restaurantInventory.foodsICarrying.Keys.Count == 0) return; // 들고 있는게 아예 없다면 그냥 종료한다.
+        if(reqRestInventory.foodsICarrying.Keys.Count == 0) return; // 들고 있는게 아예 없다면 그냥 종료한다.
 
         // 일단 다른 인풋 시스템을 모두 차단해야 함!
         BeforeMinigame();
@@ -29,10 +34,10 @@ public class CookableRestaurantComponent : MinigamableRestaurantComponent, IInte
         
         if(IsShouldHidePlayer())
         {
-            interactRequester.SetActive(false);
+            requesterGameObject.SetActive(false);
         }
         
-        recipeToCheckInteractable = GetRecipeListToInteract(player.restaurantInventory.holdingOrders);
+        recipeToCheckInteractable = GetRecipeListToInteract(reqRestInventory.holdingOrders);
         Debug.Log("만들어진 레시피 크기 : " + recipeToCheckInteractable.Count);
         foreach(SO_Recipe recipe in recipeToCheckInteractable)
         {
@@ -63,7 +68,7 @@ public class CookableRestaurantComponent : MinigamableRestaurantComponent, IInte
             OnEntireMinigameFinished();
         }
         
-        else if( ! (recipeToCheckInteractable[currentItemIndex].whereToCook == structureName) || !IsPlayerGetIngredients(player, recipeToCheckInteractable[currentItemIndex]))
+        else if( ! (recipeToCheckInteractable[currentItemIndex].whereToCook == structureName) || !IsPlayerGetIngredients(reqRestInventory, recipeToCheckInteractable[currentItemIndex]))
         {
             Debug.Log("이 레시피는 그냥 넘겨도 되는 레시피군요. 넘기겠습니다!");
             // 이 경우 걍 넘기면 됨.
@@ -108,31 +113,38 @@ public class CookableRestaurantComponent : MinigamableRestaurantComponent, IInte
         foreach(FoodStuff ingredient in recipeToCheckInteractable[currentItemIndex].ingredients)
         {
             string ingredientName = ingredient.foodStuffName;
-            player.restaurantInventory.SubFoodFromPlayer(ingredientName, 1);
+            reqRestInventory.SubFoodFromPlayer(ingredientName, 1);
         }
 
         FoodStuff nextLevelFood = recipeToCheckInteractable[currentItemIndex].result;
         int nextLevelFoodCount = recipeToCheckInteractable[currentItemIndex].resultCount;
 
-        player.restaurantInventory.AddFoodToPlayer(nextLevelFood, nextLevelFoodCount);
+        reqRestInventory.AddFoodToPlayer(nextLevelFood, nextLevelFoodCount);
     
+        currentItemIndex++;
+        CheckCurrentItemShouldInteract(); 
+    }
+
+    public virtual void OnMyMinigameFailed(string minigameName)
+    {
+        // 어떤 이유든 실패했다? 그럼 절대 보상을 제공해서는 안 된다!
         currentItemIndex++;
         CheckCurrentItemShouldInteract();
     }
 
     public virtual void OnEntireMinigameFinished()
     {
-        player.gameObject.SetActive(true);
-        player.OnInteractFinished();
+        requesterGameObject.SetActive(true);
+        requestState.OnInteractFinished();
     }
 
-    public bool IsPlayerGetIngredients(SamplePlayer player, SO_Recipe recipe)
+    public bool IsPlayerGetIngredients(RestaurantInventory inventory, SO_Recipe recipe)
     {
         Debug.Log("감지된 레시피 : " + recipe.name);
 
         foreach(FoodStuff ingredientName in recipe.ingredients)
         {
-            if(!player.restaurantInventory.foodsICarrying.ContainsKey(ingredientName.foodStuffName))
+            if(!inventory.foodsICarrying.ContainsKey(ingredientName.foodStuffName))
             {
                 Debug.Log(ingredientName + "이 없어 요리하지 못 합니다!");
                 return false;

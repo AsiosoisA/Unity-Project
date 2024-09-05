@@ -53,6 +53,11 @@ public class RestaurantInventory : MonoBehaviour
 
     public bool CanISubThis(List<FoodStuff> foods)
     {
+
+        /*
+            함수의 복잡도 : O(재료의 수). 대충 O(N) 인데 그것보단 훨씬 덜 걸린다는 뜻.
+        */
+
         Dictionary<string, FoodStuffAndCount> paramList = new Dictionary<string, FoodStuffAndCount>();
 
         foreach(FoodStuff food in foods)
@@ -78,7 +83,6 @@ public class RestaurantInventory : MonoBehaviour
                 return false;
             }
         }
-
         return true;
     }
 

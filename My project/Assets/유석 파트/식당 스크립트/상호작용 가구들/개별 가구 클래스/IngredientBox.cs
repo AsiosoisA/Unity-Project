@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class IngredientBox : RestaurantComponent, IInteractableStructure
 {
-    public SamplePlayer player {get; private set;}
+    public RestaurantInventory playerInventory {get; private set;}
     public RecipeBook book;
     public RestaurantInventory boxInventory {get; set;}
 
@@ -21,9 +21,9 @@ public class IngredientBox : RestaurantComponent, IInteractableStructure
         this.boxInventory = GetComponentInChildren<RestaurantInventory>();
     }
 
-    public void Interact(GameObject interactRequester)
+    public void Interact(PlayerInteractState state, Player requester)
     {
-        player = interactRequester.GetComponent<SamplePlayer>();
+        this.playerInventory = requester.restaurantInventory;
 
         // 납품하기
         if(!restaurant.isOpened)

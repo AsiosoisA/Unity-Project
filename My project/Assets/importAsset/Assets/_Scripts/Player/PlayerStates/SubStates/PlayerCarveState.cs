@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCarveState : PlayerGroundedState
+public class PlayerCarveState : PlayerGroundedState /* 유석 추가 부분 */ , IMinigamable
 {
     #region Core Components
     private CollisionSenses CollisionSenses
@@ -119,5 +119,35 @@ public class PlayerCarveState : PlayerGroundedState
         */
         Debug.Log("Carve");
     }
+
+    #endregion
+
+
+    #region 유석 추가부분
+    public GameObject GetGameObject()
+    {
+        return player.gameObject;
+    }
+
+    public Vector3 GetOffset()
+    {
+        return new Vector3(0, 0, 0); // offset 은 따로 사용하지 않는다.
+    }
+
+    public void RequestToStartMinigame()
+    {
+        player.minigameManager.CreateAndStartMinigame(this, player.carveMinigameData);
+    }
+
+    public void OnMyMinigameFinished(string minigameName)
+    {
+        Carve();
+    }
+    public void OnMyMinigameFailed(string minigameName)
+    {
+        stateMachine.ChangeState(player.IdleState);
+    }
+
+    public void OnKeyInputSuccessed(){} // Do Nothing! Just Implement.
     #endregion
 }

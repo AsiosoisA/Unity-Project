@@ -42,14 +42,14 @@ public class IngredientBoxInterface : InterfaceMenu
     //플레이어의 인벤토리와 인터페이스의 인벤토리 상태를 동기화
     protected virtual void SyncPrefabCount()
     {
-        if(playerInventoryPrefabs.Count != box.player.restaurantInventory.foodsICarrying.Keys.Count)
+        if(playerInventoryPrefabs.Count != box.playerInventory.foodsICarrying.Keys.Count)
         {
 
             Debug.Log("인벤토리 칸과 프리팹 개수가 맞지 않습니다.");
 
             int repeatCount = 0;
 
-            while(playerInventoryPrefabs.Count > box.player.restaurantInventory.foodsICarrying.Keys.Count)
+            while(playerInventoryPrefabs.Count > box.playerInventory.foodsICarrying.Keys.Count)
             {
                 playerInventoryObjectPool.Release(playerInventoryPrefabs[playerInventoryPrefabs.Count - 1]);
                 playerInventoryPrefabs.RemoveAt(playerInventoryPrefabs.Count - 1);
@@ -61,7 +61,7 @@ public class IngredientBoxInterface : InterfaceMenu
                     break;
                 } 
             }
-            while(playerInventoryPrefabs.Count < box.player.restaurantInventory.foodsICarrying.Keys.Count)
+            while(playerInventoryPrefabs.Count < box.playerInventory.foodsICarrying.Keys.Count)
             {
                 playerInventoryPrefabs.Add(playerInventoryObjectPool.Get());
             
@@ -74,14 +74,14 @@ public class IngredientBoxInterface : InterfaceMenu
             }
         }
         
-        if(recipeListPrefabs.Count != box.player.restaurantInventory.holdingOrders.Count)
+        if(recipeListPrefabs.Count != box.playerInventory.holdingOrders.Count)
         {
 
-            Debug.Log("레시피 칸과 프리팹 개수가 맞지 않습니다." + recipeListPrefabs.Count + " vs " + box.player.restaurantInventory.holdingOrders.Count);
+            Debug.Log("레시피 칸과 프리팹 개수가 맞지 않습니다." + recipeListPrefabs.Count + " vs " + box.playerInventory.holdingOrders.Count);
 
             int repeatCount = 0;
 
-            while(recipeListPrefabs.Count > box.player.restaurantInventory.holdingOrders.Count)
+            while(recipeListPrefabs.Count > box.playerInventory.holdingOrders.Count)
             {
                 playerRecipeObjectPool.Release(recipeListPrefabs[recipeListPrefabs.Count - 1]);
                 recipeListPrefabs.RemoveAt(recipeListPrefabs.Count - 1);
@@ -94,7 +94,7 @@ public class IngredientBoxInterface : InterfaceMenu
                     break;
                 } 
             }
-            while(recipeListPrefabs.Count < box.player.restaurantInventory.holdingOrders.Count)
+            while(recipeListPrefabs.Count < box.playerInventory.holdingOrders.Count)
             {
                 recipeListPrefabs.Add(playerRecipeObjectPool.Get());
 
@@ -110,7 +110,7 @@ public class IngredientBoxInterface : InterfaceMenu
     }
     protected virtual void UpdatePlayerInventory()
     {
-        Dictionary<string, FoodStuffAndCount> inventory = box.player.restaurantInventory.foodsICarrying;
+        Dictionary<string, FoodStuffAndCount> inventory = box.playerInventory.foodsICarrying;
 
         int index = 0;
         foreach(string key in inventory.Keys)
@@ -142,7 +142,7 @@ public class IngredientBoxInterface : InterfaceMenu
 
     protected virtual void UpdateRecipeList()
     {
-        List<Order> HoldingOrders = box.player.restaurantInventory.holdingOrders;
+        List<Order> HoldingOrders = box.playerInventory.holdingOrders;
 
         int index = 0;
         foreach(Order order in HoldingOrders)

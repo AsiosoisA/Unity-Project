@@ -8,6 +8,6 @@ public interface IMinigamable
     public Vector3 GetOffset();
     public void RequestToStartMinigame();
     public void OnMyMinigameFinished(string minigameName);
-
+    public void OnMyMinigameFailed(string minigameName);
     public void OnKeyInputSuccessed();
 }

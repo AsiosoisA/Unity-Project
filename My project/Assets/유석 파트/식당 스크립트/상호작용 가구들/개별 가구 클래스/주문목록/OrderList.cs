@@ -27,7 +27,7 @@ public class OrderList : RestaurantComponent, IInteractableStructure
         SinkSpriteWithListCount();
     }
 
-    public void Interact(GameObject interactRequester)
+    public void Interact(PlayerInteractState state, Player requester)
     {
         // 일단은 첫 번째 요소를 주자.
         if(orderQueue.Count == 0)
@@ -35,13 +35,11 @@ public class OrderList : RestaurantComponent, IInteractableStructure
             Debug.Log("주문목록에 주문이 아직 없습니다.");
             return;
         }
-        
-        SamplePlayer player = interactRequester.GetComponent<SamplePlayer>();
 
         Order item = orderQueue[0];
         orderQueue.RemoveAt(0);
 
-        player.restaurantInventory.holdingOrders.Add(item);
+        requester.restaurantInventory.holdingOrders.Add(item);
 
         SinkSpriteWithListCount();
     }

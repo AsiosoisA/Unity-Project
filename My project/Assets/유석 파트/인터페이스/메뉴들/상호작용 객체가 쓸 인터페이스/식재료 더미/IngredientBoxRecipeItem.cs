@@ -52,7 +52,7 @@ public class IngredientBoxRecipeItem : MonoBehaviour
             foreach(FoodStuff food in foodsToGive)
             {
                 myInterfaceMenu.box.boxInventory.SubFoodFromPlayer(food.foodStuffName, 1);
-                myInterfaceMenu.box.player.restaurantInventory.AddFoodToPlayer(food, 1);
+                myInterfaceMenu.box.playerInventory.AddFoodToPlayer(food, 1);
             }
 
             item.isPullIngredients = true;

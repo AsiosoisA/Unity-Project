@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Doorway : RestaurantComponent, IInteractableStructure
 {
-    public void Interact(GameObject interactRequester)
+    public void Interact(PlayerInteractState state, Player requester)
     {
         if(!restaurant.isOpened)
         {

@@ -5343,11 +5343,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7839395159346113137, guid: be9018e7c5fb0014fae4a4babcba1b2d, type: 3}
+      propertyPath: minigameManager
+      value: 
+      objectReference: {fileID: 320445808}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1018126564966915666, guid: be9018e7c5fb0014fae4a4babcba1b2d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 835824843}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be9018e7c5fb0014fae4a4babcba1b2d, type: 3}
+--- !u!114 &325948621 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7839395159346113137, guid: be9018e7c5fb0014fae4a4babcba1b2d, type: 3}
+  m_PrefabInstance: {fileID: 325948620}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68cd00b097f45b343975279ec0b849f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &355360594 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6187886275178870102, guid: fa5b17f400cb49d449340be007d66b8b, type: 3}
@@ -8790,12 +8808,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 835824842}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 7.92, y: -1.6800001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1064487989}
+  m_Father: {fileID: 922811086}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &835824844
 MonoBehaviour:
@@ -9707,8 +9725,7 @@ Transform:
   m_LocalPosition: {x: 3, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 835824843}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1081534262
@@ -24280,7 +24297,7 @@ MonoBehaviour:
   playerData:
     money: 0
     restaurantLevel: 0
-  player: {fileID: 1064487988}
+  player: {fileID: 325948621}
   recipeBook: {fileID: 784647413}
   visitManager: {fileID: 1081534263}
   components: {fileID: 610588330}

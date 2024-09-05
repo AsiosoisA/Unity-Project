@@ -4,7 +4,7 @@ using UnityEngine;
 
 public interface IInteractableStructure
 {
-    void Interact(GameObject interactRequester);
+    void Interact(PlayerInteractState interactState, Player requester);
 
     bool IsShouldHidePlayer();
 }

@@ -27,4 +27,8 @@ public class Minigame
     {
         isMinigaming = false;
     }
+    public virtual void OnMinigameFailed()
+    {
+        isMinigaming = false;
+    }
 }

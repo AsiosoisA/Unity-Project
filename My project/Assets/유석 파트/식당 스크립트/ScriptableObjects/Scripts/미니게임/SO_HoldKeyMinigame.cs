@@ -20,6 +20,11 @@ public class SO_HoldKeyMinigame : SO_KeyMinigame
     [Header("안 눌렀을 때 게이지가 줄어드는 속도.")]
     public float decreaseSpeed;
 
+
+
+    [Header("아니면 안 누르면 그냥 게임 오버")]
+    public bool isMinigameOverWhenNotPush;
+
     
 
 

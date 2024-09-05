@@ -35,6 +35,8 @@ public class Player : MonoBehaviour
     public PlayerInteractState InteractState {get; private set;}
 
     public Inventory inventory;
+    public static Item[] inventoryToFoodStuff = new Item[10];
+    public int iTFIndex = 0;
 
 
     #region 유석 추가부분
@@ -115,7 +117,7 @@ public class Player : MonoBehaviour
             Debug.Log("레스토랑 씬");
         }
         else
-            //inventory = GameObject.Find("Inventory").GetComponent<Inventory>(); //일단 이렇게 설정해놨긴 했는데 추후에 자원 덜 소모하는 쪽으로 업데이트 해놓겠습니다..
+            inventory = GameObject.Find("Inventory").GetComponent<Inventory>(); //일단 이렇게 설정해놨긴 했는데 추후에 자원 덜 소모하는 쪽으로 업데이트 해놓겠습니다..
 
         playerInput = GetComponent<PlayerInput>();
 
@@ -162,14 +164,10 @@ public class Player : MonoBehaviour
         //테스트용
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            Debug.Log("1번");
-            playerInputDisable();
+            for (int i = 0; i < 3; i++)
+                Debug.Log(inventoryToFoodStuff[i].name);
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            Debug.Log("2번");
-            playerInputEnable();
-        }
+
         //테스트용
         Core.LogicUpdate();
         StateMachine.CurrentState.LogicUpdate();
@@ -216,6 +214,27 @@ public class Player : MonoBehaviour
     public void playerInputEnable()
     {
         playerInput.enabled = true;
+    }
+
+    public void OnTriggerStay2D(Collider2D collision)
+    {
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            if (collision.tag == "machine")
+            {
+                foreach (GameObject slot in inventory.slots)
+                {
+                    InventorySlot inventorySlot = slot.GetComponent<InventorySlot>();
+                    if (inventorySlot.item == null)
+                        continue;
+                    if (inventorySlot.item.itemType == Item.ItemType.ingredients)
+                    {
+                        inventoryToFoodStuff[iTFIndex++] = inventorySlot.item;
+                        inventorySlot.ClearSlot();
+                    }    
+                }
+            }
+        }
     }
     #endregion
 }

@@ -16,7 +16,7 @@ public class Inventory : MonoBehaviour
 
     public bool isRun = false;
 
-    private List<GameObject> slots = new List<GameObject>();
+    public List<GameObject> slots = new List<GameObject>();
 
     private void Start()
     {

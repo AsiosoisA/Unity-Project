@@ -9,6 +9,12 @@ public class FoodStuff : MonoBehaviour
     public string foodStuffName;
     public int price {get; protected set;}
     protected virtual void Awake(){}
+
+    public FoodStuff(Sprite foodSprite, string foodStuffName)
+    {
+        this.foodSprite = foodSprite;
+        this.foodStuffName = foodStuffName;
+    }
 }
 
 [System.Serializable]

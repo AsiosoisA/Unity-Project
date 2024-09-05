@@ -41,20 +41,16 @@ public class DeliveryToBoxInterface : InterfaceMenu
     {
         Debug.Log("여기에서 플레이어의 인벤토리 내의 FoodStuff 태그 달린 녀석들이 전부 납품돼야 합니다!");
 
-
         bool isntFood = true;
-        /*
+        foreach(Item item in Player.inventoryToFoodStuff)
+        {
+            FoodStuff food = new FoodStuff(item.icon, item.itemName);
 
-            foreach( Item item in Sinyeong'sInventory)
-            {
-                FoodStuff food = item as FoodStuff
-                if(food == null) continue;
-
-                isntFood = false; // 납품할 식재료가 존재하니 false 로 변경.
-                box.boxInventory.AddFoodToPlayer(food, 1);
-                Remove Item from Sinyeong's Inventory;
-            }
-        */
+            if (food == null) continue;
+            Debug.Log("잘 됌");
+            isntFood = false; // 납품할 식재료가 존재하니 false 로 변경.
+            box.boxInventory.AddFoodToPlayer(food, 1);
+        }
 
         Sync();
 

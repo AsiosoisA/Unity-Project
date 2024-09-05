@@ -41,6 +41,7 @@ public class DeliveryToBoxInterface : InterfaceMenu
     {
         Debug.Log("여기에서 플레이어의 인벤토리 내의 FoodStuff 태그 달린 녀석들이 전부 납품돼야 합니다!");
 
+
         bool isntFood = true;
         /*
 

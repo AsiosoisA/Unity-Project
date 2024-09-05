@@ -13,6 +13,9 @@ public class PlayerInteractState : PlayerState
     public override void Enter()
     {
         base.Enter();
+
+        idleState = player.IdleState;
+
         Debug.Log("Entering Interact State");
         Movement?.SetVelocityX(0f);
 
@@ -28,6 +31,8 @@ public class PlayerInteractState : PlayerState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+
+        //if(stateMachine.CurrentState == this) Debug.Log("it's interacting.");
     }
 
     public override void PhysicsUpdate()
@@ -80,7 +85,11 @@ public class PlayerInteractState : PlayerState
             objShouldInteract.Interact(this, player);
         }
 
-        else Debug.Log("상호작용 가능한 물체가 없습니다.");
+        else 
+        {
+            Debug.Log("상호작용 가능한 물체가 없습니다.");        
+        }
+
     }
 
     private Bounds GetIntersection(Bounds bounds1 , Bounds bounds2) // 상호작용할 객체를 선택할 때 면적을 계산하기 위한 함수.

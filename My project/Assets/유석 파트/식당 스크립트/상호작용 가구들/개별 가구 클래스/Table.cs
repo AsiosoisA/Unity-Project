@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -44,7 +43,12 @@ public class Table : RestaurantComponent, IInteractableStructure
 
     public void Interact(PlayerInteractState state, Player requester)
     {
-        if(customer == null) return;
+        Debug.Log("테이블 상호작용 발동!");
+        if(customer == null) 
+        {
+            state.OnInteractFinished();
+            return;
+        }
 
         string foodKey = customer.food_I_Want.foodStuffName;
 
@@ -52,6 +56,7 @@ public class Table : RestaurantComponent, IInteractableStructure
         {
             GiveThisFood(customer.food_I_Want); // TODO 플레이어가 들고 있는 음식을 주도록 해야 한다!
             requester.restaurantInventory.SubFoodFromPlayer(foodKey, 1);
+            state.OnInteractFinished();
         }
     }
 
@@ -63,5 +68,10 @@ public class Table : RestaurantComponent, IInteractableStructure
     // 테이블에 음식을 전달하면 그건 그대로 손님에게 전달된다.
     public void GiveThisFood(Food food){
         if(customer != null) customer.GiveThisFood(food);
+    }
+
+    public void OnInteractFinished()
+    {
+        // 원래 만들어야 하는데 아몰라
     }
 }

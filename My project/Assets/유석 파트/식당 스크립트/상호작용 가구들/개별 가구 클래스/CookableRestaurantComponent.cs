@@ -26,7 +26,11 @@ public class CookableRestaurantComponent : MinigamableRestaurantComponent, IInte
         this.requesterGameObject = requester.gameObject;
         this.requestState = state;
 
-        if(reqRestInventory.foodsICarrying.Keys.Count == 0) return; // 들고 있는게 아예 없다면 그냥 종료한다.
+        if(reqRestInventory.foodsICarrying.Keys.Count == 0)
+        {
+            state.OnInteractFinished(); // 들고 있는게 아예 없다면 그냥 종료한다.
+            return;
+        } 
 
         // 일단 다른 인풋 시스템을 모두 차단해야 함!
         BeforeMinigame();
@@ -135,7 +139,8 @@ public class CookableRestaurantComponent : MinigamableRestaurantComponent, IInte
     public virtual void OnEntireMinigameFinished()
     {
         requesterGameObject.SetActive(true);
-        requestState.OnInteractFinished();
+        
+        OnInteractFinished();
     }
 
     public bool IsPlayerGetIngredients(RestaurantInventory inventory, SO_Recipe recipe)
@@ -152,5 +157,10 @@ public class CookableRestaurantComponent : MinigamableRestaurantComponent, IInte
         }
         Debug.Log("식재료가 충분합니다. 요리할 수 있습니다!");
         return true;
+    }
+
+    public void OnInteractFinished()
+    {
+        requestState.OnInteractFinished();
     }
 }

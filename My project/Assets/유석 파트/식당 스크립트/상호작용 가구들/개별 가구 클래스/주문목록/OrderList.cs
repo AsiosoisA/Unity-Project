@@ -33,6 +33,7 @@ public class OrderList : RestaurantComponent, IInteractableStructure
         if(orderQueue.Count == 0)
         {
             Debug.Log("주문목록에 주문이 아직 없습니다.");
+            state.OnInteractFinished();
             return;
         }
 
@@ -42,6 +43,8 @@ public class OrderList : RestaurantComponent, IInteractableStructure
         requester.restaurantInventory.holdingOrders.Add(item);
 
         SinkSpriteWithListCount();
+
+        state.OnInteractFinished();
     }
 
     public bool IsShouldHidePlayer()
@@ -69,5 +72,10 @@ public class OrderList : RestaurantComponent, IInteractableStructure
         }
 
         SinkSpriteWithListCount();
+    }
+
+    public void OnInteractFinished()
+    {
+        
     }
 }

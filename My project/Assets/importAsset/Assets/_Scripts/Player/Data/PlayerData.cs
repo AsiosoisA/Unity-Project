@@ -7,6 +7,7 @@ public class PlayerData : ScriptableObject
 {
     [Header("Move State")]
     public float movementVelocity = 10f;
+    public float fallingMovementVelocity = 5f;
 
     [Header("Grounded State")]
     public float deadBodyRadius = 1.0f;

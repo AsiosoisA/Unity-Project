@@ -35,7 +35,7 @@ public class PlayerSuperJumpState : PlayerAbilityState
         base.Enter();
         amountOfJumpsLeft = 0;
         isAbilityDone = false;
-        Movement?.SetVelocityZero();
+        //Movement?.SetVelocityZero();
         superJumpStartTime = Time.time;
         superJumpMultiplier = 1f;
         holdTime = 0f;
@@ -46,6 +46,7 @@ public class PlayerSuperJumpState : PlayerAbilityState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
+        Movement?.SetVelocityZero();
 
         holdTime = Time.time - superJumpStartTime;
 

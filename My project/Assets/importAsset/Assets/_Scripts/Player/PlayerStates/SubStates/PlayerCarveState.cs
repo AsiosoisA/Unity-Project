@@ -1,6 +1,7 @@
 ﻿using Bardent.CoreSystem;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 
 public class PlayerCarveState : PlayerGroundedState /* 유석 추가 부분 */ , IMinigamable
@@ -36,17 +37,39 @@ public class PlayerCarveState : PlayerGroundedState /* 유석 추가 부분 */ ,
     public override void Enter()
     {
         base.Enter();
-        Movement?.SetVelocityX(0f);
 
         carvingObject = GetClosestDeadEnemy(player.transform.position, playerData.deadBodyRadius);
+        if(carvingObject == null) stateMachine.ChangeState(player.IdleState);
+        else
+        {
+            holdStartTime = 0f;
+            isHolding = false;   // 초기화
+            isCarved = false;    // 초기화
 
-        holdStartTime = 0f;
-        isHolding = false;   // 초기화
-        isCarved = false;    // 초기화
+            /*
+                난입아트장인난입내용
+
+                아
+                자고싶다
+
+                변경점
+                Enter ( ) 에서 미니게임을 시작하고 종료를 기다림.
+
+                미니게임 성공 / 실패 여부는 콜백 함수로 처리하며 LogicUpdate 는 발동하지 않음.
+            */
+            Debug.Log("카브스테이트 엔터");
+            RequestToStartMinigame();
+        }
+
     }
 
     public override void LogicUpdate()
     {
+        Movement.SetVelocityZero();
+        /*
+        
+        원래 있던 로직.
+
         base.LogicUpdate();
 
         interactionInput = player.InputHandler.InteractionInput;
@@ -80,6 +103,8 @@ public class PlayerCarveState : PlayerGroundedState /* 유석 추가 부분 */ ,
             stateMachine.ChangeState(player.IdleState);
             return; // 상태 전환 후 추가 로직이 실행되지 않도록 return
         }
+
+        */
     }
 
     #endregion
@@ -110,7 +135,8 @@ public class PlayerCarveState : PlayerGroundedState /* 유석 추가 부분 */ ,
 
     private void Carve()
     {
-        player.inventory.AddItem(carvingObject.GetComponent<Enemy1>().CavingItem);
+        //player.inventory.AddItem(carvingObject.GetComponent<Enemy1>().CavingItem);
+        
         /*
         GetClosestDeadEnemy를 통해서 Layer가 Dead인 Enemy의 정보를 얻고 충분한 시간동안 interactionInput을 
         눌렀을 경우 Carve()를 실행하고 Idle로 탈출하도록 만들었습니다.
@@ -118,6 +144,7 @@ public class PlayerCarveState : PlayerGroundedState /* 유석 추가 부분 */ ,
         신영님 편하신 대로 Enemy 정보에 따라 인벤토리에 아이템 추가하는 로직 작성하시면 될거 같아요!
         */
         Debug.Log("Carve");
+        stateMachine.ChangeState(player.IdleState);
     }
 
     #endregion
@@ -129,9 +156,9 @@ public class PlayerCarveState : PlayerGroundedState /* 유석 추가 부분 */ ,
         return player.gameObject;
     }
 
-    public Vector3 GetOffset()
+    public Vector3 GetContainerOffset()
     {
-        return new Vector3(0, 0, 0); // offset 은 따로 사용하지 않는다.
+        return new Vector3(0, 0.8f, 0);
     }
 
     public void RequestToStartMinigame()

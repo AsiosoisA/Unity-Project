@@ -55,7 +55,7 @@ public class MinigameManager : MonoBehaviour
             Debug.LogError("타입을 뭔가 잘 못 넣은 것 같습니다!");
         }
 
-        minigameToTrack.StartMinigame(requester.GetGameObject(), requester.GetOffset());
+        minigameToTrack.StartMinigame(requester.GetGameObject(), requester.GetContainerOffset());
     }
 
     public void OnMinigameFinished()

@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
 
 
     [SerializeField]
-    private PlayerData playerData;
+    private PlayerData playerData;  
     #endregion
 
     #region Components

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 
 public class PlayerInputHandler : MonoBehaviour
@@ -77,7 +78,7 @@ public class PlayerInputHandler : MonoBehaviour
     */
     public void OnPrimaryAttackInput(InputAction.CallbackContext context)
     {
-        if (context.started)
+        if (context.started && SceneManager.GetActiveScene().buildIndex != 1)
         {
             AttackInputs[(int)CombatInputs.primary] = true;
         }

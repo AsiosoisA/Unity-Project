@@ -51,6 +51,8 @@ public class Player : MonoBehaviour
     public Stats Stats { get; private set; }
     
     public InteractableDetector InteractableDetector { get; private set; }
+
+    private PlayerInput playerInput; //임시로 추가
     #endregion
 
     #region Other Variables         
@@ -103,6 +105,8 @@ public class Player : MonoBehaviour
         }
         else
             inventory = GameObject.Find("Inventory").GetComponent<Inventory>(); //일단 이렇게 설정해놨긴 했는데 추후에 자원 덜 소모하는 쪽으로 업데이트 해놓겠습니다..
+
+        playerInput = GetComponent<PlayerInput>();
     }
 
     private void Start()
@@ -132,6 +136,18 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        //테스트용
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            Debug.Log("1번");
+            playerInputDisable();
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            Debug.Log("2번");
+            playerInputEnable();
+        }
+        //테스트용
         Core.LogicUpdate();
         StateMachine.CurrentState.LogicUpdate();
     }
@@ -168,5 +184,15 @@ public class Player : MonoBehaviour
     private void AnimtionFinishTrigger() => StateMachine.CurrentState.AnimationFinishTrigger();
 
    
+    // 일단 이렇게 추가했습니다.
+    public void playerInputDisable()
+    {
+        playerInput.enabled = false;
+    }
+
+    public void playerInputEnable()
+    {
+        playerInput.enabled = true;
+    }
     #endregion
 }

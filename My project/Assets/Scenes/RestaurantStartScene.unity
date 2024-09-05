@@ -18383,11 +18383,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug_putFoodsBeforeGameStart:
-  - {fileID: 1304899764675837441, guid: fa5b17f400cb49d449340be007d66b8b, type: 3}
-  - {fileID: 1304899764675837441, guid: fa5b17f400cb49d449340be007d66b8b, type: 3}
-  - {fileID: 1304899764675837441, guid: fa5b17f400cb49d449340be007d66b8b, type: 3}
-  - {fileID: 1304899764675837441, guid: fa5b17f400cb49d449340be007d66b8b, type: 3}
-  - {fileID: 1304899764675837441, guid: fa5b17f400cb49d449340be007d66b8b, type: 3}
   - {fileID: 4638119694123021983, guid: 2f2249cd9a842c94faea31f0c8e739bc, type: 3}
   - {fileID: 4638119694123021983, guid: 2f2249cd9a842c94faea31f0c8e739bc, type: 3}
   - {fileID: 4638119694123021983, guid: 2f2249cd9a842c94faea31f0c8e739bc, type: 3}

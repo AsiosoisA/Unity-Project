@@ -138,10 +138,18 @@ public class PlayerInAirState : PlayerState
         {
             stateMachine.ChangeState(player.DashState);
         }
-        else
+        else 
         {
             Movement?.CheckIfShouldFlip(xInput);
-            Movement?.SetVelocityX(playerData.movementVelocity * xInput);
+            if (!isSlowFalling)
+            {
+                Movement?.SetVelocityX(playerData.movementVelocity * xInput);
+            }
+            else
+            {
+                Movement?.SetVelocityX(playerData.fallingMovementVelocity * xInput);
+            }
+            
 
 
             player.Anim.SetFloat("yVelocity", Movement.CurrentVelocity.y);
@@ -163,8 +171,10 @@ public class PlayerInAirState : PlayerState
                 {
                     isSlowFalling = true;
                     float newVelocityY = movement.CurrentVelocity.y * playerData.slowFallMultiplierY;
+                    float newVelocityX = movement.CurrentVelocity.x * playerData.slowFallMultiplierX;
 
                     Movement?.SetVelocityY(newVelocityY);
+                    Movement?.SetVelocityX(newVelocityX);
                 }
             }
             else if (jumpInputStop)

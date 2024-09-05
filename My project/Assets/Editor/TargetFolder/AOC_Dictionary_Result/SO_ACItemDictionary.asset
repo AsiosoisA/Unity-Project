@@ -13,27 +13,58 @@ MonoBehaviour:
   m_Name: SO_ACItemDictionary
   m_EditorClassIdentifier: 
   dictionaryKeys:
+  - base\male\Archor
   - base\male\Normal
+  - base\male\Thief
   - base\male\Warrior
+  - base\male\Wizard
+  - bottom\male\Archor
   - bottom\male\Normal
+  - bottom\male\Thief
   - bottom\male\Warrior
+  - bottom\male\Wizard
+  - hairstyle\male\Archor
   - hairstyle\male\Normal
+  - hairstyle\male\Thief
   - hairstyle\male\Warrior
+  - hairstyle\male\Wizard
+  - outfit\male\Archor
   - outfit\male\Normal
+  - outfit\male\Thief
   - outfit\male\Warrior
+  - outfit\male\Wizard
+  - top\male\Archor
   - top\male\Normal
+  - top\male\Thief
   - top\male\Warrior
+  - top\male\Wizard
   dictionaryItems:
+  - items:
+    - {fileID: 11400000, guid: a474275698c2eb4478d68b25ba1af90d, type: 2}
   - items:
     - {fileID: 11400000, guid: 1d5ea0c5991f2d246bb489d5fc0f28e4, type: 2}
   - items:
+    - {fileID: 11400000, guid: f22144b9b1e0dba4a9dae9a278db1640, type: 2}
+  - items:
     - {fileID: 11400000, guid: 737654057780aa8449ec35c515f21eac, type: 2}
+  - items:
+    - {fileID: 11400000, guid: 0de981c6cb8c5e44d9425b72640c730c, type: 2}
+  - items:
+    - {fileID: 11400000, guid: 8f3816b6ed6b346499558fe11595c569, type: 2}
   - items:
     - {fileID: 11400000, guid: faba7201468b72446b61468e49226723, type: 2}
     - {fileID: 11400000, guid: faeaee347f2525b4fb35dc2dfbc1f651, type: 2}
     - {fileID: 11400000, guid: 9ac6df5e317acad469716c832c216cce, type: 2}
   - items:
+    - {fileID: 11400000, guid: 0e3e537456ec39d4f9f1cc25150ea544, type: 2}
+  - items:
     - {fileID: 11400000, guid: beade3624a37ee34d942bf4c153bf8a4, type: 2}
+  - items:
+    - {fileID: 11400000, guid: 3d75548369c912c4298297925f5d4a83, type: 2}
+  - items:
+    - {fileID: 11400000, guid: 0575bce783bb53c46a53f65f79fc0f89, type: 2}
+    - {fileID: 11400000, guid: 2c595278878618740ba1ac2a96f5d16a, type: 2}
+    - {fileID: 11400000, guid: 5b32314751b75284a844784573e6af4e, type: 2}
   - items:
     - {fileID: 11400000, guid: 133724653068c7346ad57be6a93bb57c, type: 2}
     - {fileID: 11400000, guid: 4387c95667d799e4c8053e5b5107ce2c, type: 2}
@@ -42,19 +73,39 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 6b522fea68fe1314b89583bfbbf60289, type: 2}
     - {fileID: 11400000, guid: 64b2401788277ad4ea3693e42167721c, type: 2}
   - items:
+    - {fileID: 11400000, guid: 72bfa76633a539d4280d84e272fa18c3, type: 2}
+    - {fileID: 11400000, guid: 87764159681408f47a05b8c3326978db, type: 2}
+    - {fileID: 11400000, guid: 548071ffb6928d24fa9734579773e9e4, type: 2}
+  - items:
     - {fileID: 11400000, guid: 1a70111b20a171a4f85b4afee5e4d86b, type: 2}
     - {fileID: 11400000, guid: b5366b3e85e09cb439047c5c3fd58390, type: 2}
     - {fileID: 11400000, guid: 67fdb195e503448469ade608af6e51c0, type: 2}
+  - items:
+    - {fileID: 11400000, guid: f32ca3689b67bf242a0244abefe15dbf, type: 2}
+    - {fileID: 11400000, guid: 56c169284972f3643b0c6a2610c7c9d1, type: 2}
+    - {fileID: 11400000, guid: e7b61b1f7b269bf4595a6f878ef2dd48, type: 2}
+  - items:
+    - {fileID: 11400000, guid: 469e00eb27ca3bd43adbeab0601b7565, type: 2}
   - items:
     - {fileID: 11400000, guid: 3d0a725770f720e4583be6bc58785878, type: 2}
     - {fileID: 11400000, guid: 65c6e7bf3bb75f34298744d62f3e3ee6, type: 2}
     - {fileID: 11400000, guid: b0891c316b3da16408936429376987fe, type: 2}
     - {fileID: 11400000, guid: 97096999573dba74f895f3e3781472a1, type: 2}
   - items:
+    - {fileID: 11400000, guid: fe207e7a1920a9d4ba63c936ca4cce56, type: 2}
+  - items:
     - {fileID: 11400000, guid: 83dac7d9af55aa5448db27c9d7ab5780, type: 2}
     - {fileID: 11400000, guid: ec9ca84a38fd6204b80d611444e07cd9, type: 2}
+  - items:
+    - {fileID: 11400000, guid: 11e267cffc1b0f34aab426eb580cfbcf, type: 2}
+  - items:
+    - {fileID: 11400000, guid: 5495cd0ff1974814799257ee83761828, type: 2}
   - items:
     - {fileID: 11400000, guid: f8d3e87d8d4acd14f9de799058348a0b, type: 2}
     - {fileID: 11400000, guid: c1a253ea63d1fb349bd509d82a333669, type: 2}
   - items:
+    - {fileID: 11400000, guid: 090cfabcca9dc1e45a68d4c9e3247ddb, type: 2}
+  - items:
     - {fileID: 11400000, guid: f75b9672a30850a4b90e2cf0315d6927, type: 2}
+  - items:
+    - {fileID: 11400000, guid: c74b00a812750b240aac27461fa8bd0a, type: 2}

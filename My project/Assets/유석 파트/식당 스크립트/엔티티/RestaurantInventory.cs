@@ -16,8 +16,8 @@ public class RestaurantInventory : MonoBehaviour
 
         foreach(FoodStuff item in debug_putFoodsBeforeGameStart)
         {
-            if(foodsICarrying.ContainsKey(item.foodStuffName)) foodsICarrying[item.foodStuffName].AddCount(1);
-            else foodsICarrying.Add(item.foodStuffName, new FoodStuffAndCount(item, 1));
+            if(foodsICarrying.ContainsKey(item.foodStuffName)) foodsICarrying[item.foodStuffName].AddCount(10);
+            else foodsICarrying.Add(item.foodStuffName, new FoodStuffAndCount(item, 10));
         }
     }
 

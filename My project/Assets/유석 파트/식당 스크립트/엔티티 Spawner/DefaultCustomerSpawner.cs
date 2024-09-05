@@ -34,13 +34,9 @@ public class DefaultCustomerSpawner : MonoBehaviour
     private string[] customerTypes = {
         "Normal",
         "Warrior",
-
-        /*
         "Archor",
         "Wizard",
         "Thief",
-    
-        */
     };
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
 

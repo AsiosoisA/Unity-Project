@@ -22,6 +22,8 @@ public class PlayerCarveState : PlayerGroundedState
     private bool isCarved = false;
     private float holdingTime = 2f;
 
+    private int DeadLayer = LayerMask.NameToLayer("Dead"); // 레이어 정수화
+
     [SerializeField]
     private ItemHandler itemHandler;
     #endregion
@@ -92,7 +94,7 @@ public class PlayerCarveState : PlayerGroundedState
 
         foreach (Collider2D collider in colliders)
         {
-            if (collider.CompareTag("Enemy") && collider.gameObject.layer == 8) //임시로 8로 바꿈
+            if (collider.CompareTag("Enemy") && collider.gameObject.layer == DeadLayer) //임시로 8로 바꿈
             {
                 float distance = Vector2.Distance(playerPosition, collider.transform.position);
                 if (distance < closestDistance)

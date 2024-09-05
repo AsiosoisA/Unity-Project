@@ -73,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 434583727
-  m_SortingLayer: 5
-  m_SortingOrder: 1
+  m_SortingLayer: 7
+  m_SortingOrder: 10
   m_Sprite: {fileID: -1954923684, guid: cc3261b921cd8c54dacca0b228cd33e3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -101,7 +101,7 @@ MonoBehaviour:
   tableId: 2
   isAvailable: 1
   tableChairLookDirection: 2
-  customerPositionOffset: 0.44
+  customerPositionOffset: 0.39
 --- !u!61 &2140286219330243793
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -220,8 +220,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 434583727
-  m_SortingLayer: 5
-  m_SortingOrder: 1
+  m_SortingLayer: 7
+  m_SortingOrder: 10
   m_Sprite: {fileID: 1347086229, guid: cc3261b921cd8c54dacca0b228cd33e3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -248,7 +248,7 @@ MonoBehaviour:
   tableId: 3
   isAvailable: 1
   tableChairLookDirection: 0
-  customerPositionOffset: 0.594
+  customerPositionOffset: 0.544
 --- !u!61 &7713842623993458950
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -367,8 +367,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 434583727
-  m_SortingLayer: 5
-  m_SortingOrder: 1
+  m_SortingLayer: 7
+  m_SortingOrder: 10
   m_Sprite: {fileID: -1524496036, guid: cc3261b921cd8c54dacca0b228cd33e3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -395,7 +395,7 @@ MonoBehaviour:
   tableId: 1
   isAvailable: 1
   tableChairLookDirection: 2
-  customerPositionOffset: 0.9
+  customerPositionOffset: 0.85
 --- !u!61 &2139018877992936853
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -514,8 +514,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 434583727
-  m_SortingLayer: 5
-  m_SortingOrder: 1
+  m_SortingLayer: 7
+  m_SortingOrder: 10
   m_Sprite: {fileID: -666874965, guid: cc3261b921cd8c54dacca0b228cd33e3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -542,7 +542,7 @@ MonoBehaviour:
   tableId: 0
   isAvailable: 1
   tableChairLookDirection: 1
-  customerPositionOffset: 0.43
+  customerPositionOffset: 0.38
 --- !u!61 &1348023624505151589
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -663,8 +663,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 434583727
-  m_SortingLayer: 5
-  m_SortingOrder: 1
+  m_SortingLayer: 7
+  m_SortingOrder: 10
   m_Sprite: {fileID: -119645515, guid: cc3261b921cd8c54dacca0b228cd33e3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

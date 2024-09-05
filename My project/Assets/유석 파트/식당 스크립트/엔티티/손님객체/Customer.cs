@@ -134,7 +134,7 @@ public class Customer : MonoBehaviour
 
     public void SitDown()
     {
-        SetSortingOrder(2); // 앞으로 꺼낸다
+        SetSortingOrder(myTable.GetComponent<SpriteRenderer>().sortingOrder + 1); // 앞으로 꺼낸다
 
         FlipByTableType();
 
@@ -374,6 +374,14 @@ public class Customer : MonoBehaviour
         {
             if(component.componentName == "base") {
                 component.gameObject.GetComponent<SpriteRenderer>().sortingOrder = order - 1;
+            }
+            else if(component.componentName == "outfit")
+            {
+                component.gameObject.GetComponent<SpriteRenderer>().sortingOrder = order + 2;
+            }
+            else if(component.componentName == "bottom")
+            {
+                component.gameObject.GetComponent<SpriteRenderer>().sortingOrder = order + 1;
             }
             else component.gameObject.GetComponent<SpriteRenderer>().sortingOrder = order;
         }

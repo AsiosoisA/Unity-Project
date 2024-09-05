@@ -17,11 +17,11 @@ public class SpriteToSO_ACItems : MonoBehaviour
         /*
             여기다 Sprites 폴더 주소를 넣어주세요!
         */
-        string spriteDirectoryPath = "Assets/Resources/유석파트/CustomerResources/Sprites";
+        string spriteDirectoryPath = "Assets/Resources/유석 파트/CustomerResources/Sprites";
         /*
             여기다 ACItems 폴더 주소를 넣어주세요!
         */
-        string targetDirectoryPath = "Assets/Resources/유석파트/CustomerResources/DefaultCustomerResources";
+        string targetDirectoryPath = "Assets/Resources/유석 파트/CustomerResources/DefaultCustomerResources";
         /*
             여기다 베이스로 쓸 AC 의 주소를 넣어주세요!
         */

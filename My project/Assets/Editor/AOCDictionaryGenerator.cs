@@ -23,7 +23,7 @@ public class AOCDictionaryGenerator : MonoBehaviour
             이곳에 Sprite 폴더 구조와 완벽히 동일한 구조의 ACItems 폴더를 넣어주시면 됩니다!
 
         */
-        string rootDirectoryToAddDictionary = "Assets/Resources/유석파트/CustomerResources/DefaultCustomerResources";
+        string rootDirectoryToAddDictionary = "Assets/Resources/유석 파트/CustomerResources/DefaultCustomerResources";
 
 
 

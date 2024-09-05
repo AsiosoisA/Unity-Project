@@ -127,123 +127,18 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 4
+        y: 0
         width: 128
-        height: 128
+        height: 0
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: dfa3e367e68774347ab5fb79b5b164c9
-      internalID: -1855059289
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ledgeClimb_1
-      rect:
-        serializedVersion: 2
-        x: 128
-        y: 4
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ea1a2c2033d1af343b6eddc72bc89f70
-      internalID: -712984872
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ledgeClimb_2
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 4
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1ecc5c4be4ac9ac4198edc7b7c0e8aba
-      internalID: -2054407271
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ledgeClimb_3
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 4
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5f13fbcd440799e4f8be65772a4e70e2
-      internalID: 1046326148
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ledgeClimb_4
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 4
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6e5a85c71b9160e42a17494fdc669374
-      internalID: -156811856
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ledgeClimb_5
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 4
-        width: 128
-        height: 128
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bb23f8d1d24e10742b356ea0fc68917b
-      internalID: 589300471
+      spriteID: 65fff820669a23aa0800000000000000
+      internalID: -6182693082831519914
       vertices: []
       indices: 
       edges: []
@@ -251,7 +146,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -259,12 +154,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ledgeClimb_0: -1855059289
-      ledgeClimb_1: -712984872
-      ledgeClimb_2: -2054407271
-      ledgeClimb_3: 1046326148
-      ledgeClimb_4: -156811856
-      ledgeClimb_5: 589300471
+      ledgeClimb_0: -6182693082831519914
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

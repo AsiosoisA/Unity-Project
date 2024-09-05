@@ -115,7 +115,7 @@ public class Player : MonoBehaviour
             Debug.Log("레스토랑 씬");
         }
         else
-            inventory = GameObject.Find("Inventory").GetComponent<Inventory>(); //일단 이렇게 설정해놨긴 했는데 추후에 자원 덜 소모하는 쪽으로 업데이트 해놓겠습니다..
+            //inventory = GameObject.Find("Inventory").GetComponent<Inventory>(); //일단 이렇게 설정해놨긴 했는데 추후에 자원 덜 소모하는 쪽으로 업데이트 해놓겠습니다..
 
         playerInput = GetComponent<PlayerInput>();
 

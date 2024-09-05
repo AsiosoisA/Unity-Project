@@ -10,6 +10,7 @@ using UnityEngine.UIElements;
 public class SO_Recipe : ScriptableObject
 {
     public FoodStuff result; // 프리팹 넣을 것.
+    public int resultCount = 1; // 요리 완료했을 때 제공될 결과물 개수.
     public List<FoodStuff> ingredients;
     public string whereToCook; // 손질할 때 상호작용할 가구의 이름
     public int howToCook;

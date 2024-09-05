@@ -112,8 +112,9 @@ public class CookableRestaurantComponent : MinigamableRestaurantComponent, IInte
         }
 
         FoodStuff nextLevelFood = recipeToCheckInteractable[currentItemIndex].result;
+        int nextLevelFoodCount = recipeToCheckInteractable[currentItemIndex].resultCount;
 
-        player.restaurantInventory.AddFoodToPlayer(nextLevelFood, 1);
+        player.restaurantInventory.AddFoodToPlayer(nextLevelFood, nextLevelFoodCount);
     
         currentItemIndex++;
         CheckCurrentItemShouldInteract();

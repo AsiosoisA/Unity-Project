@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: "\uC2AC\uB77C\uC774\uC2A4\uB41C \uC5EC\uC6B0\uBAAC \uACE0\uAE30"
   m_EditorClassIdentifier: 
   result: {fileID: 294510543712083559, guid: bc7f97979f598d1458a50741ae258983, type: 3}
+  resultCount: 3
   ingredients:
   - {fileID: 1304899764675837441, guid: fa5b17f400cb49d449340be007d66b8b, type: 3}
   whereToCook: cuttingBoard

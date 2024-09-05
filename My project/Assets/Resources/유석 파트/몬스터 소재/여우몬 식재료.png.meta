@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\uC5EC\uC6B0\uBAAC \uC2DD\uC7AC\uB8CC_0"
+      name: "\uC5EC\uC6B0\uBAAC \uACE0\uAE30 \uB369\uC5B4\uB9AC"
       rect:
         serializedVersion: 2
         x: 0
@@ -118,7 +118,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -131,7 +131,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uC5EC\uC6B0\uBAAC \uC2DD\uC7AC\uB8CC_1"
+      name: "\uC5EC\uC6B0\uBAAC \uC0B4\uC810"
       rect:
         serializedVersion: 2
         x: 16
@@ -139,7 +139,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -152,7 +152,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uC5EC\uC6B0\uBAAC \uC2DD\uC7AC\uB8CC_2"
+      name: "\uC5EC\uC6B0\uBAAC \uCD08\uBC25"
       rect:
         serializedVersion: 2
         x: 32
@@ -160,7 +160,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -173,7 +173,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uC5EC\uC6B0\uBAAC \uC2DD\uC7AC\uB8CC_3"
+      name: "\uC5EC\uC6B0\uBAAC \uC2A4\uD14C\uC774\uD06C"
       rect:
         serializedVersion: 2
         x: 48
@@ -181,7 +181,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -204,10 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "\uC5EC\uC6B0\uBAAC \uC2DD\uC7AC\uB8CC_0": 952889890
-      "\uC5EC\uC6B0\uBAAC \uC2DD\uC7AC\uB8CC_1": -1064306496
-      "\uC5EC\uC6B0\uBAAC \uC2DD\uC7AC\uB8CC_2": -355012376
-      "\uC5EC\uC6B0\uBAAC \uC2DD\uC7AC\uB8CC_3": 1125967520
+      "\uC5EC\uC6B0\uBAAC \uACE0\uAE30 \uB369\uC5B4\uB9AC": 952889890
+      "\uC5EC\uC6B0\uBAAC \uC0B4\uC810": -1064306496
+      "\uC5EC\uC6B0\uBAAC \uC2A4\uD14C\uC774\uD06C": 1125967520
+      "\uC5EC\uC6B0\uBAAC \uCD08\uBC25": -355012376
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

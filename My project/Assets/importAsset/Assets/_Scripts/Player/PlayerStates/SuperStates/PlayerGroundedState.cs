@@ -89,7 +89,10 @@ public class PlayerGroundedState : PlayerState
         if (player.InputHandler.InteractionInput && !isCarvingRequested)
         {
             isCarvingRequested = true; // 입력 처리 중으로 설정
-            stateMachine.ChangeState(player.CarveState); // CarveState로 상태 전환
+
+            GameObject carvingObject = player.CarveState.GetClosestDeadEnemy(player.transform.position, playerData.deadBodyRadius);
+            if(carvingObject == null) stateMachine.ChangeState(player.InteractState);
+            else stateMachine.ChangeState(player.CarveState); // CarveState로 상태 전환
         }
         // InteractionInput이 없을 때 플래그를 초기화하여 다시 상태 전환이 가능하도록 함
         if (!player.InputHandler.InteractionInput)

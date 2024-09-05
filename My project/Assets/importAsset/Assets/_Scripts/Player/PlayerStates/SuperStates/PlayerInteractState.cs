@@ -28,7 +28,6 @@ public class PlayerInteractState : PlayerState
     public override void LogicUpdate()
     {
         base.LogicUpdate();
-
     }
 
     public override void PhysicsUpdate()
@@ -104,6 +103,7 @@ public class PlayerInteractState : PlayerState
     #region Callback
     public void OnInteractFinished()
     {
+        Debug.Log("상호작용 종료!");
         stateMachine.ChangeState(idleState);
     }
     #endregion

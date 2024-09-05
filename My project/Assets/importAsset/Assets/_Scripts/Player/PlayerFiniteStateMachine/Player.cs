@@ -32,6 +32,7 @@ public class Player : MonoBehaviour
     public PlayerAttackState PrimaryAttackState { get; private set; }
     public PlayerAttackState SecondaryAttackState { get; private set; }
     public PlayerWindKnockbackSkillState WindKnockbackSkillState { get; private set; }
+    public PlayerInteractState InteractState {get; private set;}
 
     public Inventory inventory;
 
@@ -107,6 +108,7 @@ public class Player : MonoBehaviour
         PrimaryAttackState = new PlayerAttackState(this, StateMachine, playerData, "attack", primaryWeapon, CombatInputs.primary);
         SecondaryAttackState = new PlayerAttackState(this, StateMachine, playerData, "attack", secondaryWeapon, CombatInputs.secondary);
         WindKnockbackSkillState = new PlayerWindKnockbackSkillState(this, StateMachine, playerData, "idle");
+        InteractState = new PlayerInteractState(this, StateMachine, playerData, "idle");
 
         if (SceneManager.GetActiveScene().name == "RestaurantStartScene")
         {

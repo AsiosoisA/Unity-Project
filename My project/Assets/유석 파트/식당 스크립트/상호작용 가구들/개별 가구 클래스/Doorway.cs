@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Doorway : RestaurantComponent, IInteractableStructure
 {
@@ -25,6 +26,7 @@ public class Doorway : RestaurantComponent, IInteractableStructure
         OnInteractFinished();
 
         Debug.Log("나감! 여기서 씬 전환하면 됨.");
+        SceneManager.LoadScene("Main");
     }
 
     public bool IsShouldHidePlayer()

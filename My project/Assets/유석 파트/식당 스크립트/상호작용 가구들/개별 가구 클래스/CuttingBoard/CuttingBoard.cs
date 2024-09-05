@@ -68,12 +68,12 @@ public class CuttingBoard : CookableRestaurantComponent
 
         if(howToCook == (int)HowToCook.Slice)
         {
-            if(restaurant.player.SwordMastery == 1) dataForMinigame = sliceMinigame_Level1;
+            if(restaurant.player.SwordMastery <= 1) dataForMinigame = sliceMinigame_Level1;
             else if(restaurant.player.SwordMastery >= 2) dataForMinigame = sliceMinigame_Level2;
         } 
         else if(howToCook == (int)HowToCook.Chop)
         {
-
+            Debug.Log("뭣?");
         }
         else if(howToCook == (int)HowToCook.MakeSushi)
         {
@@ -85,6 +85,7 @@ public class CuttingBoard : CookableRestaurantComponent
             return null;
         }
 
+        if(dataForMinigame == null) Debug.LogError("대체 이게 왜 널인데");
         frameToAnimate = dataForMinigame.spriteFrames;
         minigameToReturn = dataForMinigame.minigameData;
         

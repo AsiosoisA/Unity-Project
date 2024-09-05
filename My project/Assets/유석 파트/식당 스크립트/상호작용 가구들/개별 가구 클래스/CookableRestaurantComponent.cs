@@ -52,7 +52,7 @@ public class CookableRestaurantComponent : MinigamableRestaurantComponent, IInte
 
     public GameObject GetGameObject() => gameObject;
 
-    public Vector3 GetOffset() => new(xOffset, yOffset, 0);
+    public Vector3 GetContainerOffset() => new(xOffset, yOffset, 0);
 
     protected virtual void ShowInitialSprite(){}
 

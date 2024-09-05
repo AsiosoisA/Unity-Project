@@ -63,11 +63,6 @@ public class HoldKeyMinigame : KeyMinigame
         base.OnKeyPressed();
 
         keyContainer.guageBar.IncreaseGuage(minigameData.increaseSpeed); // 데이터에 추가할 것.
-
-        if(keyContainer.guageBar.guageBar.value >= 0.99)
-        {
-            OnMinigameFinished();
-        } 
     }
 
     public override void OnKeyUped()
@@ -88,8 +83,25 @@ public class HoldKeyMinigame : KeyMinigame
         }
     }
 
+    public override void LogicUpdate()
+    {
+        base.LogicUpdate();
+
+        if(minigameData.isMinigameOverWhenNotPush)
+        {
+            keyContainer.guageBar.IncreaseGuage(minigameData.increaseSpeed); // 데이터에 추가할 것.
+        }
+
+        if(keyContainer.guageBar.guageBar.value >= 0.99)
+        {
+            OnMinigameFinished();
+        } 
+    }
+
     public override void OnMinigameFinished()
     {
+        Debug.Log("와 미니게임 성공~~~~");
+
         base.OnMinigameFinished();
 
         manager.pool.Release(keyInstance.gameObject);
@@ -103,6 +115,9 @@ public class HoldKeyMinigame : KeyMinigame
 
     public override void OnMinigameFailed()
     {
+
+        Debug.Log("흐앙 미니게임 실패~~~~~~~");
+
         base.OnMinigameFailed();
 
         manager.pool.Release(keyInstance.gameObject);

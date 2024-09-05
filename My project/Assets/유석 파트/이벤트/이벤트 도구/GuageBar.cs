@@ -14,8 +14,11 @@ public class GuageBar : MonoBehaviour
 
 
     public bool isProcessing;
+    public bool isWorking;
     public float increaseSpeed;
     public float decreaseSpeed;
+
+    public Transform target;
 
     void Awake() // 왠진 몰라도 Active 된 직후가 돼야 겨우 발동함
     {
@@ -31,6 +34,11 @@ public class GuageBar : MonoBehaviour
     void Update()
     {
         processingCheck();
+        
+
+        SetPosition();
+        //TODO 나중에 고치러 올 것.
+
     }
 
     private void processingCheck()
@@ -51,13 +59,17 @@ public class GuageBar : MonoBehaviour
     {
         gameObject.SetActive(true);
         offset += new Vector3(0, extraOffset, 0);
-        SetPosition(target);
+        isWorking = true;
+        this.target = target;
     }
 
-    public void SetPosition(Transform target)
+    public void SetPosition()
     {
-        Vector3 screenPosition = Camera.main.WorldToScreenPoint(target.position + offset);
-        transform.position = screenPosition;
+        if(isWorking)
+        {
+            Vector3 screenPosition = Camera.main.WorldToScreenPoint(target.position + offset);
+            transform.position = screenPosition;
+        }
     }
 
     public void StopGuage()
@@ -87,6 +99,7 @@ public class GuageBar : MonoBehaviour
 
     public void Release()
     {
+        isWorking = false;
         isProcessing = false;
         offset = originalOffset;
         guageBar.value = 0;

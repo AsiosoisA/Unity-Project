@@ -31,4 +31,6 @@ public class Minigame
     {
         isMinigaming = false;
     }
+
+    public virtual void LogicUpdate(){}
 }

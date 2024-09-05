@@ -7,7 +7,7 @@ namespace Bardent.Weapons
 {
     public class Weapon : MonoBehaviour
     {
-        //Player Ãß°¡
+        //Player ï¿½ß°ï¿½
         Player player;
 
         public event Action<bool> OnCurrentInputChange;
@@ -76,11 +76,11 @@ namespace Bardent.Weapons
         {
             AttackStartTime = Time.time;
             attackCounterResetTimeNotifier.Disable();
-            //¿©±â¼­ ºÎÅÍ
+            //ï¿½ï¿½ï¿½â¼­ ï¿½ï¿½ï¿½ï¿½
             if (player.StateMachine.previousState == player.CrouchIdleState)
             {
                 player.StateMachine.previousState = player.IdleState;
-                Debug.Log("¾É±â °ø°Ý ½ÇÇà");
+                Debug.Log("ï¿½É±ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
                 currentAttackCounter = 3;
             }
             else if (player.StateMachine.previousState == player.InAirState)
@@ -127,7 +127,7 @@ namespace Bardent.Weapons
             GetDependencies();
 
             attackCounterResetTimeNotifier = new TimeNotifier();
-            // ¿©±âºÎÅÍ Ãß°¡
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
             player = transform.GetComponentInParent<Player>(); 
         }
 
@@ -149,7 +149,7 @@ namespace Bardent.Weapons
         private void Update()
         {
             attackCounterResetTimeNotifier.Tick();
-            Debug.Log("state : " + player.StateMachine.previousState);
+            //Debug.Log("state : " + player.StateMachine.previousState);
         }
 
         private void ResetAttackCounter()

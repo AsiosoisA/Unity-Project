@@ -87,7 +87,8 @@ public class PlayerInteractState : PlayerState
 
         else 
         {
-            Debug.Log("상호작용 가능한 물체가 없습니다.");        
+            Debug.Log("상호작용 가능한 물체가 없습니다.");
+            OnInteractFinished();      
         }
 
     }

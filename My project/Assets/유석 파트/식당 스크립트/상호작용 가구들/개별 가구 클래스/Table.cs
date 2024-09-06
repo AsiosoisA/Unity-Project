@@ -58,6 +58,10 @@ public class Table : RestaurantComponent, IInteractableStructure
             requester.restaurantInventory.SubFoodFromPlayer(foodKey, 1);
             state.OnInteractFinished();
         }
+        else
+        {
+            state.OnInteractFinished();
+        }
     }
 
     public bool IsShouldHidePlayer()

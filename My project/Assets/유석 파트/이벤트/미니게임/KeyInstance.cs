@@ -65,7 +65,7 @@ public class KeyInstance : MonoBehaviour
 
         if(isPushed) myMinigame.OnKeyPressed();
 
-        myMinigame.LogicUpdate();
+        if(myMinigame != null) myMinigame.LogicUpdate();
     }
     
 

@@ -165,9 +165,6 @@ public class Player : MonoBehaviour
         //테스트용
         Core.LogicUpdate();
         StateMachine.CurrentState.LogicUpdate();
-
-        if (Input.GetKey(KeyCode.Alpha4)) 
-            SceneManager.LoadScene(1);
     }
 
     private void FixedUpdate()
@@ -231,6 +228,12 @@ public class Player : MonoBehaviour
                     }    
                 }
             }
+        }
+
+        if (Input.GetKey(KeyCode.E))
+        {
+            if (collision.tag == "portal")
+                SceneManager.LoadScene(1);
         }
     }
     #endregion

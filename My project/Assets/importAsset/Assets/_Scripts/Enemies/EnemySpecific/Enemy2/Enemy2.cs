@@ -53,7 +53,7 @@ public class Enemy2 : Entity
         dodgeState = new E2_DodgeState(this, stateMachine, "dodge", dodgeStateData, this);
         rangedAttackState = new E2_RangedAttackState(this, stateMachine, "rangedAttack", rangedAttackPosition, rangedAttackStateData, this);
 
-        stats.Poise.OnCurrentValueZero += HandlePoiseZero;
+        //stats.Poise.OnCurrentValueZero += HandlePoiseZero;
     }
 
     private void HandlePoiseZero()
@@ -61,16 +61,17 @@ public class Enemy2 : Entity
         stateMachine.ChangeState(stunState);
     }
 
+    /*
     protected override void HandleParry()
     {
         base.HandleParry();
         
         stateMachine.ChangeState(stunState);
     }
-
+    */
     private void OnDestroy()
     {
-        stats.Poise.OnCurrentValueZero -= HandlePoiseZero;
+        //stats.Poise.OnCurrentValueZero -= HandlePoiseZero;
     }
 
     private void Start()

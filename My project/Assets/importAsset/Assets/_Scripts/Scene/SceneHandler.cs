@@ -7,15 +7,22 @@ public class Teleport : MonoBehaviour
     public string targetSceneName = "SceneB"; // 전환하고자 하는 씬의 이름
     private PlayerInputHandler playerInputHandler; // PlayerInputHandler 참조
     private bool playerIsInTeleportZone = false;
-    private FadeManager fadeManager; // FadeManager 참조
+    public FadeManager fadeManager; // FadeManager 참조
 
     private void Start()
     {
         // 플레이어 오브젝트에서 PlayerInputHandler를 가져옴
         playerInputHandler = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInputHandler>();
 
-        // 씬 내의 FadeManager를 찾음
-        fadeManager = FindObjectOfType<FadeManager>();
+        if (fadeManager == null)
+        {
+            fadeManager = FindObjectOfType<FadeManager>();
+        }
+
+        if (fadeManager == null)
+        {
+            Debug.LogError("FadeManager가 씬에서 찾을 수 없습니다. 씬에 FadeManager가 추가되었는지 확인하세요.");
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)

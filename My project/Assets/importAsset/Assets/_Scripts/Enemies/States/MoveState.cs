@@ -16,11 +16,18 @@ public class MoveState : State {
 	protected bool isDetectingLedge;
 	protected bool isPlayerInMinAgroRange;
 
-	public MoveState(Entity etity, FiniteStateMachine stateMachine, string animBoolName, D_MoveState stateData) : base(etity, stateMachine, animBoolName) {
+    private float speedMultiplier = 1f;  // 기본 속도 배수
+
+    public MoveState(Entity etity, FiniteStateMachine stateMachine, string animBoolName, D_MoveState stateData) : base(etity, stateMachine, animBoolName) {
 		this.stateData = stateData;
 	}
 
-	public override void DoChecks() {
+    public void SetMovementSpeedMultiplier(float multiplier)
+    {
+        speedMultiplier = multiplier;
+    }
+
+    public override void DoChecks() {
 		base.DoChecks();
 
 		isDetectingLedge = CollisionSenses.LedgeVertical;

@@ -14,6 +14,8 @@ public class DeliveryToBoxInterface : InterfaceMenu
 
     public Button deliveryButton;
 
+    FoodStuff food; //추가
+
     protected override void Awake()
     {
         base.Awake();
@@ -21,6 +23,7 @@ public class DeliveryToBoxInterface : InterfaceMenu
         SetToggleKey(KeyCode.None);
         IgnoreActiveInput();
 
+        food = GameObject.Find("임시 전달용 객체").GetComponent<FoodStuff>();
         //deliveryButton.onClick.AddListener(DeliveryFoods); 직접 할당하세용;;
     }
 
@@ -44,10 +47,10 @@ public class DeliveryToBoxInterface : InterfaceMenu
         bool isntFood = true;
         foreach(Item item in Player.inventoryToFoodStuff)
         {
-            FoodStuff food = new FoodStuff(item.icon, item.itemName);
-
-            if (food == null) continue;
-            Debug.Log("잘 됌");
+            if (item.itemName == null)
+                continue;
+            Debug.Log("전달");
+            food.setFoodStuff(item.icon, item.itemName);
             isntFood = false; // 납품할 식재료가 존재하니 false 로 변경.
             box.boxInventory.AddFoodToPlayer(food, 1);
         }

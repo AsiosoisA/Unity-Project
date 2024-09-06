@@ -161,16 +161,13 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        //테스트용
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            for (int i = 0; i < 3; i++)
-                Debug.Log(inventoryToFoodStuff[i].name);
-        }
 
         //테스트용
         Core.LogicUpdate();
         StateMachine.CurrentState.LogicUpdate();
+
+        if (Input.GetKey(KeyCode.Alpha4)) 
+            SceneManager.LoadScene(1);
     }
 
     private void FixedUpdate()
@@ -218,7 +215,7 @@ public class Player : MonoBehaviour
 
     public void OnTriggerStay2D(Collider2D collision)
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKey(KeyCode.W))
         {
             if (collision.tag == "machine")
             {
